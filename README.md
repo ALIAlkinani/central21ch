@@ -1,2 +1,2 @@
 The Centre for 21st Century Humanities is focussed on three key themes of e-research, impact, and crossing disciplines. 
-Our vision is that by 2020 the University of Newcastle will be known for a significant concentration of excellence in the humanity
+Our vision is that by 2020 the University of Newcastle will be known for a significant concentration of excellence in the humanities.
