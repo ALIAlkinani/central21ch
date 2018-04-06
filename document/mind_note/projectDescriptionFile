@@ -1,0 +1,18 @@
+COSC592 YL1/2018
+Project Description
+Daniel Price & Ali Al-Kinani 
+
+The project we are undertaking for this course is that of a historical map of international poetry. 
+This map would allow people to contribute poetry translations + the time in which the poem was written, 
+eventually creating a timeline and a map of the contributed poetry. 
+The client for this project is the Centre for 21st Century Humanities at the University of Newcastle 
+(the contact for the centre is Dr. Bill Pascoe - bill.pascoe@newcastle.edu.au .) 
+They are hoping for this project to engage (i.e. be used by and contributed to by) users of varying backgrounds, 
+be they academics, students or anyone with an interest in poetry. 
+The project will mainly make use of Javascript, PHP and SQL (back end to front end, database, server side scripting and client side scripting.) 
+Some, but not all, of the technical aspects of this project include:
+-	User account management.
+-	Users being able to add, edit or delete their contributions.
+-	Poems and their translations being displayed in a collapsible viewer.
+-	A map and a timeline for the contributions (both of which can be interactively employed by users to navigate the site, or contribute to it.)
+-	Active user engagement (e.g. users can report other users for misconduct and can rate/rank the translations.)
