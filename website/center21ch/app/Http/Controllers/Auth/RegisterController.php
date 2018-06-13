@@ -71,6 +71,7 @@ class RegisterController extends Controller
         ]);
 
         $user->sendVerifycationEmail();
+        session()->flash('message','Thanks for singing up please check your email to verify your account');
 
         return $user;
     }
