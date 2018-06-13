@@ -10422,10 +10422,15 @@ a.text-dark:focus {
   bottom: 30px;
   right: 20px;
   z-index: 10px;
-  width: 300px;
-  color: 000;
-  -webkit-animation: flash-message 15s forwards;
-          animation: flash-message 15s forwards;
+  width: 250px;
+  color: #fff;
+  height: 120px;
+  font-family: sans-serif;
+  background-color: darkgreen;
+  -webkit-box-shadow: 0px 17px 20px 0px #348a48;
+          box-shadow: 0px 17px 20px 0px #348a48;
+  -webkit-animation: flash-message 60s forwards;
+          animation: flash-message 60s forwards;
 }
 
 @-webkit-keyframes flash-message {
