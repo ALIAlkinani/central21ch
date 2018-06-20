@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Poems extends Model
+class Poem extends Model
 {
     //
 }
