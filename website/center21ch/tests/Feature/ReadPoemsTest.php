@@ -8,13 +8,11 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ReadPoemsTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testExample()
+    use RefreshDatabase;
+    /** @test */
+    public function a_user_can_browes_poems()
     {
-        $this->assertTrue(true);
+        $poem= create('App\Poem');
+        $this->get('/poems') -> assertSee($poem->title);
     }
 }
