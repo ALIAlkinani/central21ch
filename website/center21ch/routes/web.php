@@ -21,3 +21,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('verify/{token}','VerifyController@verify')->name('verify');
 
+Route::get('/poems', 'PomesController@index')->name('poems');
+
