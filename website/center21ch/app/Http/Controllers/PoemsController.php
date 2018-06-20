@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Poems;
+use App\Poem;
 use Illuminate\Http\Request;
 
 class PoemsController extends Controller
@@ -14,7 +14,9 @@ class PoemsController extends Controller
      */
     public function index()
     {
-        //
+          // fatch all the poems from the database and show it in the poems page
+          $poems = Poem::latest()->get();
+          return view('poems.index', compact('poems'));
     }
 
     /**
@@ -46,9 +48,7 @@ class PoemsController extends Controller
      */
     public function show(Poems $poems)
     {
-        // fatch all the poems from the database and show it in the poems page
-        $poems = Poem::latest()->get();
-        return view('poems.index', compact($poems));
+      
     }
 
     /**
