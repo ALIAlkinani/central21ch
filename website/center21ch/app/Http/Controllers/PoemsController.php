@@ -46,18 +46,18 @@ class PoemsController extends Controller
      * @param  \App\Poems  $poems
      * @return \Illuminate\Http\Response
      */
-    public function show(Poems $poems)
+    public function show(Poem $poem)
     {
-      
+      return view('poems.show',compact('poem'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Poems  $poems
+     * @param  \App\Poem  $Poem
      * @return \Illuminate\Http\Response
      */
-    public function edit(Poems $poems)
+    public function edit(Poem $poem)
     {
         //
     }
@@ -69,7 +69,7 @@ class PoemsController extends Controller
      * @param  \App\Poems  $poems
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Poems $poems)
+    public function update(Request $request, Poem $poem)
     {
         //
     }
@@ -80,7 +80,7 @@ class PoemsController extends Controller
      * @param  \App\Poems  $poems
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Poems $poems)
+    public function destroy(Poem $poem)
     {
         //
     }
