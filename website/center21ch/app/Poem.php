@@ -1,6 +1,7 @@
 <?php
 
 namespace App;
+use App\User;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,4 +15,10 @@ class Poem extends Model
     {
         return $this->hasMany(Reply::class);
     }
+
+    public function creater()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
 }

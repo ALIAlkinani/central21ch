@@ -8,7 +8,8 @@
         <div class="col-md-8">
             <div class="card">               
 
-                <div class="card-header"><a href="{{ $poem->path() }}">{{ $poem->title }}</a></div>
+                <div class="card-header"> 
+                     <a href="{{ $poem->path() }}">{{ $poem->title }}</a> created by <a href="#">{{ $poem->creater->name }}</a> before {{ $poem->created_at->diffForhumans() }} </div>
 
                 <div class="card-body">
                     {{$poem->body  }}
@@ -18,6 +19,8 @@
                                        
         </div>
     </div>
+
+    <br>
 
     @endforeach           
 </div>
