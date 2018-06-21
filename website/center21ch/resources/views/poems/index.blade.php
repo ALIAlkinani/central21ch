@@ -9,7 +9,7 @@
             <div class="card">               
 
                 <div class="card-header"> 
-                     <a href="{{ $poem->path() }}">{{ $poem->title }}</a> created by <a href="#">{{ $poem->creater->name }}</a> before {{ $poem->created_at->diffForhumans() }} </div>
+                     <a href="{{ $poem->path() }}">{{ $poem->title }}</a> created by <a href="#">{{ $poem->creator->name }}</a> before {{ $poem->created_at->diffForhumans() }} </div>
 
                 <div class="card-body">
                     {{$poem->body  }}

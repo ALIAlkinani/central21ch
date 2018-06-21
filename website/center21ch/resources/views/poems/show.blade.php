@@ -8,7 +8,7 @@
         <div class="col-md-8">
             <div class="card">               
 
-                <div class="card-header">{{ $poem->title }} created by <a href="#">{{ $poem->creater->name }}</a> before {{ $poem->created_at->diffForhumans() }} </div>
+                <div class="card-header">{{ $poem->title }} created by <a href="#">{{ $poem->creator->name }}</a> before {{ $poem->created_at->diffForhumans() }} </div>
 
                 <div class="card-body">
                     {{$poem->body  }}
