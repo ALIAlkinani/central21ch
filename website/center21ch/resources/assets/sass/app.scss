@@ -85,13 +85,16 @@ html, body {
 }
 
 .links > a {
-  color: #026697;
+  color: #abc5d3;
   padding: 0 25px;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: .1rem;
   text-decoration: none;
   text-transform: uppercase;
+}
+a:hover{
+  color: rgb(241, 228, 42);
 }
 
 .m-b-md {
