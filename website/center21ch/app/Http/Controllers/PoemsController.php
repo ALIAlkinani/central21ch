@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class PoemsController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth')->only('store');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -37,7 +42,16 @@ class PoemsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $poem = Poem::create([
+            'user_id' => auth()->id(),
+            'body'  =>request('body'),
+            'title' =>request('title')
+            
+
+        ]);
+        
+        return redirect($poem->path());
+        
     }
 
     /**
