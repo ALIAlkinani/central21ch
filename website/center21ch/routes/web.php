@@ -23,4 +23,5 @@ Route::get('verify/{token}','VerifyController@verify')->name('verify');
 
 Route::get('/poems', 'PoemsController@index')->name('poems');
 Route::get('/poems/{poem}', 'PoemsController@show')->name('poem');
+Route::post('/poems/{poem}/replies', 'RepliesController@store')->name('addReplies');
 
