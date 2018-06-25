@@ -22,12 +22,28 @@
     <div class="row justify-content-center">
     @include('reply.index')
     </div>
-        <form action="{{ $poem->path . '/replies' }}" method="post">
+    @if (auth()->check())
 
-            
-
-            
-        </form>
+    <div class="row justify-content-center">
+            <div class="col-md-8 col-md-offset-2">
+                <form action="{{ $poem->path(). '/replies' }}" method="post">
+                    @csrf
+                    <div class="form-group">
+                            <textarea name="body" id="body" cols="101" placeholder="write someting here" rows="5"></textarea>
+    
+                    </div>
+    
+                    <button type="submit" class="btn btn-dark">Publish</button>
+    
+    
+                </form>                     
+                    @else
+                        <p class="text-center" > Please <a href="{{ route('login') }}">SingIn</a> to participate in the discussion</p>
+                    @endif
+    
+            </div>
+        </div>
+    
           
 </div>
 @endsection
