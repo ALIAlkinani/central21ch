@@ -12,7 +12,7 @@ class Poem extends Model
     protected $guarded=[];
     public function path()
     {
-        return '/poems/'. $this->id;
+        return "/poems/{$this->channel->slug}/{$this->id}";
     }
     public function replies()
     {
@@ -28,6 +28,11 @@ class Poem extends Model
     public function addReply($reply)
     {
         $this->replies()->create($reply);
+    }
+
+    public function channel()
+    {
+        return $this->belongsTo(Channel::class,'channel_id');
     }
 
 }

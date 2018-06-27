@@ -44,6 +44,7 @@ class PoemsController extends Controller
     {
       $poem = Poem::create([
             'user_id' => auth()->id(),
+            'channel_id'=>request('channel_id'),
             'body'  =>request('body'),
             'title' =>request('title')
             

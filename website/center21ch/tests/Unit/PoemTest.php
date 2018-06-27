@@ -28,14 +28,18 @@ class PoemTest extends TestCase
        ]);
         $this->assertCount(1,$poem->replies);
     }
-
+     /** @test */
     function a_poem_belongs_to_channel()
     {
-        $poem = create('App\Poem');
-
-     
-        $this->assertCount(1,$poem->replies);
-        $this->asertInstanceOf('App/Channel',$poem->channel);
+        $poem = create('App\Poem');    
+       
+        $this->assertInstanceOf('App\Channel',$poem->channel);
+    }
+/** @test */
+    function a_poem_can_make_a_string_path()
+    {
+        $poem = create("App\Poem");
+        $this->assertEquals("/poems/{$poem->channel->slug}/{$poem->id}",$poem->path());
     }
     
     
