@@ -45,4 +45,15 @@ class createPoemTestTest extends TestCase
 
 
     }
+    /** @test */
+    public function an_unauthenticated_user_cannot_see_the_create_poem_page()
+    {
+
+      
+        $this->expectException('Illuminate\Auth\AuthenticationException');
+        // user cannot go to create page 
+        $this->get('/poems/create');
+
+
+    }
 }
