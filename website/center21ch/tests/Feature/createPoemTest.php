@@ -33,7 +33,7 @@ class createPoemTestTest extends TestCase
         //given we have an_authenticated_user
         $this->signIn();
         //make a Poem
-        $poem= make('App\Poem');
+        $poem= create('App\Poem');
       
         //create the url and pass the poem to it 
         $this->post('/poems',$poem->toArray());

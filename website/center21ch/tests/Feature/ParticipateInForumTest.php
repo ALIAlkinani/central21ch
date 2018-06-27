@@ -39,6 +39,7 @@ class ParticipateInForumTest extends TestCase
         //make a reply
         $reply = make('App\Reply');
         //create the url and pass the reply to it 
+       
         $this->post($poem->path().'/replies',$reply->toArray());
 
         //make sure we see the reply in poem page

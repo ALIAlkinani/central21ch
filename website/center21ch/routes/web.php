@@ -25,11 +25,11 @@ Route::get('/poems/create', 'PoemsController@create');
 Route::get('/poems', 'PoemsController@index');
 Route::post('/poems', 'PoemsController@store');
 
-Route::get('/poems/{poem}', 'PoemsController@show');
+Route::get('/poems/{channel}/{poem}', 'PoemsController@show');
 
 
 
 /* Route::resource('poems', 'PoemsController');
  */
-Route::post('/poems/{poem}/replies', 'RepliesController@store')->name('addReplies');
+Route::post('/poems/{channel}/{poem}/replies', 'RepliesController@store')->name('addReplies');
 

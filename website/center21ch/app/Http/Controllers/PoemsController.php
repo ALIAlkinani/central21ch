@@ -58,10 +58,10 @@ class PoemsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Poems  $poems
+     * @param  \App\Poems  $poems ,channelId
      * @return \Illuminate\Http\Response
      */
-    public function show(Poem $poem)
+    public function show($channelId, Poem $poem)
     {
       return view('poems.show',compact('poem'));
     }
