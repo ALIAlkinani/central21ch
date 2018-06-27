@@ -21,15 +21,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('verify/{token}','VerifyController@verify')->name('verify');
 
+Route::get('/poems/create', 'PoemsController@create');
+Route::get('/poems', 'PoemsController@index');
+Route::post('/poems', 'PoemsController@store');
 
-/* Route::get('/poems', 'PoemsController@index')->name('poems');
-Route::post('/poems', 'PoemsController@store')->name('savePoems');
+Route::get('/poems/{poem}', 'PoemsController@show');
 
-Route::get('/poems/{poem}', 'PoemsController@show')->name('poem');
 
-Route::get('/poems/create', 'PoemsController@create')->name('createPoem'); */
 
-Route::resource('poems', 'PoemsController');
-
+/* Route::resource('poems', 'PoemsController');
+ */
 Route::post('/poems/{poem}/replies', 'RepliesController@store')->name('addReplies');
 
