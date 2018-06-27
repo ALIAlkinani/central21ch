@@ -28,6 +28,16 @@ class PoemTest extends TestCase
        ]);
         $this->assertCount(1,$poem->replies);
     }
+
+    function a_poem_belongs_to_channel()
+    {
+        $poem = create('App\Poem');
+
+     
+        $this->assertCount(1,$poem->replies);
+        $this->asertInstanceOf('App/Channel',$poem->channel);
+    }
+    
     
     
    
