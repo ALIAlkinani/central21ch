@@ -62,10 +62,7 @@ class createPoemTestTest extends TestCase
     function a_poem_required_a_title()
     
     {
-        $this->exceptException(Illuminate\Validation\ValidationException);
-        $this->signIn();
-        $poem = make('App\Poem', ['title' =>null]);
-        $this->post('/poems',$poem->toArray())
+        $this->publish_a_poem(['title' =>null]) 
         ->assertSessionHasErrors('title');   
     
     }
@@ -75,11 +72,36 @@ class createPoemTestTest extends TestCase
     function a_poem_required_a_body()
     
     {
-        $this->exceptException(Illuminate\Validation\ValidationException);
-        $this->signIn();
-        $poem = make('App\Poem', ['body' =>null]);
-        $this->post('/poems',$poem->toArray())
+        
+        $this->publish_a_poem(['body' =>null])        
         ->assertSessionHasErrors('body');   
     
+    }
+    /** @test */
+    function a_poem_required_a_channal()
+    
+    {
+        factory('App\Poem',2)->create();
+        
+        $this->publish_a_poem(['channel_id' =>null])        
+        ->assertSessionHasErrors('channel_id');
+
+        $this->publish_a_poem(['channel_id' =>999])        
+        ->assertSessionHasErrors('channel_id'); 
+       
+    
+    }
+
+    public function publish_a_poem($overrides = [])
+    {
+
+
+        $this->expectException('Illuminate\Validation\ValidationException');
+
+
+        $this->signIn();
+        $poem = make('App\Poem', $overrides);
+        return $this->post('/poems',$poem->toArray());
+        
     }
 }

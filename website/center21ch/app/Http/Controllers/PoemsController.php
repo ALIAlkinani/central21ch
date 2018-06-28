@@ -45,6 +45,8 @@ class PoemsController extends Controller
         $this->validate($request,[
             'title' => 'required',
             'body' => 'required',
+            //make the sure the the channal id is not null and exists and the database;
+            'channel_id' =>'required|exists:channels,id'
         ]);
       $poem = Poem::create([
             'user_id' => auth()->id(),
