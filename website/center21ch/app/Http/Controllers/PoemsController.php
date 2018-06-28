@@ -42,6 +42,9 @@ class PoemsController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'title' => 'required',
+        ]);
       $poem = Poem::create([
             'user_id' => auth()->id(),
             'channel_id'=>request('channel_id'),

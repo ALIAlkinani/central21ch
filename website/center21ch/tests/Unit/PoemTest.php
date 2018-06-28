@@ -41,6 +41,8 @@ class PoemTest extends TestCase
         $poem = create("App\Poem");
         $this->assertEquals("/poems/{$poem->channel->slug}/{$poem->id}",$poem->path());
     }
+
+
     
     
     

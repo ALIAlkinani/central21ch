@@ -56,4 +56,22 @@ class createPoemTestTest extends TestCase
 
 
     }
+
+    
+    /** @test */
+    function a_poem_required_a_title()
+    
+    {
+        $this->exceptException(Illuminate\Validation\ValidationException);
+        $this->signIn();
+        $poem = make('App\Poem', ['title' =>null]);
+        $this->post('/poems',$poem->toArray())
+        ->assertSessionHasErrors('title');
+
+
+        
+
+    
+    
+    }
 }
