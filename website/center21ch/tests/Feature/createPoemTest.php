@@ -66,12 +66,20 @@ class createPoemTestTest extends TestCase
         $this->signIn();
         $poem = make('App\Poem', ['title' =>null]);
         $this->post('/poems',$poem->toArray())
-        ->assertSessionHasErrors('title');
-
+        ->assertSessionHasErrors('title');   
+    
+    }
 
         
-
+    /** @test */
+    function a_poem_required_a_body()
     
+    {
+        $this->exceptException(Illuminate\Validation\ValidationException);
+        $this->signIn();
+        $poem = make('App\Poem', ['body' =>null]);
+        $this->post('/poems',$poem->toArray())
+        ->assertSessionHasErrors('body');   
     
     }
 }

@@ -44,6 +44,7 @@ class PoemsController extends Controller
     {
         $this->validate($request,[
             'title' => 'required',
+            'body' => 'required',
         ]);
       $poem = Poem::create([
             'user_id' => auth()->id(),
