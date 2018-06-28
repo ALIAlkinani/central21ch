@@ -33,13 +33,13 @@ class createPoemTestTest extends TestCase
         //given we have an_authenticated_user
         $this->signIn();
         //make a Poem
-        $poem= create('App\Poem');
+        $poem= make('App\Poem');
       
         //create the url and pass the poem to it 
-        $this->post('/poems',$poem->toArray());
+       $response =  $this->post('/poems',$poem->toArray());
 
         //make sure we see the body and the title in poem page
-        $this->get($poem->path())
+        $this->get($response->headers->get('location'))
         ->assertSee($poem->title)
         ->assertSee($poem->body);
 
