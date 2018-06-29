@@ -14,6 +14,10 @@ class RepliesController extends Controller
     }
     public function store($channelId, Poem $Poem)
     {
+        $this->validate(request(),[
+            'body' => 'required',
+           
+        ]);
         $Poem->addReply([
             'body' => request('body'),
             'user_id'=> auth()->id()
