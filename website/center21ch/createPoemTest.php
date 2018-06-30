@@ -15,16 +15,16 @@ class createPoemTestTest extends TestCase
 
 
             $this->expectException('Illuminate\Auth\AuthenticationException');
-    
-           
+
+
            //make a Poem
         $poem= make('App\Poem');
-      
-        //create the url and pass the poem to it 
+
+        //create the url and pass the poem to it
         $this->post('/poems',$poem->toArray());
-    
-    
-    
+
+
+
         }
     /** @test */
     public function an_authenticated_user_can_create_a_poem()
@@ -34,8 +34,8 @@ class createPoemTestTest extends TestCase
         $this->signIn();
         //make a Poem
         $poem= make('App\Poem');
-      
-        //create the url and pass the poem to it 
+
+        //create the url and pass the poem to it
         $response = $this->post('/poems',$poem->toArray());
 
         //make sure we see the body and the title in poem page
@@ -49,11 +49,12 @@ class createPoemTestTest extends TestCase
     public function an_unauthenticated_user_cannot_see_the_create_poem_page()
     {
 
-      
+
         $this->expectException('Illuminate\Auth\AuthenticationException');
-        // user cannot go to create page 
+        // user cannot go to create page
         $this->get('/poems/create');
 
 
     }
+
 }

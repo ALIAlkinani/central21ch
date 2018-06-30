@@ -33,5 +33,19 @@ class ReadPoemsTest extends TestCase
           
           $this->get($poem->path()) -> assertSee($reply->body);
       }
+
+
+       /** @test */
+        function a_user_can_filte_a_thread_according_to_a_channel()
+       {
+            $channel = create('App\Channel');
+
+            $poemInchannel= create('App\Poem',['channel_id'=>$channel->id]);          
+           
+           
+           $this->get('/poems/' . $channel->slug)
+             -> assertSee($poemInchannel->title)
+             -> assertSee($poemInchannel->body);
+       }
       
 }

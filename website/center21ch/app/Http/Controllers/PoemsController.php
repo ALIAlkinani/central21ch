@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Poem;
+use App\Channel;
 use Illuminate\Http\Request;
 
 class PoemsController extends Controller
@@ -17,10 +18,21 @@ class PoemsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Channel $channel)
     {
+        if($channel->exists){
+           
+
+            $poems = $channel->poems()->latest()->get();
+
+           
+
+        }else{
+            $poems = Poem::latest()->get();
+        }
+
           // fatch all the poems from the database and show it in the poems page
-          $poems = Poem::latest()->get();
+          
           return view('poems.index', compact('poems'));
     }
 
