@@ -36,7 +36,7 @@ class ReadPoemsTest extends TestCase
 
 
        /** @test */
-        function a_user_can_filte_a_thread_according_to_a_channel()
+        function a_user_can_filte_a_poem_according_to_a_channel()
        {
             $channel = create('App\Channel');
 
@@ -47,5 +47,22 @@ class ReadPoemsTest extends TestCase
              -> assertSee($poemInchannel->title)
              -> assertSee($poemInchannel->body);
        }
+              /** @test */
+        function a_user_can_filte_a_poem_by_any_username()
+              {
+
+                //login as ali alkinani
+                  $this->signIn(create('App\User',['name'=>'AliAlkinani']));
+
+                    //Ali create a poem
+                   $poemByAli = create('App\Poem',['user_id'=>auth()->id()]);
+                    //create another poem not created by ali 
+                   $poemNotByAli= create('App\Poem');          
+                  
+                  
+                  $this->get('/poems?by=AliAlkinani')
+                    -> assertSee($poemByAli->title)
+                    -> assertDontSee($poemNotByAli->title);
+              }
       
 }

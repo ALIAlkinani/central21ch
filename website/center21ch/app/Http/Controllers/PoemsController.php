@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Poem;
+use App\User;
 use App\Channel;
 use Illuminate\Http\Request;
 
@@ -20,16 +21,23 @@ class PoemsController extends Controller
      */
     public function index(Channel $channel)
     {
-        if($channel->exists){
-           
+        if($channel->exists){          
 
-            $poems = $channel->poems()->latest()->get();
-
-           
-
+            $poems = $channel->poems()->latest();
+         
         }else{
-            $poems = Poem::latest()->get();
+            $poems = Poem::latest();
         }
+        //check user 
+        if($username = request('by')){
+
+            $user = User::where('name',$username)->firstOrFail();
+
+            $poems->where('user_id' , $user->id);
+
+        }
+
+        $poems = $poems->get();
 
           // fatch all the poems from the database and show it in the poems page
           
