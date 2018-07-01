@@ -4,7 +4,7 @@
 <div class="container">
 
     @foreach ($poems as $poem )
-    <div class="row justify-content-center">
+    <div class="row">
         <div class="col-md-8">
             <div class="card">               
 

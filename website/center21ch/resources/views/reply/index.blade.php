@@ -1,10 +1,11 @@
-<div class="col-md-8">
-    @foreach ($poem->replies as $reply)
+
+    @foreach ($replies as $reply)
         
-   
-    <div class="card">   
+    <br>
+    <div class="card format-controller">   
         <div class="card-header">
-           <a href="#"> {{ $reply->owner->name }}</a> said at {{ $reply->created_at->diffForHumans() }}</div>            
+           <a href="#"> {{ $reply->owner->name }}</a> said at
+            {{ $reply->created_at->diffForHumans() }}</div>            
 
 
         <div class="card-body">
@@ -13,6 +14,11 @@
         </div>
     </div>    
     
-    <br>
-    @endforeach                          
-</div> 
+   
+    @endforeach   
+    
+   <div class="format-contoller">
+       <br>
+    {{ $replies->links() }}
+   </div>
+ 

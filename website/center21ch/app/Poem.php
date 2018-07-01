@@ -48,5 +48,11 @@ class Poem extends Model
         return $filters->apply($query);
 
     }
+    protected static function boot(){
+        parent::boot();
+        static::addGlobalScope('replyCount', function ($builder){
+            $builder->withCount('replies');
+        });
+    }
 
 }
