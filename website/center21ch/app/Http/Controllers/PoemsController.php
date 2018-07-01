@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Poem;
-use App\User;
+use App\Filters\PoemsFilters;
 use App\Channel;
 use Illuminate\Http\Request;
 
@@ -14,33 +14,33 @@ class PoemsController extends Controller
     {
         $this->middleware('auth')->except(['index','show']);
     }
+
     /**
      * Display a listing of the resource.
      *
+     * @param Channel $channel
+     * @param PoemsFilters $filters
      * @return \Illuminate\Http\Response
      */
-    public function index(Channel $channel)
+    public function index(Channel $channel, PoemsFilters $filters)
     {
-        if($channel->exists){          
+        
+        if ($channel->exists) {
 
             $poems = $channel->poems()->latest();
-         
-        }else{
+
+        } else {
+            /** @var TYPE_NAME $poems */
             $poems = Poem::latest();
         }
-        //check user 
-        if($username = request('by')){
 
-            $user = User::where('name',$username)->firstOrFail();
+        $poems = $poems->filter($filters)->get();
 
-            $poems->where('user_id' , $user->id);
 
-        }
-
-        $poems = $poems->get();
+       // $poems = $this->getPoems($channel);
 
           // fatch all the poems from the database and show it in the poems page
-          
+
           return view('poems.index', compact('poems'));
     }
 
@@ -73,12 +73,12 @@ class PoemsController extends Controller
             'channel_id'=>request('channel_id'),
             'body'  =>request('body'),
             'title' =>request('title')
-            
+
 
         ]);
-        
+
         return redirect($poem->path());
-        
+
     }
 
     /**
@@ -125,4 +125,5 @@ class PoemsController extends Controller
     {
         //
     }
+
 }

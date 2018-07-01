@@ -15,5 +15,9 @@ class Channel extends Model
     {
         return $this->hasMany(Poem::class);
     }
-    
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+    }
+
 }

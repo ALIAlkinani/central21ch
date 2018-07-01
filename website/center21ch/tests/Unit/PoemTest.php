@@ -6,7 +6,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class PoemTest extends TestCase
+abstract class PoemTest extends TestCase
 {
     use RefreshDatabase;
     

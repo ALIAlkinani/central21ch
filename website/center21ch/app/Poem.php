@@ -2,6 +2,7 @@
 
 namespace App;
 use App\User;
+use App\Filters;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -10,6 +11,8 @@ class Poem extends Model
 {
 
     protected $guarded=[];
+
+
     public function path()
     {
         return "/poems/{$this->channel->slug}/{$this->id}";
@@ -24,7 +27,7 @@ class Poem extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    
+
     public function addReply($reply)
     {
         $this->replies()->create($reply);
@@ -33,6 +36,17 @@ class Poem extends Model
     public function channel()
     {
         return $this->belongsTo(Channel::class,'channel_id');
+    }
+
+    /**
+     * @param $query
+     * @param $filters
+     * @return mixed
+     */
+    public function scopeFilter($query, $filters){
+
+        return $filters->apply($query);
+
     }
 
 }
