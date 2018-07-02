@@ -34,7 +34,12 @@ class PoemsController extends Controller
             $poems = Poem::latest();
         }
 
+
         $poems = $poems->filter($filters)->get();
+
+        if(request()->wantsJson()){
+            return $poems;
+        }
 
 
        // $poems = $this->getPoems($channel);

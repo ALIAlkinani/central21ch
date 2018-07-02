@@ -64,5 +64,32 @@ class ReadPoemsTest extends TestCase
                     -> assertSee($poemByAli->title)
                     -> assertDontSee($poemNotByAli->title);
               }
+
+             /** @test */
+        function a_user_can_filte_a_poem_by_popularity()
+        {
+
+          //given we have three poems
+         //with replies, 2 ,3,0 respactively
+         $poemsWithTwoReplies = create('App\Poem');
+         create('App\Reply',['poem_id' => $poemsWithTwoReplies->id],2);
+
+
+         $poemsWithThreeReplies = create('App\Poem');
+         create('App\Reply',['poem_id' => $poemsWithThreeReplies->id],5);
+
+         $poemsWithOneReplies = create('App\Poem');
+         create('App\Reply',['poem_id' => $poemsWithOneReplies->id],3);
+            
+          //when I filter all poems by popularity
+
+          $response = $this->getJson('poems?popularity=1')->json();
+          
+          //then they most return form most reply to less
+          $this->assertEquals([ 5, 3 , 2], array_column($response,'replies_count'));
+
+             
+        }
+
       
 }
