@@ -9,7 +9,6 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class ChannelTest extends TestCase
 {
     /** @test */
-
      function a_channel_conissts_of_poem()
     {
         $channel = create('App\Channel');
