@@ -3,9 +3,10 @@
 @section('content')
 <div class="container">
 
-    @foreach ($poems as $poem )
+   
     <div class="row">
         <div class="col-md-8">
+                @foreach ($poems as $poem )
             <div class="card">               
 
                 <div class="card-header"> 
@@ -15,14 +16,15 @@
                     {{$poem->body  }}
 
                 </div>
-            </div>                   
-                                       
+            </div>   
+            @endforeach                 
+           {{--   {{ $paginate->links() }}   --}}                         
         </div>
     </div>
 
     <br>
 
-    @endforeach           
+            
 </div>
 
 @if ($flash= session('message'))

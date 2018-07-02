@@ -2,7 +2,7 @@
     @foreach ($replies as $reply)
         
     <br>
-    <div class="card format-controller">   
+    <div class="card">   
         <div class="card-header">
            <a href="#"> {{ $reply->owner->name }}</a> said at
             {{ $reply->created_at->diffForHumans() }}</div>            
@@ -12,7 +12,7 @@
       {{$reply->body  }}
 
         </div>
-    </div>    
+ </div>    
     
    
     @endforeach   

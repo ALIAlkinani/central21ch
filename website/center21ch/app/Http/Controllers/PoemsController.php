@@ -92,7 +92,7 @@ class PoemsController extends Controller
       return view('poems.show',[
 
         'poem' =>$poem,
-        'replies'=>$poem->replies()->paginate(10)
+        'replies'=>$poem->replies()->paginate(1)
       ]);
     }
 
