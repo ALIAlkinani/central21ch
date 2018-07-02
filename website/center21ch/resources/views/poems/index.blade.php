@@ -10,7 +10,11 @@
             <div class="card">               
 
                 <div class="card-header"> 
-                     <a href="{{ $poem->path() }}">{{ $poem->title }}</a> created by <a href="/poems?by={{ $poem->creator->name  }}">{{ $poem->creator->name }}</a> before {{ $poem->created_at->diffForhumans() }} </div>
+                    <h6 class="flex"> <a href="{{ $poem->path() }}">{{ $poem->title }}</a> created by <a href="/poems?by={{ $poem->creator->name  }}">{{ $poem->creator->name }}</a> before {{ $poem->created_at->diffForhumans() }} </h6>
+                <a href="{{ $poem->path() }}"> <span class="commit">  {{ $poem->replies_count }} {{ str_plural('Reply', $poem->replies_count) }}</span>
+                </a>
+                
+                </div>
 
                 <div class="card-body">
                     {{$poem->body  }}
