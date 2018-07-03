@@ -27,7 +27,7 @@ Route::get('/poems/{channel}', 'PoemsController@index');
 Route::get('/poems', 'PoemsController@index');
 
 Route::post('/poems', 'PoemsController@store');
-
+Route::post('/replies/{reply}/favorites', 'FavoritesController@store');
 
 Route::get('/poems/{channel}/{poem}', 'PoemsController@show');
 
