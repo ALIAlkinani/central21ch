@@ -24,25 +24,13 @@ class PoemsController extends Controller
      */
     public function index(Channel $channel, PoemsFilters $filters)
     {
-        
-        if ($channel->exists) {
 
-            $poems = $channel->poems()->latest();
+        $poems = $this->getPoems($channel, $filters);
 
-        } else {
-            /** @var TYPE_NAME $poems */
-            $poems = Poem::latest();
-        }
-
-
-        $poems = $poems->filter($filters)->get();
-
-        if(request()->wantsJson()){
+        if (request()->wantsJson()) {
             return $poems;
         }
-
-
-       // $poems = $this->getPoems($channel);
+              // $poems = $this->getPoems($channel);
 
           // fatch all the poems from the database and show it in the poems page
 
@@ -97,7 +85,7 @@ class PoemsController extends Controller
       return view('poems.show',[
 
         'poem' =>$poem,
-        'replies'=>$poem->replies()->paginate(1)
+        'replies'=>$poem->replies()->paginate(5)
       ]);
     }
 
@@ -133,6 +121,19 @@ class PoemsController extends Controller
     public function destroy(Poem $poem)
     {
         //
+    }
+    public function getPoems(Channel $channel, PoemsFilters $filters)
+    {
+        $poems = Poem::latest()->filter($filters);
+       
+
+        if ($channel->exists) {
+            $poems->where('channel_id', $channel->id);
+        }
+
+        return $poems->get();
+
+        
     }
 
 }

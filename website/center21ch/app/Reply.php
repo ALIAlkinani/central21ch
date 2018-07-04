@@ -8,25 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reply extends Model
 {
+    use favorable;
     protected $guarded=[];
+    protected $with = ['owner','favorites'];
 
     public function owner()
     {
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function favorites()
-    {
-      return  $this->morphMany(favorites::class,'favorited');
-    }
 
-    public function favorite()
-    {
-        $user = ['user_id'=>auth()->id()];
-        if (!$this->favorites()->where($user)->exists()) {
-           return $this->favorites()->create($user);
-
-        }
-
-    }
 }

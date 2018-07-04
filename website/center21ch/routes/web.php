@@ -14,9 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::post('/replies/{reply}/favorites', 'FavoritesController@store');
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('verify/{token}','VerifyController@verify')->name('verify');
@@ -27,7 +27,7 @@ Route::get('/poems/{channel}', 'PoemsController@index');
 Route::get('/poems', 'PoemsController@index');
 
 Route::post('/poems', 'PoemsController@store');
-Route::post('/replies/{reply}/favorites', 'FavoritesController@store');
+
 
 Route::get('/poems/{channel}/{poem}', 'PoemsController@show');
 
