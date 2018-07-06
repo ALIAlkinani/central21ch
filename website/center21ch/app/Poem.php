@@ -54,6 +54,12 @@ class Poem extends Model
         static::addGlobalScope('replyCount', function ($builder){
             $builder->withCount('replies');
         });
+
+        static::deleting(function($poem){
+
+            $poem->replies()->delete();
+
+        });
     }
 
 }

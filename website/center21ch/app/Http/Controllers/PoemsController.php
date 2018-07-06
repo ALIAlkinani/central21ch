@@ -118,9 +118,16 @@ class PoemsController extends Controller
      * @param  \App\Poems  $poems
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Poem $poem)
+    public function destroy($channel, Poem $poem)
     {
-        //
+        if($poem->user_id != auth()->id()){
+            abort('403','you donot have the premission to do this')   ;         
+        }
+
+        $poem->delete();
+        
+        return redirect('/poems');
+        
     }
     public function getPoems(Channel $channel, PoemsFilters $filters)
     {

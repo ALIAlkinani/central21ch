@@ -6,7 +6,7 @@
    
     <div class="row">
         <div class="col-md-8">
-                @foreach ($poems as $poem )
+         @forelse ($poems as $poem )
             <div class="card">               
 
                 <div class="card-header"> 
@@ -21,7 +21,10 @@
 
                 </div>
             </div>   
-            @endforeach                 
+            @empty
+                <p> there are no relevent result at this time</p>
+           
+            @endforelse              
            {{--   {{ $paginate->links() }}   --}}                         
         </div>
     </div>

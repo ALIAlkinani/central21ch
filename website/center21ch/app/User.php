@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use App\Notifications\verifyEmail;
+use App\Poem;
 
 class User extends Authenticatable
 {
@@ -42,5 +43,14 @@ class User extends Authenticatable
     
     }
 
+    public function getRouteKeyName()
+    {
+        return 'name';
+    }
+        
+    public function poems()
+        {
+        return $this->hasMany(Poem::class)->latest();
+        }
 
 }

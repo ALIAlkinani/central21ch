@@ -29,7 +29,11 @@ Route::get('/poems', 'PoemsController@index');
 Route::post('/poems', 'PoemsController@store');
 
 
+Route::get('/profile/{user}','ProfilesController@show')->name('profile');
+
 Route::get('/poems/{channel}/{poem}', 'PoemsController@show');
+
+Route::delete('/poems/{channel}/{poem}', 'PoemsController@destroy');
 
 
 

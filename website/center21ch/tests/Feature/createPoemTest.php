@@ -104,4 +104,39 @@ class createPoemTest extends TestCase
         return $this->post('/poems',$poem->toArray());
         
     }
+    /** @test */
+    public function authrised_user_may_delete_a_poem()
+    {
+        $this->signIn();
+        $poem = create('App\Poem',['user_id'=>auth()->id()]);
+        $reply = create('App\Reply',['poem_id' =>$poem->id]);
+
+
+        $this->Json('DELETE',$poem->path());
+
+        $this->assertDatabaseMissing('poems',['id'=>$poem->id]);
+        $this->assertDatabaseMissing('replies',['id'=>$reply->id]);
+
+
+
+        
+    }
+
+      /** @test */
+      public function unauthrised_user_maynot_delete_a_poem()
+      {
+         $this->withExceptionHandling();
+
+        $poem = create('App\Poem');
+          
+  
+          $this->delete($poem->path())->assertRedirect('/login'); 
+          
+          $this->signIn();
+          $this->delete($poem->path())->assertStatus(403); 
+
+
+  
+          
+      }
 }
