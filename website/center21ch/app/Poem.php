@@ -4,11 +4,14 @@ namespace App;
 use App\User;
 use App\Filters;
 
+
 use Illuminate\Database\Eloquent\Model;
 
 class Poem extends Model
 
 {
+
+    use RecordActivity;
 
     protected $guarded=[];
     protected $with=['creator','channel'];
@@ -61,5 +64,8 @@ class Poem extends Model
 
         });
     }
+        
+    }
+    
 
-}
+

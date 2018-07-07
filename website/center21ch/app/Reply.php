@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Reply extends Model
 {
-    use favorable;
+    use favorable, RecordActivity;
     protected $guarded=[];
     protected $with = ['owner','favorites'];
 
