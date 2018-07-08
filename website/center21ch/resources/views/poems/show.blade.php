@@ -54,7 +54,7 @@
                  
                                  <button type="submit" class="btn btn-primary">Publish</button>
                  
-                 
+             
                     </form>  
                                     @else
                             <p class="text-center" > Please <a href="{{ route('login') }}">SingIn</a> to participate in the discussion</p>

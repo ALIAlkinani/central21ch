@@ -53,4 +53,10 @@ class User extends Authenticatable
         return $this->hasMany(Poem::class)->latest();
         }
 
+
+
+        public function activites(){
+            return $this->hasMany(Activity::class);
+        }
+
 }

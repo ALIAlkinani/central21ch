@@ -5,11 +5,18 @@ namespace App;
 trait RecordActivity{
 
     protected static function bootRecordActivity(){
-        static::created(function ($poem){
-
-            $poem->recordActivity('created');
+        if(auth()->guest()) return;
+      foreach(static::getRecordEvents() as $event){
+        static::$event(function ($model) use ($event){
+            $model->recordActivity($event);
         });
+      }
        
+    }
+
+    public static function getRecordEvents()
+    {
+        return ['created'];
     }
 
     protected function recordActivity($event){

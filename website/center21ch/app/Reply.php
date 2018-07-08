@@ -3,6 +3,7 @@
 namespace App;
 use App\User;
 use App\favorites;
+use App\Poem;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -16,6 +17,9 @@ class Reply extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-
+public function poem()
+{
+   return $this->belongsTo(Poem::class);
+}
 
 }
