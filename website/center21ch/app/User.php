@@ -7,7 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use App\Notifications\verifyEmail;
 use App\Poem;
-
+use App\Activity;
 class User extends Authenticatable
 {
     use Notifiable;
@@ -55,7 +55,7 @@ class User extends Authenticatable
 
 
 
-        public function activites(){
+        public function activity(){
             return $this->hasMany(Activity::class);
         }
 

@@ -6,6 +6,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use App\Activity;
+use Carbon\Carbon;
 
 class activitiesTest extends TestCase
 {
@@ -36,6 +37,33 @@ class activitiesTest extends TestCase
        $reply= create('App\Reply');
 
        $this->assertEquals(2,Activity::count());
+       
+
+   }
+   /** @test */
+   public function it_fetch_feed_for_any_user()
+   {
+       //given we have unauthenticated User
+       $this->signIn();
+       // create a poem in current time 
+       create('App\Poem',['user_id'=>2222]);
+
+        // create a poem in one week before
+       create('App\Poem',['user_id'=>auth()->id(),
+
+        'created_at'=> Carbon::now()->subWeek()   
+               
+        ]);
+       
+
+        $feed = Activity::feed(auth()->user());
+
+
+      
+       $this->assertTrue($feed->keys()->contains(
+            Carbon::now()->format('Y-M-d')
+
+       ));
        
 
    }

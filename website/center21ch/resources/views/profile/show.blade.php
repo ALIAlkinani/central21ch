@@ -11,13 +11,12 @@
 
                 @foreach ($activities as $date => $activity)
                     <h4 class="pageheader">{{ $date }}</h4>
+                    <br>
                 @foreach ($activity as $record)
                 @include("profile.activities.{$record->type}", ['activity'=>$record])
                     
-                @endforeach
-
-                
-            
+                @endforeach            
+                <br>
                     
                 @endforeach
             
