@@ -20,10 +20,12 @@
                     {{$poem->body  }}
 
                 </div>
-            </div>   
+            
+            </div> 
+            <br>  
             @empty
                 <p> there are no relevent result at this time</p>
-           
+          
             @endforelse              
            {{--   {{ $paginate->links() }}   --}}                         
         </div>

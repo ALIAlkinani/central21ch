@@ -70,7 +70,8 @@ class PoemsController extends Controller
 
         ]);
 
-        return redirect($poem->path());
+        return redirect($poem->path())->with('flash','Your poem has been published')
+    ;
 
     }
 

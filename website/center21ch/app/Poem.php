@@ -60,7 +60,7 @@ class Poem extends Model
 
         static::deleting(function($poem){
 
-            $poem->replies()->delete();
+            $poem->replies->each->delete();
 
         });
     }

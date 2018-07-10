@@ -15,5 +15,15 @@ class profileTest extends TestCase
         $this->get('/profile/'. $user->name )
         ->assertSee($user->name);
     }
+    /** @test */
+    public function a_profile_show_all_the_poems_created_by_the_user()
+    {
+        $this->signIn();
+        $poem =create('App\Poem',['user_id' => auth()->id()]);
+
     
+        $this->get('/profile/'. auth()->user()->name )
+        ->assertSee($poem->title)
+        ->assertSee($poem->body);
+    }
 }

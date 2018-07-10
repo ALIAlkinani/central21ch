@@ -116,6 +116,20 @@ class createPoemTest extends TestCase
 
         $this->assertDatabaseMissing('poems',['id'=>$poem->id]);
         $this->assertDatabaseMissing('replies',['id'=>$reply->id]);
+        $this->assertDatabaseMissing('activities',[
+            
+            'subject_id' =>$poem->id,
+            'subject_type' =>get_class($poem)
+            
+            ]);
+            $this->assertDatabaseMissing('activities',[
+            
+                'subject_id' =>$reply->id,
+                'subject_type' =>get_class($reply)
+                
+                ]);
+    
+    
 
 
 
