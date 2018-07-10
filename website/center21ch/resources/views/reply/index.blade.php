@@ -2,7 +2,7 @@
     @foreach ($replies as $reply)
         
     <br>
-    <div class="card">   
+    <div id="reply-{{ $reply->id }}" class="card">   
         <div class="card-header">
           
             <h5 class="flex"><a href="#"> {{ $reply->owner->name }}</a> said at

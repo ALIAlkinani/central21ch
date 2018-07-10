@@ -13,8 +13,13 @@
                     <h4 class="pageheader">{{ $date }}</h4>
                     <br>
                 @foreach ($activity as $record)
-                @include("profile.activities.{$record->type}", ['activity'=>$record])
-                    
+            
+                      @if(view()->exists("profile.activities.{$record->type}"))
+
+                           @include("profile.activities.{$record->type}", ['activity'=>$record])
+                          
+                      @endif
+                
                 @endforeach            
                 <br>
                     

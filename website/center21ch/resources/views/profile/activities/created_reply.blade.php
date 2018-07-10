@@ -7,10 +7,8 @@
     
 @endslot
 
-@slot('body')
-    
-@endslot
-@slot('body')
+@slot('body')    
+
 
 {{ $activity->subject->body }}
     

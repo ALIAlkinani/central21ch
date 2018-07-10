@@ -22,4 +22,8 @@ public function poem()
    return $this->belongsTo(Poem::class);
 }
 
+public function path()
+{
+    return $this->poem->path() . "#reply-".$this->id;
+}
 }
