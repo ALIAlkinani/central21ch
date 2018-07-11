@@ -148,9 +148,37 @@ class createPoemTest extends TestCase
           
           $this->signIn();
           $this->delete($poem->path())->assertStatus(403); 
-
-
-  
-          
       }
+            /** @test */
+            public function unauthrised_user_maynot_delete_a_reply()
+            {
+               $this->withExceptionHandling();
+      
+                $reply = create('App\Reply');
+                
+        
+                $this->delete("/replies/{$reply->id}")->assertRedirect('/login'); 
+                
+                $this->signIn();
+                $this->delete("/replies/{$reply->id}")->assertStatus(403); 
+            }
+
+            /** @test */
+            public function authrised_user_can_delete_a_reply()
+            {
+               
+                $this->signIn();
+                $reply = create('App\Reply',['user_id'=>auth()->id()]);               
+        
+                $this->delete("/replies/{$reply->id}");
+                $this->assertDatabaseMissing('replies',['id'=>$reply->id]);
+                $this->assertDatabaseMissing('activities',[
+            
+                    'subject_id' =>$reply->id,
+                    'subject_type' =>get_class($reply)
+                    
+                    ]);
+        
+            
+            }
 }

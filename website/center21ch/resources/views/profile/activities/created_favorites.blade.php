@@ -3,8 +3,8 @@
 
 <h5 class="flex">
                
-     <a href="{{ $activity->subject->favorited->path() }}"> {{ $profileUser->name }} Favorite Reply </a> 
-                
+<a href="{{ $activity->subject->favorited->path() }}"> {{ $profileUser->name }} Favorite Reply </a> 
+                 
         
         </h5>
     
@@ -13,7 +13,7 @@
 
 @slot('body')
 {{ $activity->subject->favorited->body }}  
-    
+ 
 @endslot
     
 @endcomponent

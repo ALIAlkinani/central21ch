@@ -35,6 +35,8 @@ Route::get('/poems/{channel}/{poem}', 'PoemsController@show');
 
 Route::delete('/poems/{channel}/{poem}', 'PoemsController@destroy');
 
+Route::delete('/replies/{reply}', 'RepliesController@destroy');
+
 
 
 /* Route::resource('poems', 'PoemsController');

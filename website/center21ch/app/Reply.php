@@ -26,4 +26,13 @@ public function path()
 {
     return $this->poem->path() . "#reply-".$this->id;
 }
+protected static function boot(){
+    parent::boot();
+  
+    static::deleting(function($reply){
+
+        $reply->favorites->each->delete();
+
+    });
+}
 }

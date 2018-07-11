@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Poem;
+use App\Reply;
 
 class RepliesController extends Controller
 {
@@ -26,4 +27,12 @@ class RepliesController extends Controller
         return back();
         
     }
+   public function destroy(Reply $reply){
+      
+    $this->authorize('update',$reply);
+       
+       $reply->delete();
+
+       return back();
+   }
 }
