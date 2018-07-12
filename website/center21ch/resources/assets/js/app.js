@@ -7,6 +7,8 @@
 
 require('./bootstrap');
 window.Vue = require('vue'); 
+window.addEventListener('flash', message => this.flash(message));
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -15,7 +17,8 @@ window.Vue = require('vue');
  */
 
 Vue.component('flash', require('./components/Flash.vue'));
-
+Vue.component('reply', require('./components/Reply.vue'));
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    
 });

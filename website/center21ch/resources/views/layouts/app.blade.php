@@ -7,6 +7,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+   
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -30,7 +31,9 @@
         <flash message="{{ session('flash') }}"></flash>
     </div>
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{ asset('js/app.js') }}">    </script>
+    <script>window.Laravel = {csrfToken:'{{ csrf_token() }}'}</script>
+  
     
 </body>
 </html>
