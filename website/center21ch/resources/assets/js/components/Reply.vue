@@ -29,8 +29,10 @@
 </template>
 
 <script>
+ import flash from "./Flash.vue";
    export default {
         props: ['attributes'],
+        components: {flash},
 
 
         data() {
@@ -50,16 +52,15 @@
                     });
                     this.editing =false;
 
-                   flash('Updated!');
+                   flash['Updated!'];
              },
 
              destroy(){
 
-                 axios.delete('/replies/'+this.attributes.id);
+                 axios.danger('/replies/'+this.attributes.id);
 
                  $(this.$el).fadeOut(300,()=>{
-                     flash('The reply has been deleted');
-
+                     flash['reply has been deleted'];
                  });
 
                  

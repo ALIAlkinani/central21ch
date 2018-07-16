@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::post('/replies/{reply}/favorites', 'FavoritesController@store');
+Route::delete('/replies/{reply}/favorites', 'FavoritesController@destroy');
 
 Auth::routes();
 Route::get('/home', 'HomeController@index');
