@@ -34,7 +34,11 @@ trait Favorable
     {
         $attributes = ['user_id' => auth()->id()];
 
-        return $this->favorites()->where($attributes)->delete();
+        return $this->favorites()->where($attributes)->get()->each(function($favorite){
+
+            $favorite->delete();
+
+        });
             
     
     }

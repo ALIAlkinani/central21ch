@@ -7,7 +7,14 @@
 
 require('./bootstrap');
 window.Vue = require('vue'); 
-window.addEventListener('flash', message => this.flash(message));
+window.Vue.prototype.authorize = function(handler){
+
+    let user = window.App.user;
+
+    return user ? handler(user) : false;
+
+}
+
 // flash messaging
 
 
@@ -18,7 +25,8 @@ window.addEventListener('flash', message => this.flash(message));
  */
 
 Vue.component('flash', require('./components/Flash.vue'));
-Vue.component('reply', require('./components/Reply.vue'));
+
+Vue.component('poem-view', require('./pages/Poem.vue'));
 Vue.component('favorite', require('./components/favorite.vue'));
 const app = new Vue({
     el: '#app',

@@ -9,7 +9,7 @@
                         <h2> {{ $profileUser->name }}  </h2>
                 </div>
 
-                @foreach ($activities as $date => $activity)
+                @forelse($activities as $date => $activity)
                     <h4 class="pageheader">{{ $date }}</h4>
                     <br>
                 @foreach ($activity as $record)
@@ -23,7 +23,9 @@
                 @endforeach            
                 <br>
                     
-                @endforeach
+                @empty
+                    <p>The user do not have any activities until now</p>
+                @endforelse
             
               {{--   {{ $poems->links() }} --}}
       </div>

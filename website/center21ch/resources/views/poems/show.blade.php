@@ -1,9 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+<poem-view :initial-replies-count = "{{ $poem->replies_count }}" inline-template>  
 <div class="container">
 
-    
+ 
     <div class="row">
         <div class="col-md-8">
             <div class="card">               
@@ -19,11 +20,8 @@
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
-                            
                         @endcan
-                       
-
-                        
+                                            
                     </div>
                     
                    </div>
@@ -33,9 +31,9 @@
 
                 </div>
                 <hr>
-            </div>                   
-                @include('reply.index')  
-            
+            </div> 
+            <replies :data="{{$poem->replies}}" @removed="repliesCount--"></replies>
+        
                 <br>  
             <div class="card">
                   <div class="card-header">
@@ -74,7 +72,7 @@
                 <div class="card">                       
                         <div class="card-body">
                         Created by <a href="/profile/{{ $poem->Creator->name  }}">{{ $poem->Creator->name  }}</a> before {{ $poem->created_at->diffForhumans() }}                     
-                           and currently has {{ $poem->replies_count }} {{ str_plural('commit', $poem->replies_count) }}
+                           and currently has <span v-text="repliesCount"></span> {{ str_plural('commit', $poem->replies_count) }}
     
                         </div>{{--  end of side div body  --}}
                     
@@ -86,7 +84,7 @@
         </div>
     </div>    
      
-    
+</poem-view>
           
 </div>
 @endsection
