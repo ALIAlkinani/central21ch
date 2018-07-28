@@ -19,12 +19,16 @@ class RepliesController extends Controller
             'body' => 'required',
            
         ]);
-        $Poem->addReply([
+        $reply = $Poem->addReply([
             'body' => request('body'),
             'user_id'=> auth()->id()
         ]);
+        if(request()->expectsJson()){
+            return $reply->load('owner');
 
-        return back();
+        }
+
+        return back()->with('flash','your reply has been left');
         
     }
    public function destroy(Reply $reply){
