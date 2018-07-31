@@ -9,4 +9,5 @@ DB_PASSWORD=Ali_1986
 mysql -u root -p central21ch < central21ch.mysql
 5- run the server
 php artisan serve
+6- 127.0.0.1:8000\poems 
 
