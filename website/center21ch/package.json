@@ -18,5 +18,11 @@
         "laravel-mix": "^2.0",
         "lodash": "^4.17.4",
         "vue": "^2.1.10"
+    }, 
+    "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^1.2.2",
+        "@fortawesome/free-solid-svg-icons": "^5.2.0",
+        "@fortawesome/vue-fontawesome": "^0.1.1",
+        "ajv": "^6.0.0"
     }
 }

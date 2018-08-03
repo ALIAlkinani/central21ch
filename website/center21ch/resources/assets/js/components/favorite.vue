@@ -1,5 +1,7 @@
 <template>
     <button type="submit"  :class="classes" @click="taggel">
+<font-awesome-icon icon="heart" />
+
 
                         <span v-text="favoritesCount"></span>        
                        
