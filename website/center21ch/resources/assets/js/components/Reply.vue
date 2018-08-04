@@ -8,7 +8,7 @@
             <div class="card-header">
             
                 <h5 class="flex"><a :href="'/profile/'+data.owner.name" v-text="data.owner.name"></a> said at
-                    {{ data.created_at }}</h5>
+                    <span v-text="ago"></span></h5>
                 <div v-if="signedIn">
                   
                     <favorite :reply="data"></favorite>
@@ -69,7 +69,7 @@
 </template>
 
 <script>
- 
+ import moment from 'moment-timezone';
    export default {
         props: ['data'],
        
@@ -86,6 +86,10 @@
             };
         },
         computed:{
+            ago(){
+                return moment.tz(this.data.created_at,"America/Danmarkshavn").fromNow();
+
+            },
             signedIn(){
                 return window.App.signedIn;
             },
@@ -102,7 +106,7 @@
                     });
                     this.editing =false;
 
-                   flash('Updated!');
+                   flash('Updated!,you commit was updated successfully..');
              },
 
              destroy(){
@@ -112,7 +116,7 @@
                  this.$emit('deleted',this.data.id);
 
 
-
+                         flash('Deleted!, your commit was deleted successfully.');
         
 
                  

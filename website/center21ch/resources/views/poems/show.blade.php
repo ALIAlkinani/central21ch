@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<poem-view :initial-replies-count = "{{ $poem->replies_count }}" inline-template>  
+<poem-view :initial-replies-count = "{{ $poem->replies_count }}" inline-template v-cloak>  
 <div class="container">
 
  
@@ -32,37 +32,8 @@
                 </div>
                 <hr>
             </div> 
-            <replies :data="{{$poem->replies}}" @removed="repliesCount--"></replies>
-        
-                <br>  
-            <div class="card">
-                  <div class="card-header">
-                     <h5>Reply to the poem</h5>
-                 </div>
-               
-                     <form action="{{ $poem->path(). '/replies' }}" method="post">
-                         @csrf
-                        
-                         <div class="card-body">
-                                @if (auth()->check())
-                                 <div class="form-group">
-                                         <textarea name="body" id="body" class="form-control" placeholder="write someting here" rows="5"></textarea>
-                 
-                                 </div>
-                 
-                                 <button type="submit" class="btn btn-primary">Publish</button>
-                 
-             
-                    </form>  
-                                    @else
-                            <p class="text-center" > Please <a href="{{ route('login') }}">SingIn</a> to participate in the discussion</p>
-                           
-                           
-                            @endif
-                        </div> 
-                      
+            <replies :data="{{$poem->replies}}" @added="repliesCount++"  @removed="repliesCount--"></replies>
 
-             </div>                  
                  
     
            </div>            

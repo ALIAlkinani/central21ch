@@ -10415,6 +10415,7 @@ a.text-dark:focus {
   font-family: 'Times New Roman', Times, serif;
   color: black;
   font-weight: bold;
+  border: none;
   /* box-shadow: 0px 17px 20px 0px #131414; */
 }
 
@@ -10437,8 +10438,6 @@ span.commit {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  color: white;
-  background-color: #0e0c0c;
 }
 
 .level {
@@ -10456,56 +10455,9 @@ span.commit {
           flex: 1;
 }
 
-.navbar-laravel {
-  background-color: #070707;
-  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-  font-family: 'Times New Roman', Times, serif;
-  color: aliceblue;
-}
-
-#flash-message {
-  position: absolute;
-  bottom: 30px;
-  right: 20px;
-  z-index: 10px;
-  width: 250px;
-  color: #fff;
-  height: 120px;
-  font-family: sans-serif;
-  background-color: darkgreen;
-  -webkit-box-shadow: 0px 17px 20px 0px #348a48;
-          box-shadow: 0px 17px 20px 0px #348a48;
-  -webkit-animation: flash-message 60s forwards;
-          animation: flash-message 60s forwards;
-}
-
-@-webkit-keyframes flash-message {
-  0% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-    display: none;
-  }
-}
-
-@keyframes flash-message {
-  0% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-    display: none;
-  }
-}
-
 html,
 body {
   background-color: #fff;
-  color: #636b6f;
   font-family: 'Times New Roman', Times, serif;
   font-weight: 100;
   height: 100vh;

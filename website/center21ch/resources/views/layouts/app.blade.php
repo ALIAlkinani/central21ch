@@ -28,6 +28,7 @@
             'signedIn' => Auth::check()
         ]) !!};
     </script>
+
 </head>
 <body>
     <div id="app">
