@@ -18,7 +18,8 @@
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="/poems">Poems</a>
-                                    <a href="/poems?popularity=1" class="dropdown-item">popular</a>
+                                    <a href="/poems?popularity=1" class="dropdown-item">Popular poems</a>
+                                    <a href="/poems?unanswered=1" class="dropdown-item">Unanswered</a>
                                     @if (auth()->check())
                                     <a class="dropdown-item" href="/poems?by={{ auth()->user()->name }}">My poems</a>
 

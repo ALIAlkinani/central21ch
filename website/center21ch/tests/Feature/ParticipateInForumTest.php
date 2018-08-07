@@ -43,8 +43,9 @@ class ParticipateInForumTest extends TestCase
         $this->post($poem->path().'/replies',$reply->toArray());
 
         //make sure we see the reply in poem page
-        $this->get($poem->path())
-        ->assertSee($reply->body);
+        $this->assertDatabaseHas('replies',['body'=>$reply->body]);
+        $this->assertEquals(1,$poem->fresh()->replies_count);
+        
 
 
     }
@@ -81,6 +82,39 @@ class ParticipateInForumTest extends TestCase
          $this->signIn();
          $this->patch("/replies/{$reply->id}")->assertStatus(403); 
      }
+      /** @test */
+      public function unauthrised_user_maynot_delete_a_reply()
+      {
+         $this->withExceptionHandling();
+
+          $reply = create('App\Reply');
+          
+  
+          $this->delete("/replies/{$reply->id}")->assertRedirect('/login'); 
+          
+          $this->signIn();
+          $this->delete("/replies/{$reply->id}")->assertStatus(403); 
+      }
+
+      /** @test */
+      public function authrised_user_can_delete_a_reply()
+      {
+         
+          $this->signIn();
+          $reply = create('App\Reply',['user_id'=>auth()->id()]);               
+  
+          $this->delete("/replies/{$reply->id}");
+          $this->assertDatabaseMissing('replies',['id'=>$reply->id]);
+          $this->assertDatabaseMissing('activities',[
+      
+              'subject_id' =>$reply->id,
+              'subject_type' =>get_class($reply)
+              
+              ]);
+              $this->assertEquals(0,$reply->poem->fresh()->replies_count);
+  
+      
+      }
 
        
 }

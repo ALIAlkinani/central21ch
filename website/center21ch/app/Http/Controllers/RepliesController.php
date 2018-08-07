@@ -11,7 +11,7 @@ class RepliesController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth',['except'=>'index']);
     }
     public function store($channelId, Poem $Poem)
     {
@@ -31,6 +31,10 @@ class RepliesController extends Controller
         return back()->with('flash','your reply has been left');
         
     }
+public function index($channelId, Poem $Poem)
+{
+    return $Poem->replies()->paginate(5);
+}
    public function destroy(Reply $reply){
       
     $this->authorize('update',$reply);

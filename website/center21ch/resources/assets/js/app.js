@@ -35,6 +35,7 @@ Vue.config.productionTip = false
  */
 
 Vue.component('flash', require('./components/Flash.vue'));
+Vue.component('paginator', require('./components/Paginator.vue'));
 
 Vue.component('poem-view', require('./pages/Poem.vue'));
 Vue.component('favorite', require('./components/favorite.vue'));

@@ -83,11 +83,7 @@ class PoemsController extends Controller
      */
     public function show($channelId, Poem $poem)
     {
-      return view('poems.show',[
-
-        'poem' =>$poem,
-        'replies'=>$poem->replies()->paginate(5)
-      ]);
+      return view('poems.show', compact('poem'));
     }
 
     /**

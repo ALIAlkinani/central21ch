@@ -32,7 +32,7 @@
                 </div>
                 <hr>
             </div> 
-            <replies :data="{{$poem->replies}}" @added="repliesCount++"  @removed="repliesCount--"></replies>
+            <replies @added="repliesCount++"  @removed="repliesCount--" ></replies>
 
                  
     

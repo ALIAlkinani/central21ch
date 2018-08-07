@@ -5,7 +5,7 @@ use App\User;
 use Illuminate\Http\Request;
 class PoemsFilters extends Filters
 {
-    protected $filters = ['by','popularity'];
+    protected $filters = ['by','popularity','unanswered'];
 
     public function by($username)
     {
@@ -20,6 +20,14 @@ class PoemsFilters extends Filters
 
             return $this->builder->orderBy('replies_count', 'desc');
     }
+    public function unanswered()
+    {
+        
+
+            return $this->builder->where('replies_count', 0);
+    }
+
+
 
 
 

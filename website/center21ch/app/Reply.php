@@ -13,6 +13,7 @@ class Reply extends Model
     protected $guarded=[];
     protected $with = ['owner','favorites'];
     protected $appends = ['FavoritesCount','isFavorited'];
+   
 
     public function owner()
     {
@@ -33,6 +34,16 @@ protected static function boot(){
     static::deleting(function($reply){
 
         $reply->favorites->each->delete();
+
+    });
+    static::created(function($reply){
+
+        $reply->poem->increment('replies_count');
+
+    });
+    static::deleted(function($reply){
+
+        $reply->poem->decrement('replies_count');
 
     });
 }

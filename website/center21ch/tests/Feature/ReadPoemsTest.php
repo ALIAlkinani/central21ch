@@ -24,15 +24,7 @@ class ReadPoemsTest extends TestCase
         $this->get($poem->path()) -> assertSee($poem->title);
     }
 
-      /** @test */
-      public function a_user_can_read_replies_associated_with_poem()
-      {
-          $poem= create('App\Poem');
-          $reply= create('App\Reply',['poem_id'=>$poem->id]);
-          
-          
-          $this->get($poem->path()) -> assertSee($reply->body);
-      }
+     
 
 
        /** @test */
@@ -90,6 +82,41 @@ class ReadPoemsTest extends TestCase
 
              
         }
+        /** @test */
+    function a_user_can_request_all_replies_for_agiven_poem()
+    {
+
+      $poem = create('App\Poem');
+      create('App\Reply',['poem_id' => $poem->id],2);
+
+      $response = $this->getJson($poem->path() . '/replies')->json();
+
+      $this->assertCount(2,$response['data']);
+      
+      $this->assertEquals(2,$response['total']);
+
+
+
+    }
+    /** @test */
+    function a_user_can_request_all_unanswered_poems()
+    {
+
+      $poem1 = create('App\Poem');
+      $poem = create('App\Poem');
+      create('App\Reply',['poem_id' => $poem->id]);
+     
+
+      $response = $this->getJson('poems?unanswered=1')->json();
+
+      $this->assertCount(1 ,$response);
+      
+     
+
+
+
+    }
+        
 
       
 }
