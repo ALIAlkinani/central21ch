@@ -15,6 +15,7 @@ class Poem extends Model
 
     protected $guarded=[];
     protected $with=['creator','channel'];
+    protected $appends = ['isSubscribedTo'];
 
 
     public function path()
@@ -61,6 +62,36 @@ class Poem extends Model
             $poem->replies->each->delete();
 
         });
+    }
+    public function subscribe($userid = null)
+    {
+
+
+        $this->subscriptions()->create([
+
+            'user_id'=> $userid ?: auth()->id()
+
+        ]);
+        
+    }
+    public function subscriptions(){
+
+        return $this->hasMany(PoemSubscription::class);
+
+    }
+     public function unSubscribe($userid =  null)
+    {
+       return $this->subscriptions()->where('user_id', $userid ?: auth()->id())->delete();
+      
+
+        
+    }
+    public function getisSubscribedToAttribute()
+    {
+       return $this->subscriptions()->where('user_id', auth()->id())->exists();
+      
+
+        
     }
         
     }

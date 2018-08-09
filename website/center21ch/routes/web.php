@@ -33,6 +33,9 @@ Route::post('/poems', 'PoemsController@store')->name('home');
 Route::get('/profile/{user}','ProfilesController@show')->name('profile');
 
 Route::get('/poems/{channel}/{poem}', 'PoemsController@show');
+Route::post('/poems/{channel}/{poem}/subscriptions', 'PoemsSubscriptionsController@store');
+Route::delete('/poems/{channel}/{poem}/subscriptions', 'PoemsSubscriptionsController@destroy');
+
 
 Route::delete('/poems/{channel}/{poem}', 'PoemsController@destroy');
 

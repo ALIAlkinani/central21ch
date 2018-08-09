@@ -6,12 +6,12 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-abstract class PoemTest extends TestCase
+ class PoemTest extends TestCase
 {
     use RefreshDatabase;
     
     /** @test */
-     function it_has_an_creator()
+   public  function it_has_an_creator()
     {
         $poem = create('App\Poem');
         $this->assertInstanceOf('App\User',$poem->creator);
@@ -29,7 +29,7 @@ abstract class PoemTest extends TestCase
         $this->assertCount(1,$poem->replies);
     }
      /** @test */
-    function a_poem_belongs_to_channel()
+     function a_poem_belongs_to_channel()
     {
         $poem = create('App\Poem');    
        
@@ -43,8 +43,51 @@ abstract class PoemTest extends TestCase
     }
 
 
+    /** @test */
+    function a_poem_can_be_subsecribed_to(){
+        $poem= create("App\Poem");
+
+       
+        $poem->subscribe($userId = 1);
+
+        $this->assertEquals(1,$poem->subscriptions()->where('user_id',$userId)->count());
+
+
+    }
+        /** @test */
+        function a_poem_can_be_Unsubsecribed_to(){
+            $poem= create("App\Poem");
+    
+           
+            $poem->subscribe($userId = 1);
+            $this->assertEquals(1,$poem->subscriptions()->where('user_id',$userId)->count());
+
+            $poem->unSubscribe($userId = 1);
+
+
+    
+            $this->assertEquals(0,$poem->subscriptions()->where('user_id',$userId)->count());
     
     
+        }
+        /** @test */
+        function is_know_if_the_user_subscribed_to(){
+            $poem= create("App\Poem");
+    
+           $this->signIn();
+            $poem->subscribe();
+            $this->assertTrue($poem->isSubscribedTo);
+
+            $poem->unSubscribe();
+
+            $this->assertFalse($poem->isSubscribedTo);
+    
+
+    
+    
+        }
+
+  
     
    
 }

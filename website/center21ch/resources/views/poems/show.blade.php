@@ -46,11 +46,13 @@
                            and currently has <span v-text="repliesCount"></span> {{ str_plural('commit', $poem->replies_count) }}
     
                         </div>{{--  end of side div body  --}}
-                    
+                      
+              <p>
+                <subscribe-button :active={{  json_encode($poem->isSubscribedTo) }}></subscribe-button>
+            </p>
+      
                 </div> {{--  end of card   --}} 
-                
               
-        
 
         </div>
     </div>    
