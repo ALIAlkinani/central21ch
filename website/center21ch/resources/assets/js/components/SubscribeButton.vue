@@ -1,5 +1,8 @@
 <template>
-    <button :class="classes" @click="subscribe">Subscribe</button>
+<div v-if="signedIn">
+        <button :class="classes" @click="subscribe">Subscribe</button>
+
+</div>
 </template>
 <script>
 export default {
@@ -15,7 +18,10 @@ export default {
     computed:{
         classes(){
             return ['btn', this.active1 ? 'btn-primary' : 'btn-default'];
-        }
+        },
+        signedIn(){
+                return window.App.signedIn;
+            },
 
     },
     methods:{
@@ -29,3 +35,6 @@ export default {
     
 }
 </script>
+
+
+

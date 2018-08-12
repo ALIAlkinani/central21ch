@@ -4,7 +4,6 @@ namespace App;
 use App\User;
 use App\Filters;
 
-
 use Illuminate\Database\Eloquent\Model;
 
 class Poem extends Model
@@ -35,7 +34,21 @@ class Poem extends Model
 
     public function addReply($reply)
     {
-       return $this->replies()->create($reply);
+       $reply=  $this->replies()->create($reply);
+
+       //prepare notifications for all subscriber
+        $this->subscriptions->filter(function($sub) use($reply){
+
+            return $sub->user_id != $reply->user_id ;
+
+
+        })
+        ->each->notify($reply);
+
+       
+       return $reply;
+
+
     }
 
     public function channel()
@@ -72,6 +85,7 @@ class Poem extends Model
             'user_id'=> $userid ?: auth()->id()
 
         ]);
+        return $this;
         
     }
     public function subscriptions(){

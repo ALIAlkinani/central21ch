@@ -17,17 +17,7 @@ public function a_user_can_subscribe_to_poem()
    //when a user subscribe to poem
     $this->post($poem->path() . '/subscriptions');
 
-    // when a new reply lefted
-    $poem->addReply([
-        'user_id'=>auth()->id(),
-        'body'=>"some text body"
-
-    ]);
-
-
-// the user will get notifications
-    $this->assertCount(1,$poem->subscriptions);
-    
+    $this->assertCount(1,$poem->fresh()->subscriptions);
 }
  /** @test */
  public function a_user_can_Unsubscribe_to_poem()
