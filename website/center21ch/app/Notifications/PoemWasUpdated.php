@@ -10,16 +10,17 @@ use Illuminate\Notifications\Messages\MailMessage;
 class PoemWasUpdated extends Notification
 {
     use Queueable;
-    protected $thred , $reply;
+    protected $poem , $reply;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($thread, $reply)
+    public function __construct($poem, $reply)
     {
-        //
+        $this->poem = $poem;
+        $this->reply = $reply;
     }
 
     /**
@@ -43,7 +44,8 @@ class PoemWasUpdated extends Notification
     public function toArray($notifiable)
     {
         return [
-            'message' => 'temporary message'
+            'message' => $this->reply->owner->name . ' reply to ' . $this->poem->title,
+            'link'=>$this->reply->path(),
         ];
     }
 }

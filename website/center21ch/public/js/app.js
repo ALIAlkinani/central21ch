@@ -43310,7 +43310,9 @@ window.Vue.prototype.authorize = function (handler) {
 
 
 
-__WEBPACK_IMPORTED_MODULE_0__fortawesome_fontawesome_svg_core__["library"].add(__WEBPACK_IMPORTED_MODULE_1__fortawesome_free_solid_svg_icons__["a" /* faHeart */]);
+
+__WEBPACK_IMPORTED_MODULE_0__fortawesome_fontawesome_svg_core__["library"].add(__WEBPACK_IMPORTED_MODULE_1__fortawesome_free_solid_svg_icons__["b" /* faHeart */]);
+__WEBPACK_IMPORTED_MODULE_0__fortawesome_fontawesome_svg_core__["library"].add(__WEBPACK_IMPORTED_MODULE_1__fortawesome_free_solid_svg_icons__["a" /* faBell */]);
 
 Vue.component('font-awesome-icon', __WEBPACK_IMPORTED_MODULE_2__fortawesome_vue_fontawesome__["FontAwesomeIcon"]);
 
@@ -43324,6 +43326,7 @@ Vue.config.productionTip = false;
 
 Vue.component('flash', __webpack_require__(167));
 Vue.component('paginator', __webpack_require__(175));
+Vue.component('user_notification', __webpack_require__(204));
 
 Vue.component('poem-view', __webpack_require__(178));
 Vue.component('favorite', __webpack_require__(197));
@@ -65663,7 +65666,7 @@ module.exports = function spread(callback) {
 /* unused harmony export faBatteryThreeQuarters */
 /* unused harmony export faBed */
 /* unused harmony export faBeer */
-/* unused harmony export faBell */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return faBell; });
 /* unused harmony export faBellSlash */
 /* unused harmony export faBezierCurve */
 /* unused harmony export faBicycle */
@@ -65956,7 +65959,7 @@ module.exports = function spread(callback) {
 /* unused harmony export faHeadphones */
 /* unused harmony export faHeadphonesAlt */
 /* unused harmony export faHeadset */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return faHeart; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return faHeart; });
 /* unused harmony export faHeartbeat */
 /* unused harmony export faHelicopter */
 /* unused harmony export faHighlighter */
@@ -71055,6 +71058,196 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 201 */,
+/* 202 */,
+/* 203 */,
+/* 204 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(207)
+}
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(205)
+/* template */
+var __vue_template__ = __webpack_require__(206)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\UserNotification.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0eafa666", Component.options)
+  } else {
+    hotAPI.reload("data-v-0eafa666", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 205 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            notifications: false
+        };
+    },
+    created: function created() {
+        var _this = this;
+
+        axios.get("/profile/" + window.App.user.name + "/notifications").then(function (response) {
+            return _this.notifications = response.data;
+        });
+    },
+
+    methods: {
+        markAsRead: function markAsRead(notification) {
+            axios.delete("/profile/" + window.App.user.name + "/notifications/" + notification.id);
+        }
+    }
+});
+
+/***/ }),
+/* 206 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm.notifications.length
+    ? _c("li", { staticClass: "dropdown" }, [
+        _c(
+          "a",
+          {
+            staticClass: "nav-link dropdown",
+            attrs: { href: "#", "data-toggle": "dropdown" }
+          },
+          [_c("font-awesome-icon", { attrs: { icon: "bell" } })],
+          1
+        ),
+        _vm._v(" "),
+        _c(
+          "ul",
+          { staticClass: "dropdown-menu dropdown-menu-right" },
+          _vm._l(_vm.notifications, function(notification) {
+            return _c("li", { key: notification.id }, [
+              _c("a", {
+                attrs: { href: notification.data.link },
+                domProps: { textContent: _vm._s(notification.data.message) },
+                on: {
+                  click: function($event) {
+                    _vm.markAsRead(notification)
+                  }
+                }
+              })
+            ])
+          })
+        )
+      ])
+    : _vm._e()
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-0eafa666", module.exports)
+  }
+}
+
+/***/ }),
+/* 207 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(208);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(171)("06bd53a8", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0eafa666\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./UserNotification.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0eafa666\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./UserNotification.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 208 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(170)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\nul.dropdown-menu{\r\n    width:-webkit-max-content;\r\n    width:-moz-max-content;\r\n    width:max-content;\n}\r\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);

@@ -18,10 +18,13 @@ window.Vue.prototype.authorize = function(handler){
 // flash messaging
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faBell} from '@fortawesome/free-solid-svg-icons'
+
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 library.add(faHeart)
+library.add(faBell)
 
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
@@ -36,6 +39,8 @@ Vue.config.productionTip = false
 
 Vue.component('flash', require('./components/Flash.vue'));
 Vue.component('paginator', require('./components/Paginator.vue'));
+Vue.component('user_notification', require('./components/UserNotification.vue'));
+
 
 Vue.component('poem-view', require('./pages/Poem.vue'));
 Vue.component('favorite', require('./components/favorite.vue'));
