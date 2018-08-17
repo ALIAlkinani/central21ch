@@ -53,7 +53,11 @@ class User extends Authenticatable
         return $this->hasMany(Poem::class)->latest();
         }
 
-
+        public function lastReply()
+        {
+            return $this->hasOne(Reply::class)->latest();
+        
+        }
 
         public function activity(){
             return $this->hasMany(Activity::class);
@@ -69,5 +73,6 @@ class User extends Authenticatable
             return sprintf("users.%s.visits.%s",$this->id,$poem->id);
 
         }
+
 
 }

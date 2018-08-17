@@ -103,10 +103,18 @@
                 axios.patch('/replies/'+this.data.id,{
 
                 body: this.body
-                    });
-                    this.editing =false;
+                    })
+                    .catch(error => {
 
-                   flash('Updated!,you commit was updated successfully..');
+                        flash(error.response.data, 'danger');
+
+                    }).then(({ data })=>{
+                         this.editing =false;
+
+                         flash('Updated!,you commit was updated successfully..');
+
+                    })
+                   
              },
 
              destroy(){
@@ -116,7 +124,7 @@
                  this.$emit('deleted',this.data.id);
 
 
-                         flash('Deleted!, your commit was deleted successfully.');
+                         flash('Deleted!, your commit was deleted successfully.', 'warning');
         
 
                  

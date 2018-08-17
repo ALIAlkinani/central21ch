@@ -18,23 +18,30 @@ class RepliesController extends Controller
     }
     public function store($channelId, Poem $Poem ,Spam $spam)
     {
-        $this->validate(request(),[
-            'body' => 'required',
-           
-        ]);
-        $spam->detect(request('body'));
+        if (Gate::denies('create', new Reply)) {
+            return response(
+                'You are posting too frequently. Please take a break. :)', 429
+            );
+        }
+       
+        try{
+        $this->validateReply();
 
         $reply = $Poem->addReply([
             'body' => request('body'),
             'user_id'=> auth()->id()
         ]);
-        if(request()->expectsJson()){
-            return $reply->load('owner');
+        }catch(\Exception $e){
+
+            return response("Sorry, your reply Could not be save at this time",422 );
+
+
+           
 
         }
     
-
-        return back()->with('flash','your reply has been left');
+        return $reply->load('owner');
+       
         
     }
 public function index($channelId, Poem $Poem)
@@ -52,12 +59,32 @@ public function index($channelId, Poem $Poem)
 
        return back();
    }
-   public function update(Reply $reply){
-      
+   public function update(Reply $reply, Spam $spam){
+
     $this->authorize('update',$reply);
+      try{
+        $this->validateReply();
+
+        $reply->update(request(['body']));
+
+      }catch(\Exception $e){
+        return response(
+            'Sorry, your reply could not be saved at this time.', 422
+        );
+      }
+      
        
-       $reply->update(request(['body']));
 
        
    }
+   public function validateReply()
+    {
+        $this->validate(request(),[
+            'body' => 'required',
+           
+        ]);
+        resolve(Spam::class)->detect(request('body'));
+        
+    }
+
 }
