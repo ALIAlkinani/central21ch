@@ -58,5 +58,16 @@ class User extends Authenticatable
         public function activity(){
             return $this->hasMany(Activity::class);
         }
+        public function read($poem)
+        {
+            cache()->forever($this->visitedPoemCacheKey($poem),\Carbon\Carbon::now());
+
+        }
+
+        public function visitedPoemCacheKey($poem){
+
+            return sprintf("users.%s.visits.%s",$this->id,$poem->id);
+
+        }
 
 }

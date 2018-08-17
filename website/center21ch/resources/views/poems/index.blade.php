@@ -10,7 +10,23 @@
             <div class="card">               
 
                 <div class="card-header"> 
-                    <h6 class="flex"> <a href="{{ $poem->path() }}">{{ $poem->title }}</a> created by <a href="/poems?by={{ $poem->creator->name  }}">{{ $poem->creator->name }}</a> {{ $poem->created_at->diffForhumans() }} </h6>
+                    <h6 class="flex"> <a href="{{ $poem->path() }}">
+
+                      
+
+                        @if ( $poem->hasUpdatedFor())
+                            <strong> <h5> {{ $poem->title }} </h5></strong>
+                       
+                        @else
+                        {{ $poem->title }}
+                        @endif
+                       
+                    
+                    
+                    </a>
+                        
+                        
+                        created by <a href="/poems?by={{ $poem->creator->name  }}">{{ $poem->creator->name }}</a> {{ $poem->created_at->diffForhumans() }} </h6>
                 <a href="{{ $poem->path() }}"> <span class="commit">  {{ $poem->replies_count }} {{ str_plural('Reply', $poem->replies_count) }}</span>
                 </a>
                 

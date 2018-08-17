@@ -103,9 +103,17 @@ class Poem extends Model
     public function getisSubscribedToAttribute()
     {
        return $this->subscriptions()->where('user_id', auth()->id())->exists();
-      
+             
+    }
+    public function hasUpdatedFor(){
+        //look in the cash for the proper Key
+        //compare carbon instance with the $poem updated
+            if(auth()->check()){
+              $key = auth()->user()->visitedPoemCacheKey($this);
+                return $this->updated_at > cache($key);
+    }
+    return false;
 
-        
     }
         
     }

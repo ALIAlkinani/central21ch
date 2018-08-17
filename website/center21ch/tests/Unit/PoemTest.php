@@ -5,6 +5,8 @@ namespace Tests\Unit;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\PoemWasUpdated;
 
  class PoemTest extends TestCase
 {
@@ -86,7 +88,40 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
     
     
         }
+/** @test */
+  function all_subscriber_will_be_notifited_when_a_reply_has_been_lefted(){
+      Notification::fake();
+      $this->poem = create('App\Poem');
+      $this->signIn()->poem->subscribe()
+      ->addReply([
+        'body' => 'add new reply',
+        'user_id'=> 1
+    ]);
 
+    Notification::assertSentTo(auth()->user(),PoemWasUpdated::class);
+
+  }
+
+  /** @test */
+  function a_poem_can_check_if_signIn_user_read_all_replies(){
+    
+    
+    $this->signIn();
+    $poem = create('App\Poem');
+    tap(auth()->user(), function($user) use ($poem){
+        $this->assertTrue($poem->hasUpdatedFor($user));
+
+    $user->read($poem);
+        $this->assertFalse($poem->hasUpdatedFor($user));
+
+        
+
+
+
+    });
+    
+
+}
   
     
    

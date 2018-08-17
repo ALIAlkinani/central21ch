@@ -44,7 +44,7 @@ class PoemWasUpdated extends Notification
     public function toArray($notifiable)
     {
         return [
-            'message' => $this->reply->owner->name . ' reply to ' . $this->poem->title,
+            'message' => $this->reply->owner->name . ' Replied to ' . $this->poem->title,
             'link'=>$this->reply->path(),
         ];
     }

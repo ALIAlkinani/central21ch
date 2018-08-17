@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Poem;
 use App\Filters\PoemsFilters;
 use App\Channel;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class PoemsController extends Controller
@@ -83,6 +84,13 @@ class PoemsController extends Controller
      */
     public function show($channelId, Poem $poem)
     {
+
+        // Rcord that the user visit the page
+        // record the timestamp
+       if(auth()->check()){
+        auth()->user()->read($poem);
+        
+       }
       return view('poems.show', compact('poem'));
     }
 
