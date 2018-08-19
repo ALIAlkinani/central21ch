@@ -20,7 +20,7 @@
                     <div class="form-group">
                       <label for="channel_id">Choose a channel:</label>
                       <select class="form-control" name="channel_id" id="channel_id">
-                          <option value="">Choose One .....</option>
+                          <option value=""></option>
                           @foreach ($channels as $channel )
 
                         <option value="{{ $channel->id }}"{{ old('channel_id') == $channel->id ?'selected': '' }}>{{ $channel->name }}</option>
@@ -32,7 +32,7 @@
                     <div class="form-group">
                       <label > Title</label>
                       <input type="text" name="title" id="title" class="form-control" value="{{ old('title') }}" aria-describedby="helpId" required>
-                      <small id="helpId" class="text-muted">You can write the title of the poem</small>
+                      <small id="helpId" class="text-muted">Write the name of the poem here.</small>
                     </div>
                     <div class="form-group">
                       <label >Body</label>
