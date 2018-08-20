@@ -5,8 +5,23 @@
 <div class="container">
 
     <div class="row">
+        <div id="map" style="width:100%;height:400px;"></div>
+
+        <script>
+            function initMap() {
+                var centre = {lat: 0, lng: 0};
+                var map = new google.maps.Map(
+                document.getElementById('map'), {zoom: 2, center: centre});
+            }
+        </script>
+
+        <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBW9FAJC34z2wKmGJJvW-QxF_ObdLfuzH4&callback=initMap">
+        </script>
+            
         <div class="col-md-8">
          @forelse ($poems as $poem )
+         
             <div class="card">               
 
                 <div class="card-header"> 
@@ -42,7 +57,7 @@
                 
             <br>  
             @empty
-                <p> there are no relevent result at this time</p>
+                <p>There are no relevant results at this time.</p>
           
             @endforelse              
            {{--   {{ $paginate->links() }}   --}}                         
