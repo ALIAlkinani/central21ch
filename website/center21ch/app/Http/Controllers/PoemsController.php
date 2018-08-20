@@ -58,14 +58,14 @@ class PoemsController extends Controller
      */
     public function store(Request $request, Spam $spam)
     {
-        try{
+       
         $this->validate($request,[
-            'title' => 'required',
-            'body' => 'required',
+            'title' => 'required|spamfree',
+            'body' => 'required|spamfree',
             //make the sure the the channal id is not null and exists and the database;
             'channel_id' =>'required|exists:channels,id'
         ]);
-        $spam->detect(request('body'));
+        
         $poem = Poem::create([
             'user_id' => auth()->id(),
             'channel_id'=>request('channel_id'),
@@ -73,10 +73,7 @@ class PoemsController extends Controller
             'title' =>request('title')
 
 
-        ]);}catch(\Exception $e){
-            return back()->with('flash', 'your post could not be created');
-        }
-
+        ]);
 
         return redirect($poem->path())->with('flash','Your poem has been published')
     ;

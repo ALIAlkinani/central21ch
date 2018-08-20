@@ -1,5 +1,6 @@
 <?php
 namespace App\Inspections;
+
 class Spam
 {
     /**
@@ -23,7 +24,7 @@ class Spam
             app($inspection)->detect($body);
         }
 
-        return false;
+       return false;
     }
 
 }

@@ -80,7 +80,7 @@ class ParticipateInForumTest extends TestCase
          $this->patch("/replies/{$reply->id}")->assertRedirect('/login'); 
          
          $this->signIn();
-         $this->patch("/replies/{$reply->id}")->assertStatus(403); 
+         $this->patch("/replies/{$reply->id}")->assertStatus(302); 
      }
       /** @test */
       public function unauthrised_user_maynot_delete_a_reply()
@@ -119,24 +119,27 @@ class ParticipateInForumTest extends TestCase
         /** @test */
         function replies_that_contain_spam_may_not_be_created()
         {
+            $this->withExceptionHandling();
+
             $this->signIn();
             $poem = create('App\Poem');
             $reply = make('App\Reply', [
                 'body' => 'Yahoo Customer Support'
             ]);
-            $this->post($poem->path() . '/replies', $reply->toArray())
+            $this->json('post',$poem->path() . '/replies', $reply->toArray())
                 ->assertStatus(422);
         }
         /** @test */
         function users_may_only_reply_a_maximum_of_once_per_minute()
         {
+            $this->withExceptionHandling();
             $this->signIn();
             $poem = create('App\Poem');
             $reply = make('App\Reply');
+            $this->json('post',$poem->path() . '/replies', $reply->toArray())
+                ->assertStatus(201);
             $this->post($poem->path() . '/replies', $reply->toArray())
-                ->assertStatus(200);
-            $this->post($poem->path() . '/replies', $reply->toArray())
-                ->assertStatus(429);
+                ->assertStatus(429); 
         }
 
       

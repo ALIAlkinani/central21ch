@@ -3,6 +3,7 @@
 namespace App;
 use App\User;
 use App\Filters;
+use App\Events\PoemReceivedNewReply;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -35,6 +36,8 @@ class Poem extends Model
     public function addReply($reply)
     {
        $reply=  $this->replies()->create($reply);
+
+       event(new PoemReceivedNewReply($reply));
 
        //prepare notifications for all subscriber
         $this->subscriptions->filter(function($sub) use($reply){

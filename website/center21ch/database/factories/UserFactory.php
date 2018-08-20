@@ -60,7 +60,7 @@ $factory->define(App\Channel::class, function (Faker $faker) {
 $factory->define(\Illuminate\Notifications\DatabaseNotification::class, function ($faker) {
     return [
         'id' => \Ramsey\Uuid\Uuid::uuid4()->toString(),
-        'type' => 'App\Notifications\ThreadWasUpdated',
+        'type' => 'App\Notifications\PoemWasUpdated',
         'notifiable_id' => function () {
             return auth()->id() ?: factory('App\User')->create()->id;
         },

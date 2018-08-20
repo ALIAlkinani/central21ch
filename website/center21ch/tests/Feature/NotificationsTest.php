@@ -21,35 +21,23 @@ class NotificationsTest extends TestCase
     /**   @test  */
     function a_notification_is_prepared_when_a_poem_recieved_a_new_reply_that_is_not_by_the_current_user()
     {
-        
         $poem = create('App\Poem')->subscribe();
-       
 
-        // the user will not get notifications;
+        $this->assertCount(0, auth()->user()->notifications);
 
-        $this->assertCount(0,auth()->user()->notifications);
-
-        // when a new reply lefted
-            $poem->addReply([
-                'user_id'=>auth()->id(),
-                'body'=>"some text body"
-
-            ]);
-
-
-        // the user will get notifications
-            $this->assertCount(0,auth()->user()->fresh()->notifications);
-            
-        // when a new reply lefted
         $poem->addReply([
-            'user_id'=>create('App\User')->id,
-            'body'=>"some text body"
-
+            'user_id' => auth()->id(),
+            'body' => 'Some reply here'
         ]);
 
+        $this->assertCount(0, auth()->user()->notifications);
 
-    // the user will get notifications
-        $this->assertCount(1,auth()->user()->fresh()->notifications);
+        $poem->addReply([
+            'user_id' => create('App\User')->id,
+            'body' => 'Some reply here'
+        ]);
+
+        $this->assertCount(2, auth()->user()->fresh()->notifications);
     
     }
 

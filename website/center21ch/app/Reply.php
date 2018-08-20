@@ -58,4 +58,14 @@ protected static function boot(){
     {
         return $this->created_at->gt(Carbon::now()->subMinute());
     }
+    /**
+     * Fetch all mentioned users within the reply's body.
+     *
+     * @return array
+     */
+    public function mentionedUsers()
+    {
+        preg_match_all('/\@([^\s\.]+)/', $this->body, $matches);
+        return $matches[1];
+    }
 }
