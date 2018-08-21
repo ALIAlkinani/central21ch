@@ -147,7 +147,7 @@ class PoemsController extends Controller
             $poems->where('channel_id', $channel->id);
         }
 
-        return $poems->get();
+        return $poems->paginate(5);;
 
         
     }

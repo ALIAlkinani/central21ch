@@ -78,7 +78,7 @@ class ReadPoemsTest extends TestCase
           $response = $this->getJson('poems?popularity=1')->json();
           
           //then they most return form most reply to less
-          $this->assertEquals([ 5, 3 , 2], array_column($response,'replies_count'));
+          $this->assertEquals([ 5, 3 , 2], array_column($response['data'],'replies_count'));
 
              
         }
@@ -109,7 +109,7 @@ class ReadPoemsTest extends TestCase
 
       $response = $this->getJson('poems?unanswered=1')->json();
 
-      $this->assertCount(1 ,$response);
+      $this->assertCount(1 ,$response['data']);
       
      
 
