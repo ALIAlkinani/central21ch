@@ -3,7 +3,7 @@
 namespace Tests\Unit;
 
 use Tests\TestCase;
-
+use App\Reply;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Carbon\Carbon;
@@ -57,5 +57,16 @@ class ReplyTest extends TestCase
            ]);
            $this->assertEquals(['JaneDoe', 'JohnDoe'], $reply->mentionedUsers());
        }
+       /** @test */
+    function it_wraps_mentioned_usernames_in_the_body_within_anchor_tags()
+    {
+        $reply = new Reply([
+            'body' => 'Hello @Samm-Doe.'
+        ]);
+        $this->assertEquals(
+            'Hello <a href="/profiles/Samm-Doe">@Samm-Doe</a>.',
+            $reply->body
+        );
+    }
    }
 

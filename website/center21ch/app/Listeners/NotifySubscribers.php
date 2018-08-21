@@ -11,8 +11,7 @@ class NotifySubscribers
      */
     public function handle(PoemReceivedNewReply $event)
     {
-        $poem = $event->reply->Poem;
-        $poem->subscriptions
+        $event->reply->Poem->subscriptions
             ->where('user_id', '!=', $event->reply->user_id)
             ->each
             ->notify($event->reply);

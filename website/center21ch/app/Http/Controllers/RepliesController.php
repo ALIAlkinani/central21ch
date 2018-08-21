@@ -46,10 +46,7 @@ public function index($channelId, Poem $Poem)
    }
    public function update(Reply $reply){
 
-    $this->validate(request(),[
-        'body' => 'required',
-       
-    ]);
+    $this->validate(request(), ['body' => 'required|spamfree']);
         $reply->update(request(['body']));
 
       

@@ -36,6 +36,7 @@ Route::get('/profile/{user}','ProfilesController@show')->name('profile');
 Route::get('/profile/{user}/notifications','UserNotificationsController@index');
 
 Route::delete('/profile/{user}/notifications/{notification}','UserNotificationsController@destroy');
+Route::get('api/users', 'Api\UsersController@index');
 
 
 Route::get('/poems/{channel}/{poem}', 'PoemsController@show');

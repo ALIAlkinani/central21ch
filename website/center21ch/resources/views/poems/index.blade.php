@@ -11,7 +11,7 @@
          
             <div class="card">               
 
-                <div class="card-header"> 
+                <div class="penal-header level"> 
                     <h6 class="flex"> <a href="{{ $poem->path() }}">
 
                       

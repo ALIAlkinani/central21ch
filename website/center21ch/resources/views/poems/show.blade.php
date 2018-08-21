@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+{{--  @section('head')
+<link rel="stylesheet" href="/css/vendor/jquery.atwho.css">
+@endsection  --}}
 @section('content')
 <poem-view :initial-replies-count = "{{ $poem->replies_count }}" inline-template v-cloak>  
 <div class="container">
@@ -9,7 +11,7 @@
         <div class="col-md-8">
             <div class="card">               
 
-                <div class="card-header">
+                <div class="panel-header level">
 
                     <h5 class="flex"> {{ $poem->title }} </h5>
 
@@ -26,11 +28,11 @@
                     
                    </div>
 
-                <div class="card-body">
+                <div class="panel-body">
                     {{$poem->body  }}
 
                 </div>
-                <hr>
+               
             </div> 
             <replies @added="repliesCount++"  @removed="repliesCount--" ></replies>
 

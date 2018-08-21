@@ -5,7 +5,7 @@
         <div :id="'reply-'+id" class="card">  
             
                
-            <div class="card-header">
+            <div class="panel-header level">
             
                 <h5 class="flex"><a :href="'/profile/'+data.owner.name" v-text="data.owner.name"></a> said at
                     <span v-text="ago"></span></h5>
@@ -28,8 +28,8 @@
     </div>
                                  
     </div>
-                 <div v-else >
-                 {{ body }}
+                 <div v-else v-html="body">
+                
                 </div>
 
 
