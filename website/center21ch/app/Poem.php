@@ -108,7 +108,7 @@ class Poem extends Model
        return $this->subscriptions()->where('user_id', auth()->id())->exists();
              
     }
-    public function hasUpdatedFor(){
+    public function hasUpdatesFor(){
         //look in the cash for the proper Key
         //compare carbon instance with the $poem updated
             if(auth()->check()){

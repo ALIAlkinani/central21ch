@@ -1,65 +1,65 @@
 @extends('layouts.app')
-{{--  @section('head')
-<link rel="stylesheet" href="/css/vendor/jquery.atwho.css">
-@endsection  --}}
+
+@section('head')
+    <link rel="stylesheet" href="/css/vendor/jquery.atwho.css">
+@endsection
+
 @section('content')
-<poem-view :initial-replies-count = "{{ $poem->replies_count }}" inline-template v-cloak>  
-<div class="container">
+    <poem-view :initial-replies-count="{{ $poem->replies_count }}" inline-template>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="level">
+                                <img src="{{ $poem->creator->avatar_path }}"
+                                     alt="{{ $poem->creator->name }}"
+                                     width="25"
+                                     height="25"
+                                     class="mr-1">
 
- 
-    <div class="row">
-        <div class="col-md-8">
-            <div class="card">               
+                                <span class="flex">
+                                    <a href="{{ route('profile', $poem->creator) }}">{{ $poem->creator->name }}</a> posted:
+                                    {{ $poem->title }}
+                                </span>
 
-                <div class="panel-header level">
+                                @can ('update', $poem)
+                                    <form action="{{ $poem->path() }}" method="POST">
+                                        {{ csrf_field() }}
+                                        {{ method_field('DELETE') }}
 
-                    <h5 class="flex"> {{ $poem->title }} </h5>
+                                        <button type="submit" class="btn btn-link">Delete Poem</button>
+                                    </form>
+                                @endcan
+                            </div>
+                        </div>
 
-                    <div>
-                        @can ('update', $poem)
-                        <form action="{{ $poem->path() }}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
-                        @endcan
-                                            
+                        <div class="panel-body">
+                            {{ $poem->body }}
+                        </div>
                     </div>
-                    
-                   </div>
 
-                <div class="panel-body">
-                    {{$poem->body  }}
-
+                    <replies @added="repliesCount++" @removed="repliesCount--"></replies>
                 </div>
-               
-            </div> 
-            <replies @added="repliesCount++"  @removed="repliesCount--" ></replies>
 
-                 
-    
-           </div>            
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <p>
+                                This poem was published {{ $poem->created_at->diffForHumans() }} by
+                                <a href="#">{{ $poem->creator->name }}</a>, and currently
+                                has <span
+                                        v-text="repliesCount"></span> {{ str_plural('comment', $poem->replies_count) }}
+                                .
+                            </p>
 
-        
-        <div class="col-md-4">
-                <div class="card">                       
-                        <div class="card-body">
-                        Created by <a href="/profile/{{ $poem->Creator->name  }}">{{ $poem->Creator->name  }}</a> before {{ $poem->created_at->diffForhumans() }}                     
-                           and currently has <span v-text="repliesCount"></span> {{ str_plural('commit', $poem->replies_count) }}
-    
-                        </div>{{--  end of side div body  --}}
-                      
-              <p>
-                <subscribe-button :active={{  json_encode($poem->isSubscribedTo) }}></subscribe-button>
-            </p>
-      
-                </div> {{--  end of card   --}} 
-              
-
+                            <p>
+                                <subscribe-button :active="{{ json_encode($poem->isSubscribedTo) }}"></subscribe-button>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>    
-     
-</poem-view>
-          
-</div>
+    </poem-view>
 @endsection

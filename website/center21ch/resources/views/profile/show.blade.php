@@ -4,10 +4,13 @@
  <div class="container">
        <div class="raw">
            <div class="col-md-8 col-md-offset-2">
-                <div class="pageheader">
+                <div class="page-header">
                     
-                        <h2> {{ $profileUser->name }}  </h2>
+                        <avatar-form :user="{{ $profileUser }}"></avatar-form>
                 </div>
+                <div>
+{{--                     <img src="{{ $profileUser->avatar_path }}" alt="" width="100" height="100">
+ --}}                </div>
 
                 @forelse($activities as $date => $activity)
                     <h4 class="pageheader">{{ $date }}</h4>

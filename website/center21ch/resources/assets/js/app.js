@@ -37,6 +37,8 @@ Vue.config.productionTip = false
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.component('avatar-form', require('./components/AvatarForm.vue'));
+
 Vue.component('flash', require('./components/Flash.vue'));
 Vue.component('paginator', require('./components/Paginator.vue'));
 Vue.component('user_notification', require('./components/UserNotification.vue'));
