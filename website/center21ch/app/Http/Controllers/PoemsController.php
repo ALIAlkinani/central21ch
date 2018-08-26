@@ -8,6 +8,7 @@ use App\Channel;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Inspections\Spam;
+use App\Trending;
 
 
 class PoemsController extends Controller
@@ -25,7 +26,7 @@ class PoemsController extends Controller
      * @param PoemsFilters $filters
      * @return \Illuminate\Http\Response
      */
-    public function index(Channel $channel, PoemsFilters $filters)
+    public function index(Channel $channel, PoemsFilters $filters,Trending $trending)
     {
 
         $poems = $this->getPoems($channel, $filters);
@@ -37,7 +38,10 @@ class PoemsController extends Controller
 
           // fatch all the poems from the database and show it in the poems page
 
-          return view('poems.index', compact('poems'));
+          return view('poems.index', [
+            'poems' => $poems,
+            'trending' => $trending->get()
+        ]);
     }
 
     /**
@@ -86,7 +90,7 @@ class PoemsController extends Controller
      * @param  \App\Poems  $poems ,channelId
      * @return \Illuminate\Http\Response
      */
-    public function show($channelId, Poem $poem)
+    public function show($channelId, Poem $poem, Trending $trending)
     {
 
         // Rcord that the user visit the page
@@ -95,6 +99,7 @@ class PoemsController extends Controller
         auth()->user()->read($poem);
         
        }
+       $trending->push($poem);
       return view('poems.show', compact('poem'));
     }
 

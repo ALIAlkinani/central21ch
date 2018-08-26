@@ -73,12 +73,12 @@ protected static function boot(){
      *
      * @param string $body
      */
-    public function setBodyAttribute($body)
+     public function setBodyAttribute($body)
     {
         $this->attributes['body'] = preg_replace(
             '/@([\w\-]+)/',
             '<a href="/profile/$1">$0</a>',
             $body
         );
-    }
+    } 
 }

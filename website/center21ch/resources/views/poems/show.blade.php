@@ -37,6 +37,7 @@
                         <div class="panel-body">
                             {{ $poem->body }}
                         </div>
+                        <br>
                     </div>
 
                     <replies @added="repliesCount++" @removed="repliesCount--"></replies>
