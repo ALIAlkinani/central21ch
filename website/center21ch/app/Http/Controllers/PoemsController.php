@@ -33,6 +33,7 @@ class PoemsController extends Controller
 
         if (request()->wantsJson()) {
             return $poems;
+            
         }
               // $poems = $this->getPoems($channel);
 
@@ -99,6 +100,7 @@ class PoemsController extends Controller
         auth()->user()->read($poem);
         
        }
+       $poem->increment('visits');
        $trending->push($poem);
       return view('poems.show', compact('poem'));
     }

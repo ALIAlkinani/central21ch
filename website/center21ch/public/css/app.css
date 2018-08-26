@@ -10413,10 +10413,13 @@ a.text-dark:focus {
 
 .card {
   font-family: 'Times New Roman', Times, serif;
-  color: black;
   font-weight: bold;
   border: none;
   /* box-shadow: 0px 17px 20px 0px #131414; */
+}
+
+.card a {
+  color: #ff68c0;
 }
 
 .mr-1 {
@@ -10457,7 +10460,7 @@ span.commit {
 }
 
 .navbar-laravel a:hover {
-  color: #ffd700;
+  color: blue;
 }
 
 html,

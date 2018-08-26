@@ -1,6 +1,6 @@
 @forelse ($poems as $poem)
-    <div class="panel panel-default">
-        <div class="panel-heading">
+    <div class="card text-white bg-dark mb-3">
+        <div class="card-header">
             <div class="level">
                 <div class="flex">
                     <h5>
@@ -23,9 +23,12 @@
                 </a>
             </div>
         </div>
-        <div class="panel-body">
+        <div class="card-body">
             <div class="body">{{ $poem->body }}</div>
         </div>
+    <div class="card-footer">
+      {{ $poem->visits }}  visits 
+    </div>
         <br>
     </div>
 @empty

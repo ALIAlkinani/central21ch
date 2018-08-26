@@ -9,8 +9,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
+                    <div class="card text-white bg-dark mb-3">
+                        <div class="card-header">
                             <div class="level">
                                 <img src="{{ $poem->creator->avatar_path }}"
                                      alt="{{ $poem->creator->name }}"
@@ -28,13 +28,13 @@
                                         {{ csrf_field() }}
                                         {{ method_field('DELETE') }}
 
-                                        <button type="submit" class="btn btn-link">Delete Poem</button>
+                                        <button type="submit" class="btn btn-danger">Delete Poem</button>
                                     </form>
                                 @endcan
                             </div>
                         </div>
 
-                        <div class="panel-body">
+                        <div class="card-body">
                             {{ $poem->body }}
                         </div>
                         <br>
@@ -44,8 +44,8 @@
                 </div>
 
                 <div class="col-md-4">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
+                    <div class="card border-primary mb-3">
+                        <div class="card-body">
                             <p>
                                 This poem was published {{ $poem->created_at->diffForHumans() }} by
                                 <a href="#">{{ $poem->creator->name }}</a>, and currently

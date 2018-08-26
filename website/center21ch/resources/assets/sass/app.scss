@@ -10,11 +10,17 @@
 @import '~bootstrap/scss/bootstrap';
 .card{
   font-family: 'Times New Roman', Times, serif;
-  color:black;
+ 
   font-weight: bold;
-  border:none;
+border: none;
   /* box-shadow: 0px 17px 20px 0px #131414; */
 }
+.card a{
+
+  color : rgb(255, 104, 192);
+
+}
+
 .mr-1 { margin-right: 1em; }
  [v-cloak] { display: none; }
 
@@ -40,7 +46,7 @@ span.commit{
   }
   a:hover{
     
-    color:#ffd700
+    color: blue;
   }
 }
 

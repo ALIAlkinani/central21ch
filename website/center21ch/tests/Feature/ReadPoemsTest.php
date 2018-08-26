@@ -129,7 +129,14 @@ class ReadPoemsTest extends TestCase
                $this->assertCount(1,$poem->subscriptions);
                
            }
-        
+         /** @test */
+    function we_record_a_new_visit_each_time_the_poem_is_read()
+    {
+        $poem = create('App\Poem');
+        $this->assertSame(0, $poem->visits);
+        $this->call('GET', $poem->path());
+        $this->assertEquals(1, $poem->fresh()->visits);
+    }
 
       
 }

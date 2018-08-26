@@ -68752,6 +68752,10 @@ module.exports = function spread(callback) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(217)
+}
 var normalizeComponent = __webpack_require__(2)
 /* script */
 var __vue_script__ = __webpack_require__(170)
@@ -68760,7 +68764,7 @@ var __vue_template__ = __webpack_require__(174)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = null
+var __vue_styles__ = injectStyle
 /* scopeId */
 var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
@@ -68802,6 +68806,15 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ImageUpload_vue__ = __webpack_require__(171);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ImageUpload_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__ImageUpload_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -68954,29 +68967,36 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "level" }, [
-      _c("img", {
-        staticClass: "mr-1",
-        attrs: { src: _vm.avatar, width: "50", height: "50" }
-      }),
-      _vm._v(" "),
-      _c("h1", { domProps: { textContent: _vm._s(_vm.user.name) } })
-    ]),
-    _vm._v(" "),
-    _vm.canUpdate
-      ? _c(
-          "form",
-          { attrs: { method: "POST", enctype: "multipart/form-data" } },
-          [
-            _c("image-upload", {
-              staticClass: "mr-1",
-              attrs: { name: "avatar" },
-              on: { loaded: _vm.onLoad }
-            })
-          ],
-          1
-        )
-      : _vm._e()
+    _c("div", { staticClass: "col-lg-5" }, [
+      _c("div", { staticClass: "media" }, [
+        _c("a", { staticClass: "pull-left", attrs: { href: "#" } }, [
+          _c("img", {
+            staticClass: "media-object dp img-circle",
+            staticStyle: { width: "100px", height: "100px" },
+            attrs: { src: _vm.avatar }
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "media-body" }, [
+          _c("h1", { domProps: { textContent: _vm._s(_vm.user.name) } }),
+          _vm._v(" "),
+          _vm.canUpdate
+            ? _c(
+                "form",
+                { attrs: { method: "POST", enctype: "multipart/form-data" } },
+                [
+                  _c("image-upload", {
+                    staticClass: "mr-1",
+                    attrs: { name: "avatar" },
+                    on: { loaded: _vm.onLoad }
+                  })
+                ],
+                1
+              )
+            : _vm._e()
+        ])
+      ])
+    ])
   ])
 }
 var staticRenderFns = []
@@ -70877,98 +70897,108 @@ var render = function() {
   return _c("div", [
     _c("br"),
     _vm._v(" "),
-    _c("div", { staticClass: "card", attrs: { id: "reply-" + _vm.id } }, [
-      _c("div", { staticClass: "panel-header level" }, [
-        _c("h5", { staticClass: "flex" }, [
-          _c("a", {
-            attrs: { href: "/profile/" + _vm.data.owner.name },
-            domProps: { textContent: _vm._s(_vm.data.owner.name) }
-          }),
-          _vm._v(" said at\n                    "),
-          _c("span", { domProps: { textContent: _vm._s(_vm.ago) } })
+    _c(
+      "div",
+      {
+        staticClass: "card text-white bg-danger mb-3",
+        attrs: { id: "reply-" + _vm.id }
+      },
+      [
+        _c("div", { staticClass: "card-header level" }, [
+          _c("h5", { staticClass: "flex" }, [
+            _c("a", {
+              attrs: { href: "/profile/" + _vm.data.owner.name },
+              domProps: { textContent: _vm._s(_vm.data.owner.name) }
+            }),
+            _vm._v(" said at\n                    "),
+            _c("span", { domProps: { textContent: _vm._s(_vm.ago) } })
+          ]),
+          _vm._v(" "),
+          _vm.signedIn
+            ? _c("div", [_c("favorite", { attrs: { reply: _vm.data } })], 1)
+            : _vm._e()
         ]),
         _vm._v(" "),
-        _vm.signedIn
-          ? _c("div", [_c("favorite", { attrs: { reply: _vm.data } })], 1)
-          : _vm._e()
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "card-body" }, [
-        _vm.editing
-          ? _c("div", [
-              _c("div", { staticClass: "form-group" }, [
-                _c("textarea", {
-                  directives: [
+        _c("div", { staticClass: "card-body" }, [
+          _vm.editing
+            ? _c("div", [
+                _c("div", { staticClass: "form-group" }, [
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.body,
+                        expression: "body"
+                      }
+                    ],
+                    staticClass: "form-control",
+                    domProps: { value: _vm.body },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.body = $event.target.value
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "button",
                     {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.body,
-                      expression: "body"
-                    }
-                  ],
-                  staticClass: "form-control",
-                  domProps: { value: _vm.body },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+                      staticClass: "btn btn-xs mr-1",
+                      on: { click: _vm.update }
+                    },
+                    [_vm._v(" Save")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary btn-xs ",
+                      on: {
+                        click: function($event) {
+                          _vm.editing = false
+                        }
                       }
-                      _vm.body = $event.target.value
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  { staticClass: "btn btn-xs mr-1", on: { click: _vm.update } },
-                  [_vm._v(" Save")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-primary btn-xs ",
-                    on: {
-                      click: function($event) {
-                        _vm.editing = false
-                      }
-                    }
-                  },
-                  [_vm._v(" Cancel")]
-                )
+                    },
+                    [_vm._v(" Cancel")]
+                  )
+                ])
               ])
-            ])
-          : _c("div", { domProps: { innerHTML: _vm._s(_vm.body) } }),
-        _vm._v(" "),
-        _vm.canUpdate
-          ? _c("div", [
-              _c("div", { staticClass: "panel-footer" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-xs mr-1",
-                    on: {
-                      click: function($event) {
-                        _vm.editing = true
+            : _c("div", { domProps: { innerHTML: _vm._s(_vm.body) } }),
+          _vm._v(" "),
+          _vm.canUpdate
+            ? _c("div", [
+                _c("div", { staticClass: "card-footer" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-xs mr-1",
+                      on: {
+                        click: function($event) {
+                          _vm.editing = true
+                        }
                       }
-                    }
-                  },
-                  [_vm._v("Edit")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-danger btn-xs",
-                    on: { click: _vm.destroy }
-                  },
-                  [_vm._v("Delete")]
-                )
+                    },
+                    [_vm._v("Edit")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger btn-xs",
+                      on: { click: _vm.destroy }
+                    },
+                    [_vm._v("Delete")]
+                  )
+                ])
               ])
-            ])
-          : _vm._e()
-      ])
-    ]),
+            : _vm._e()
+        ])
+      ]
+    ),
     _vm._v(" "),
     _vm._m(0)
   ])
@@ -73184,6 +73214,49 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 214 */,
+/* 215 */,
+/* 216 */,
+/* 217 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(218);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(18)("7c008554", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-49dd71f4\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AvatarForm.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-49dd71f4\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AvatarForm.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 218 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(17)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.media\r\n    {\r\n        /*box-shadow:0px 0px 4px -2px #000;*/\r\n        margin: 20px 0;\r\n        padding:30px;\n}\n.dp\r\n    {\r\n        border:10px solid #eee;\r\n        -webkit-transition: all 0.2s ease-in-out;\r\n        transition: all 0.2s ease-in-out;\n}\n.dp:hover\r\n    {\r\n        border:2px solid #eee;\r\n        transform:rotate(360deg);\r\n        -ms-transform:rotate(360deg);  \r\n        -webkit-transform:rotate(360deg);  \r\n        /*-webkit-font-smoothing:antialiased;*/\n}\r\n", ""]);
+
+// exports
+
 
 /***/ })
 /******/ ]);

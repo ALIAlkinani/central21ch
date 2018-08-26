@@ -14,11 +14,11 @@
 
             <div class="col-md-4">
                 @if (count($trending))
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
+                    <div class="card text-white bg-danger mb-3">
+                        <div class="card-header">
                             Trending Poems
                         </div>
-                        <div class="panel-body">
+                        <div class="card-body">
                             <ul class="list-group">
                                 @foreach ($trending as $poem)
                                     <li class="list-group-item">

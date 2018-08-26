@@ -2,10 +2,10 @@
 
 <div>  
   <br>
-        <div :id="'reply-'+id" class="card">  
+        <div :id="'reply-'+id" class="card text-white bg-danger mb-3">  
             
                
-            <div class="panel-header level">
+            <div class="card-header level">
             
                 <h5 class="flex"><a :href="'/profile/'+data.owner.name" v-text="data.owner.name"></a> said at
                     <span v-text="ago"></span></h5>
@@ -36,7 +36,7 @@
               
                     
           <div v-if="canUpdate">
-                <div class="panel-footer">
+                <div class="card-footer">
                
                     <button  class="btn btn-xs mr-1" @click="editing = true">Edit</button>
                     <button   class="btn btn-danger btn-xs"  @click="destroy">Delete</button>
