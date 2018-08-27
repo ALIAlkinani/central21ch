@@ -9,6 +9,12 @@ DB_PASSWORD=Ali_1986
 mysql -u root -p central21ch < central21ch.mysql
 5- run the server
 php artisan serve
-6- 127.0.0.1:8000/poems 
+6- run redis server; for more info please use the link below
+https://github.com/ServiceStack/redis-windows
 
-mailtrap= https://mailtrap.io/share/285688/a2784c1ed4725eca77698736204d7eb1
+
+7- go to the poems page via 127.0.0.1:8000/poems 
+
+
+
+to confiram email plase use this link mailtrap= https://mailtrap.io/share/285688/a2784c1ed4725eca77698736204d7eb1
