@@ -75,10 +75,14 @@ class PoemsController extends Controller
             'user_id' => auth()->id(),
             'channel_id'=>request('channel_id'),
             'body'  =>request('body'),
-            'title' =>request('title')
+            'title' =>request('title'),
+            
 
 
         ]);
+        if (request()->wantsJson()) {
+            return response($poem, 201);
+        }
 
         return redirect($poem->path())->with('flash','Your poem has been published')
     ;

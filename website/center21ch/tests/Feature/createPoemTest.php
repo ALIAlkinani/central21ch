@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Poem;
 
 class createPoemTest extends TestCase
 {
@@ -150,4 +151,21 @@ class createPoemTest extends TestCase
           $this->delete($poem->path())->assertStatus(403); 
       }
            
+        /** @test */
+    function a_poem_requires_a_unique_slug()
+    {
+        $this->signIn();
+        $poem = create('App\Poem', ['title' => 'Foo Title']);
+        $this->assertEquals($poem->slug, 'foo-title');
+        $poem = $this->postJson(route('poems'), $poem->toArray())->json();
+        $this->assertEquals("foo-title-".md5($poem['id']), $poem['slug']);
+    }
+    /** @test */
+    function a_poem_with_a_title_that_ends_in_a_number_should_generate_the_proper_slug()
+    {
+        $this->signIn();
+        $poem = create('App\Poem', ['title' => 'Some Title 24']);
+        $poem = $this->postJson(route('poems'), $poem->toArray())->json();
+        $this->assertEquals("some-title-24-". md5($poem['id']), $poem['slug']);
+    }
 }

@@ -38,10 +38,11 @@ use App\Notifications\PoemWasUpdated;
         $this->assertInstanceOf('App\Channel',$poem->channel);
     }
 /** @test */
-    function a_poem_can_make_a_string_path()
+    function a_poem_has_a_path()
     {
         $poem = create("App\Poem");
-        $this->assertEquals("/poems/{$poem->channel->slug}/{$poem->id}",$poem->path());
+        $this->assertEquals("/poems/{$poem->channel->slug}/{$poem->slug}",$poem->path());
+      
     }
 
 
@@ -109,10 +110,10 @@ use App\Notifications\PoemWasUpdated;
     $this->signIn();
     $poem = create('App\Poem');
     tap(auth()->user(), function($user) use ($poem){
-        $this->assertTrue($poem->hasUpdatedFor($user));
+        $this->assertTrue($poem->hasUpdatesFor($user));
 
     $user->read($poem);
-        $this->assertFalse($poem->hasUpdatedFor($user));
+        $this->assertFalse($poem->hasUpdatesFor($user));
 
         
 

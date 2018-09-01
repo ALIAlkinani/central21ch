@@ -25,9 +25,9 @@ Route::get('verify/{token}','VerifyController@verify')->name('verify');
 Route::get('/poems/create', 'PoemsController@create');
 
 Route::get('/poems/{channel}', 'PoemsController@index');
-Route::get('/poems', 'PoemsController@index');
+Route::get('/poems', 'PoemsController@index')->name('home');
 
-Route::post('/poems', 'PoemsController@store')->name('home');
+Route::post('/poems', 'PoemsController@store')->name('poems');
 
 
 Route::get('/profile/{user}','ProfilesController@show')->name('profile');

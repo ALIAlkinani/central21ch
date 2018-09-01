@@ -20,7 +20,7 @@ class Poem extends Model
 
     public function path()
     {
-        return "/poems/{$this->channel->slug}/{$this->id}";
+        return "/poems/{$this->channel->slug}/{$this->slug}";
     }
     public function replies()
     {
@@ -78,6 +78,9 @@ class Poem extends Model
             $poem->replies->each->delete();
 
         });
+        static::created(function ($poem) {
+            $poem->update(['slug' => $poem->title]);
+        });
     }
     public function subscribe($userid = null)
     {
@@ -118,7 +121,28 @@ class Poem extends Model
     return false;
 
     }
-        
+    
+    /**
+     * Get the route key name.
+     *
+     * @return string
+     */
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+     /**
+     * Set the proper slug attribute.
+     *
+     * @param string $value
+     */
+    public function setSlugAttribute($value)
+    {
+        if (static::whereSlug($slug = str_slug($value))->exists()) {
+            $slug = "{$slug}-" . md5($this->id);
+        }
+        $this->attributes['slug'] = $slug;
+    }
     }
     
 

@@ -64,7 +64,7 @@ class ReplyTest extends TestCase
             'body' => 'Hello @Samm-Doe.'
         ]);
         $this->assertEquals(
-            'Hello <a href="/profiles/Samm-Doe">@Samm-Doe</a>.',
+            'Hello <a href="/profile/Samm-Doe">@Samm-Doe</a>.',
             $reply->body
         );
     }
