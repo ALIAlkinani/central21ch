@@ -46,8 +46,12 @@ Route::delete('/poems/{channel}/{poem}/subscriptions', 'PoemsSubscriptionsContro
 
 Route::delete('/poems/{channel}/{poem}', 'PoemsController@destroy');
 
-Route::delete('/replies/{reply}', 'RepliesController@destroy');
+Route::delete('/replies/{reply}', 'RepliesController@destroy')->name('replies.destroy');
+
 Route::patch('/replies/{reply}', 'RepliesController@update');
+
+// best reply
+Route::post('/replies/{reply}/best', 'BestRepliesController@store')->name('best-replies.store');
 
 
 

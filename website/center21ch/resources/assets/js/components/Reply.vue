@@ -2,16 +2,16 @@
 
 <div>  
   <br>
-        <div :id="'reply-'+id" class="card text-white bg-danger mb-3">  
+        <div :id="'reply-'+id" class="card text-white mb-3" :class="isBest ? 'bg-success': 'bg-danger '">  
             
                
             <div class="card-header level">
             
-                <h5 class="flex"><a :href="'/profile/'+data.owner.name" v-text="data.owner.name"></a> said at
+                <h5 class="flex"><a :href="'/profile/'+reply.owner.name" v-text="reply.owner.name"></a> said at
                     <span v-text="ago"></span></h5>
                 <div v-if="signedIn">
                   
-                    <favorite :reply="data"></favorite>
+                    <favorite :reply="reply"></favorite>
                    
                     </div>
             </div>
@@ -35,24 +35,20 @@
 
               
                     
-          <div v-if="canUpdate">
-                <div class="card-footer">
+
+                <div class="card-footer level " v-if="this.authorize('owns', reply) || this.authorize('owns', reply.poem)">
                
-                    <button  class="btn btn-xs mr-1" @click="editing = true">Edit</button>
-                    <button   class="btn btn-danger btn-xs"  @click="destroy">Delete</button>
-               
+                   <div v-if="this.authorize('owns', reply)" >
+                     <button  class="btn btn-xs btn-outline-light mr-1" @click="editing = true">Edit</button>
+                    <button   class="btn btn-outline-dark btn-xs"  @click="destroy">Delete</button>
+                   </div>
+                 <button class="btn btn-sx btn-outline-light ml-a"  @click="markBestReply" v-if="this.authorize('owns', reply.poem)" v-show="!isBest">Best Reply?</button>
             </div>
+           
           </div>
                
             </div>
-               
-            
-            
-          <!--   @can('update', $reply)
-    
-                
-            @endcan -->
-    </div>    
+     
         
     
       
@@ -71,36 +67,36 @@
 <script>
  import moment from 'moment-timezone';
    export default {
-        props: ['data'],
+        props: ['reply'],
        
 
 
         data() {
             return {
                 editing: false,
-                body: this.data.body,
-                id: this.data.id,
-                created_at: this.data.created_at,
+                body: this.reply.body,
+                id: this.reply.id,
+                created_at: this.reply.created_at,
+                isBest : this.reply.isBest,
+                
 
             
             };
         },
         computed:{
             ago(){
-                return moment.tz(this.data.created_at,"America/Danmarkshavn").fromNow();
+                return moment.tz(this.reply.created_at,"America/Danmarkshavn").fromNow();
 
+            }        
             },
-            signedIn(){
-                return window.App.signedIn;
-            },
-        canUpdate(){
-            return this.authorize(user => this.data.user_id == user.id);
-        }
-
+             created () {
+            window.events.$on('best-reply-selected', id => {
+                this.isBest = (id === this.id);
+            });
         },
         methods:{
             update(){
-                axios.patch('/replies/'+this.data.id,{
+                axios.patch('/replies/'+this.id,{
 
                 body: this.body
                     })
@@ -119,15 +115,21 @@
 
              destroy(){
 
-                 axios.delete('/replies/'+this.data.id);
+                 axios.delete('/replies/'+this.id);
 
-                 this.$emit('deleted',this.data.id);
+                 this.$emit('deleted',this.id);
 
 
                          flash('Deleted!, your commit was deleted successfully.', 'warning');
-        
+                         
+             },
 
-                 
+             markBestReply(){
+
+                 axios.post('/replies/' + this.id + '/best');
+
+                window.events.$emit('best-reply-selected', this.id);             
+
              }
            
  

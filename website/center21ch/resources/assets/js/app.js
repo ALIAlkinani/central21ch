@@ -7,13 +7,6 @@
 
 require('./bootstrap');
 window.Vue = require('vue'); 
-window.Vue.prototype.authorize = function(handler){
-
-    let user = window.App.user;
-
-    return user ? handler(user) : false;
-
-}
 
 // flash messaging
 import { library } from '@fortawesome/fontawesome-svg-core'
