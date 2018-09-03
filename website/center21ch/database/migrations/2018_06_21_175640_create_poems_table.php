@@ -20,6 +20,7 @@ class CreatePoemsTable extends Migration
             $table->unsignedInteger('replies_count')->default(0);
             $table->unsignedInteger('visits')->default(0);
             $table->string('title');
+            $table->boolean('locked')->default(false);
             $table->unsignedInteger('best_reply_id')->nullable();
             $table->string('slug')->unique()->nullable();
             $table->text('body');

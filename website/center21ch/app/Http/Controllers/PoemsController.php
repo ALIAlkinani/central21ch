@@ -63,6 +63,8 @@ class PoemsController extends Controller
      */
     public function store(Request $request, Spam $spam)
     {
+
+        
        
         $this->validate($request,[
             'title' => 'required|spamfree',
@@ -129,7 +131,7 @@ class PoemsController extends Controller
      */
     public function update(Request $request, Poem $poem)
     {
-        //
+        
     }
 
     /**

@@ -147,6 +147,14 @@ class Poem extends Model
     {
         $this->update(['best_reply_id' => $reply->id]);
     }
+
+        /**
+     * Lock the Poem.
+     */
+    public function lock()
+    {
+        $this->update(['locked' => true]);
+    }
     }
     
 

@@ -16,11 +16,16 @@ class RepliesController extends Controller
     {
         $this->middleware('auth',['except'=>'index']);
     }
-    public function store($channelId, Poem $Poem, CreatePostRequest $form)
+    public function store($channelId, Poem $poem, CreatePostRequest $form)
     {
+
+
+        if ($poem->locked) {
+            return response('Poem is locked', 422);
+        }
      
 
-      return $Poem->addReply([
+      return $poem->addReply([
             'body' => request('body'),
             'user_id'=> auth()->id()
         ])->load('owner');

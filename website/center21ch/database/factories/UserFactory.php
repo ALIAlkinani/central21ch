@@ -22,6 +22,12 @@ $factory->define(App\User::class, function (Faker $faker) {
     ];
   
 });
+$factory->state(App\User::class, 'administrator', function () {
+    return [
+        'name' => 'ali'
+    ];
+});
+
 
 $factory->define(App\Poem::class, function (Faker $faker) {
     $title = $faker->sentence;
@@ -36,6 +42,7 @@ $factory->define(App\Poem::class, function (Faker $faker) {
         'body'=>$faker->paragraph,
         'visits' => 0,
         'slug' => str_slug($title),
+        'locked' => false,
     ];
 });
 

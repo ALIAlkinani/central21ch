@@ -89,4 +89,14 @@ class User extends Authenticatable
             return asset($path);
         }
 
+        /**
+     * Determine if the user is an administrator.
+     *
+     * @return bool
+     */
+    public function isAdmin()
+    {
+        return in_array($this->name, ['ali', 'ali']);
+    }
+
 }

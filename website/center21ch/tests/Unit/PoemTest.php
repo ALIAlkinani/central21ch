@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\PoemWasUpdated;
+use app\Poem;
 
  class PoemTest extends TestCase
 {
@@ -124,6 +125,13 @@ use App\Notifications\PoemWasUpdated;
 
 }
   
-    
+    /** @test */
+    function a_poem_may_be_locked()
+    {
+        $this->poem = create('App\Poem');
+        $this->assertFalse($this->poem->locked);
+        $this->poem->lock();
+        $this->assertTrue($this->poem->locked);
+    }
    
 }
