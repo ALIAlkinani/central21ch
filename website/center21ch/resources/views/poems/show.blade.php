@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <poem-view :initial-replies-count="{{ $poem->replies_count }}" inline-template>
+    <poem-view :poem="{{ $poem }}" inline-template>
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
@@ -54,8 +54,23 @@
                                 .
                             </p>
 
-                            <p>
-                                <subscribe-button :active="{{ json_encode($poem->isSubscribedTo) }}"></subscribe-button>
+                            <p class="level">
+                                <subscribe-button :active="{{ json_encode($poem->isSubscribedTo) }}" v-if="signedIn"></subscribe-button>
+
+                                <button   class="btn ml-a" :class="!locked ? 'btn-outline-success': 'btn-outline-warning '"
+                                        v-if="authorize('isAdmin')"
+                                        @click="toggleLock">
+                                         
+                                       <p v-if="locked" >
+                                            <font-awesome-icon icon="lock" />
+                                        </p> 
+                                        
+                                        <p v-else>
+                                                <font-awesome-icon  icon="unlock" />
+                                        </p>
+                                        
+                                      
+                                    </button>
                             </p>
                         </div>
                     </div>

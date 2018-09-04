@@ -12,13 +12,18 @@ window.Vue = require('vue');
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faBell} from '@fortawesome/free-solid-svg-icons'
+import { faLock} from '@fortawesome/free-solid-svg-icons'
+import { faUnlock} from '@fortawesome/free-solid-svg-icons'
+
 
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 library.add(faHeart)
 library.add(faBell)
-
+library.add(faLock)
+library.add(faUnlock)
+ 
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 

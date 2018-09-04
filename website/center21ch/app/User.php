@@ -96,7 +96,7 @@ class User extends Authenticatable
      */
     public function isAdmin()
     {
-        return in_array($this->name, ['ali', 'ali']);
+        return in_array($this->name, ['ali', 'Dane']);
     }
 
 }

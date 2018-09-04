@@ -17,6 +17,10 @@ class Poem extends Model
     protected $with=['creator','channel'];
     protected $appends = ['isSubscribedTo'];
 
+    protected $casts = [
+        'locked' => 'boolean'
+    ];
+
 
     public function path()
     {
@@ -154,6 +158,13 @@ class Poem extends Model
     public function lock()
     {
         $this->update(['locked' => true]);
+    }
+        /**
+     * unLock the Poem.
+     */
+    public function unlocked()
+    {
+        $this->update(['locked' => false]);
     }
     }
     

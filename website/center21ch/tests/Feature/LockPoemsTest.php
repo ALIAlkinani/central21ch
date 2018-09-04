@@ -22,6 +22,8 @@ class LockPoemsTest extends TestCase
         $poem = create('App\Poem', ['user_id' => auth()->id()]);
         $this->post(route('locked-poems.store', $poem));
         $this->assertTrue(! ! $poem->fresh()->locked, 'Failed asserting that the poem was locked.');
+        $this->delete(route('locked-poems.destroy', $poem));
+        $this->assertFalse($poem->fresh()->locked, 'Failed asserting that the poem was unlocked.');
     }
     /** @test */
     public function once_locked_a_poem_may_not_receive_new_replies()
@@ -34,4 +36,5 @@ class LockPoemsTest extends TestCase
             'user_id' => auth()->id()
         ])->assertStatus(422);
     }
+   
 }

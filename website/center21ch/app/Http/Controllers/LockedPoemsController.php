@@ -16,4 +16,14 @@ class LockedPoemsController extends Controller
     {
         $poem->lock();
     }
+
+    /**
+     * Lock the given poem.
+     *
+     * @param \App\Poem $poem
+     */
+     public function destroy(Poem $poem)
+    {
+        $poem->unlocked();
+    }
 }

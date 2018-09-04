@@ -62,3 +62,4 @@ Route::post('/poems/{channel}/{poem}/replies', 'RepliesController@store')->name(
 Route::get('/poems/{channel}/{poem}/replies', 'RepliesController@index');
 Route::post('api/users/{user}/avatar', 'Api\UserAvatarController@store')->middleware('auth')->name('avatar'); 
 Route::post('locked-poems/{poem}', 'LockedPoemsController@store')->name('locked-poems.store')->middleware('admin');
+Route::delete('locked-poems/{poem}', 'LockedPoemsController@destroy')->name('locked-poems.destroy')->middleware('admin'); 
