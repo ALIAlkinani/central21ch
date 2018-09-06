@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Inspections\Spam;
 use App\Trending;
+use App\Rules\Recaptcha;
 
 
 class PoemsController extends Controller
@@ -61,16 +62,18 @@ class PoemsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Spam $spam)
+    public function store(Request $request, Spam $spam, Recaptcha $recaptcha)
     {
-
+           
         
        
         $this->validate($request,[
             'title' => 'required|spamfree',
             'body' => 'required|spamfree',
             //make the sure the the channal id is not null and exists and the database;
-            'channel_id' =>'required|exists:channels,id'
+            'channel_id' =>'required|exists:channels,id',
+            'g-recaptcha-response' => ['required', $recaptcha]
+
         ]);
         
         $poem = Poem::create([
