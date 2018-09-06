@@ -72,7 +72,7 @@ class PoemsController extends Controller
             'body' => 'required|spamfree',
             //make the sure the the channal id is not null and exists and the database;
             'channel_id' =>'required|exists:channels,id',
-            'g-recaptcha-response' => ['required', $recaptcha]
+            'g-recaptcha-response' => [ $recaptcha]
 
         ]);
         
@@ -132,10 +132,7 @@ class PoemsController extends Controller
      * @param  \App\Poems  $poems
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Poem $poem)
-    {
-        
-    }
+   
 
     /**
      * Remove the specified resource from storage.
@@ -166,6 +163,22 @@ class PoemsController extends Controller
         return $poems->paginate(5);;
 
         
+    }
+    
+    /**
+     * Update the given poem.
+     *
+     * @param string $channel
+     * @param Poem $poem
+     */
+    public function update($channel, Poem $poem)
+    {
+        $this->authorize('update', $poem);
+        $poem->update(request()->validate([
+            'title' => 'required',
+            'body' => 'required'
+        ]));
+        return $poem;
     }
 
     

@@ -5,40 +5,11 @@
 @endsection
 
 @section('content')
-    <poem-view :poem="{{ $poem }}" inline-template>
+    <poem-view :poem="{{ $poem }}" inline-template v-cloak>
         <div class="container">
             <div class="row">
-                <div class="col-md-8">
-                    <div class="card text-white bg-dark mb-3">
-                        <div class="card-header">
-                            <div class="level">
-                                <img src="{{ $poem->creator->avatar_path }}"
-                                     alt="{{ $poem->creator->name }}"
-                                     width="25"
-                                     height="25"
-                                     class="mr-1">
-
-                                <span class="flex">
-                                    <a href="{{ route('profile', $poem->creator) }}">{{ $poem->creator->name }}</a> posted:
-                                    {{ $poem->title }}
-                                </span>
-
-                                @can ('update', $poem)
-                                    <form action="{{ $poem->path() }}" method="POST">
-                                        {{ csrf_field() }}
-                                        {{ method_field('DELETE') }}
-
-                                        <button type="submit" class="btn btn-danger">Delete Poem</button>
-                                    </form>
-                                @endcan
-                            </div>
-                        </div>
-
-                        <div class="card-body">
-                            {{ $poem->body }}
-                        </div>
-                        <br>
-                    </div>
+                <div class="col-md-8" >
+                   @include('poems._content')
 
                     <replies @added="repliesCount++" @removed="repliesCount--"></replies>
                 </div>
@@ -55,7 +26,8 @@
                             </p>
 
                             <p class="level">
-                                <subscribe-button :active="{{ json_encode($poem->isSubscribedTo) }}" v-if="signedIn"></subscribe-button>
+                                <span v-if="!authorize('owns', poem)">  <subscribe-button :active="{{ json_encode($poem->isSubscribedTo) }}" v-if="signedIn"></subscribe-button></span>
+                               
 
                                 <button   class="btn ml-a" :class="!locked ? 'btn-outline-success': 'btn-outline-warning '"
                                         v-if="authorize('isAdmin')"

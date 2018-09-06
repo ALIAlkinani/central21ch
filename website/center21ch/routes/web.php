@@ -23,6 +23,7 @@ Route::get('/home', 'HomeController@index');
 Route::get('verify/{token}','VerifyController@verify')->name('verify');
 
 Route::get('/poems/create', 'PoemsController@create');
+Route::patch('poems/{channel}/{poem}', 'PoemsController@update');
 
 Route::get('/poems/{channel}', 'PoemsController@index');
 Route::get('/poems', 'PoemsController@index')->name('home');

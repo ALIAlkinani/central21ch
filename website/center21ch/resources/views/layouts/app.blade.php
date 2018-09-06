@@ -37,6 +37,7 @@
             .ml-1 { margin-left: 1em; }
             [v-cloak] { display: none; }
             .ml-a{margin-left: auto;}
+            .level-item { margin-right: 1em; }
         </style>
     @yield('head')
 </head>
