@@ -40,6 +40,7 @@ Vue.component('avatar-form', require('./components/AvatarForm.vue'));
 Vue.component('flash', require('./components/Flash.vue'));
 Vue.component('paginator', require('./components/Paginator.vue'));
 Vue.component('user_notification', require('./components/UserNotification.vue'));
+Vue.component('wysiwyg', require('./components/Wysiwyg.vue'));
 
 
 Vue.component('poem-view', require('./pages/Poem.vue'));

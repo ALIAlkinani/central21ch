@@ -22,7 +22,7 @@
                         
      <div v-if="editing">
     <div class="form-group">
-        <textarea class="form-control" v-model="body"></textarea>
+        <wysiwyg v-model="body"></wysiwyg>
          <button class="btn btn-xs mr-1" @click="update"> Save</button>
         <button class="btn btn-primary btn-xs " @click="editing = false"> Cancel</button>
     </div>

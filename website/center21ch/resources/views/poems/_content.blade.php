@@ -8,7 +8,7 @@
 
     <div class="card-body">
         <div class="form-group">
-            <textarea class="form-control" rows="10" v-model="form.body"></textarea>
+                <wysiwyg v-model="form.body"></wysiwyg>
         </div>
     </div>
 
@@ -49,7 +49,7 @@
         </div>
     </div>
 
-    <div class="card-body" v-text="body"></div>
+    <div class="card-body" v-html="body"></div>
 
     <div class="footer" v-if="authorize('owns', poem)">
         <button class="btn btn-xs" @click="editing = true">Edit</button>

@@ -133,5 +133,11 @@ use app\Poem;
         $this->poem->lock();
         $this->assertTrue($this->poem->locked);
     }
+    /** @test */
+    function a_poems_body_is_sanitized_automatically()
+    {
+        $poem = make('App\Poem', ['body' => '<script>alert("bad")</script><p>This is okay.</p>']);
+        $this->assertEquals("<p>This is okay.</p>", $poem->body);
+    }
    
 }
