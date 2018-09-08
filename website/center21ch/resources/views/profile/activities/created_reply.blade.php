@@ -15,7 +15,7 @@
         
 
 
-{{  $activity->subject->body  }}
+{!! $activity->subject->body  !!}
     
 @endslot
     

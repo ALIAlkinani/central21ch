@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="card-body">
-            <div class="body">{{ $poem->body }}</div>
+            <div class="body">{!! $poem->body !!}</div>
         </div>
     <div class="card-footer">
       {{ $poem->visits }}  visits 

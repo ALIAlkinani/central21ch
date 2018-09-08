@@ -29,7 +29,7 @@
                                 <span v-if="!authorize('owns', poem)">  <subscribe-button :active="{{ json_encode($poem->isSubscribedTo) }}" v-if="signedIn"></subscribe-button></span>
                                
 
-                                <button   class="btn ml-a" :class="!locked ? 'btn-outline-success': 'btn-outline-warning '"
+                                <button   class="btn ml-a" :class="!locked ? 'btn-outline-success': 'btn-outline-danger '"
                                         v-if="authorize('isAdmin')"
                                         @click="toggleLock">
                                          
