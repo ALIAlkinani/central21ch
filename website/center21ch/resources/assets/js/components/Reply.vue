@@ -2,7 +2,7 @@
 
 <div>  
   <br>
-        <div :id="'reply-'+id" class="card text-white mb-3" :class="isBest ? 'bg-success': 'bg-danger '">  
+        <div :id="'reply-'+id" class="card text-white mb-3" :class="isBest ? 'bg-success': 'bg-info '">  
             
                
             <div class="card-header level">
