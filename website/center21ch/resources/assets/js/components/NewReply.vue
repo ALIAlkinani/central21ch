@@ -3,10 +3,7 @@
 
      <div v-if="signedIn">
           <div class="form-group">
-                <textarea name="body" id="body" class="form-control" 
-                placeholder="write someting here" rows="5" required v-model="body">
-
-                </textarea>
+                <wysiwyg name="body" v-model="body" placeholder="Have something to say?" :shouldClear="completed"></wysiwyg>
 
      </div>
 
@@ -36,15 +33,8 @@ export default {
     data(){
         return{
             body:'',
-            
+            completed: false,
         };
-
-    },
-    computed:{
-
-         signedIn(){
-                return window.App.signedIn;
-            },
 
     },
     mounted() {
@@ -70,6 +60,7 @@ export default {
             })
             .then(({data}) =>{
                 this.body='';
+                this.completed = true;
                 flash('you reply has been posted');
                 this.$emit('created',data);
 

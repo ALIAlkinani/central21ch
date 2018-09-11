@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Inspections\Spam;
 use App\Trending;
+use App\Rules\Recaptcha;
 
 
 class PoemsController extends Controller
@@ -61,14 +62,18 @@ class PoemsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Spam $spam)
+    public function store(Request $request, Spam $spam, Recaptcha $recaptcha)
     {
+           
+        
        
         $this->validate($request,[
             'title' => 'required|spamfree',
             'body' => 'required|spamfree',
             //make the sure the the channal id is not null and exists and the database;
-            'channel_id' =>'required|exists:channels,id'
+            'channel_id' =>'required|exists:channels,id',
+            'g-recaptcha-response' => [ $recaptcha]
+
         ]);
         
         $poem = Poem::create([
@@ -80,9 +85,10 @@ class PoemsController extends Controller
             'lat'  =>request('lat'),
             'lng'  =>request('lng'),
             'title' =>request('title')
-
-
         ]);
+        if (request()->wantsJson()) {
+            return response($poem, 201);
+        }
 
         return redirect($poem->path())->with('flash','Your poem has been published')
     ;
@@ -127,10 +133,7 @@ class PoemsController extends Controller
      * @param  \App\Poems  $poems
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Poem $poem)
-    {
-        //
-    }
+   
 
     /**
      * Remove the specified resource from storage.
@@ -161,6 +164,22 @@ class PoemsController extends Controller
         return $poems->paginate(5);;
 
         
+    }
+    
+    /**
+     * Update the given poem.
+     *
+     * @param string $channel
+     * @param Poem $poem
+     */
+    public function update($channel, Poem $poem)
+    {
+        $this->authorize('update', $poem);
+        $poem->update(request()->validate([
+            'title' => 'required',
+            'body' => 'required'
+        ]));
+        return $poem;
     }
 
     

@@ -5,10 +5,23 @@ namespace Tests\Feature;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use App\Poem;
+use Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+use App\Rules\Recaptcha;
 
 class createPoemTest extends TestCase
 {
-    use RefreshDatabase;
+    use RefreshDatabase, MockeryPHPUnitIntegration ;
+
+    public function setUp()
+    {
+        parent::setUp();
+        app()->singleton(Recaptcha::class, function () {
+            return \Mockery::mock(Recaptcha::class, function ($m) {
+                $m->shouldReceive('passes')->andReturn(true);
+            });
+        });
+    }
         /** @test */
         public function an_unauthenticated_user_cannot_create_a_poem()
         {
@@ -36,8 +49,8 @@ class createPoemTest extends TestCase
         $poem= make('App\Poem');
       
         //create the url and pass the poem to it 
-       $response =  $this->post('/poems',$poem->toArray());
-
+       $response =  $this->post('/poems',$poem->toArray() + ['g-recaptcha-response' => 'token']);
+       
         //make sure we see the body and the title in poem page
         $this->get($response->headers->get('location'))
         ->assertSee($poem->title)
@@ -150,4 +163,29 @@ class createPoemTest extends TestCase
           $this->delete($poem->path())->assertStatus(403); 
       }
            
+        /** @test */
+    function a_poem_requires_a_unique_slug()
+    {
+        $this->signIn();
+        $poem = create('App\Poem', ['title' => 'Foo Title']);
+        $this->assertEquals($poem->slug, 'foo-title');
+        $poem = $this->postJson(route('poems'), $poem->toArray()+ ['g-recaptcha-response' => 'token'])->json();
+        $this->assertEquals("foo-title-".md5($poem['id']), $poem['slug']);
+    }
+    /** @test */
+    function a_poem_with_a_title_that_ends_in_a_number_should_generate_the_proper_slug()
+    {
+        $this->signIn();
+        $poem = create('App\Poem', ['title' => 'Some Title 24']);
+        $poem = $this->postJson(route('poems'), $poem->toArray() + ['g-recaptcha-response' => 'token'])->json();
+        $this->assertEquals("some-title-24-". md5($poem['id']), $poem['slug']);
+    }
+
+     /** @test */
+     function a_poem_requires_recaptcha_verification()
+     {
+         unset(app()[Recaptcha::class]);
+         $this->publish_a_poem(['g-recaptcha-response' => 'test'])
+             ->assertSessionHasErrors('g-recaptcha-response');
+     }
 }

@@ -10608,3 +10608,12 @@ body {
   font-weight: normal;
 }
 
+button > p {
+  margin: 0;
+}
+
+.footer {
+  margin-bottom: 5px;
+  padding-bottom: 10px;
+}
+

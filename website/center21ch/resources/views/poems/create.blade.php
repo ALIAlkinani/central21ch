@@ -1,4 +1,8 @@
 @extends('layouts.app')
+@section('head')
+<script src='https://www.google.com/recaptcha/api.js'></script>
+    
+@endsection
 
 @section('content')
 <div class="container">
@@ -104,14 +108,20 @@
                     </div>
                     <div class="form-group">
                       <label >Body</label>
-                      <textarea class="form-control" name="body" id="body"  value="{{ old('body') }}" rows="5" required>{{ old('body') }}</textarea>
+                      <wysiwyg name="body"></wysiwyg>
+                    </div>
+
+                    <div class="form-group">
+                            <div class="g-recaptcha" data-sitekey="6LfSYm4UAAAAAFGTRnQ06B_JVK3YfUbBN8LxtBIJ"></div>
                     </div>
                     <div class="form-group">
                       <label >Poem language</label>
                       <input type="text" name="language" id="language" class="form-control" value="{{ old('language') }}" aria-describedby="helpId" required>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Create</button>
+                    <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Create</button>
+                    </div>
                     <hr>
                   
                     @include('layouts.errors')

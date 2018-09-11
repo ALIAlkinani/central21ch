@@ -7,25 +7,23 @@
 
 require('./bootstrap');
 window.Vue = require('vue'); 
-window.Vue.prototype.authorize = function(handler){
-
-    let user = window.App.user;
-
-    return user ? handler(user) : false;
-
-}
 
 // flash messaging
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faBell} from '@fortawesome/free-solid-svg-icons'
+import { faLock} from '@fortawesome/free-solid-svg-icons'
+import { faUnlock} from '@fortawesome/free-solid-svg-icons'
+
 
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 library.add(faHeart)
 library.add(faBell)
-
+library.add(faLock)
+library.add(faUnlock)
+ 
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
@@ -42,6 +40,7 @@ Vue.component('avatar-form', require('./components/AvatarForm.vue'));
 Vue.component('flash', require('./components/Flash.vue'));
 Vue.component('paginator', require('./components/Paginator.vue'));
 Vue.component('user_notification', require('./components/UserNotification.vue'));
+Vue.component('wysiwyg', require('./components/Wysiwyg.vue'));
 
 
 Vue.component('poem-view', require('./pages/Poem.vue'));

@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\PoemWasUpdated;
+use app\Poem;
 
  class PoemTest extends TestCase
 {
@@ -38,10 +39,11 @@ use App\Notifications\PoemWasUpdated;
         $this->assertInstanceOf('App\Channel',$poem->channel);
     }
 /** @test */
-    function a_poem_can_make_a_string_path()
+    function a_poem_has_a_path()
     {
         $poem = create("App\Poem");
-        $this->assertEquals("/poems/{$poem->channel->slug}/{$poem->id}",$poem->path());
+        $this->assertEquals("/poems/{$poem->channel->slug}/{$poem->slug}",$poem->path());
+      
     }
 
 
@@ -109,10 +111,10 @@ use App\Notifications\PoemWasUpdated;
     $this->signIn();
     $poem = create('App\Poem');
     tap(auth()->user(), function($user) use ($poem){
-        $this->assertTrue($poem->hasUpdatedFor($user));
+        $this->assertTrue($poem->hasUpdatesFor($user));
 
     $user->read($poem);
-        $this->assertFalse($poem->hasUpdatedFor($user));
+        $this->assertFalse($poem->hasUpdatesFor($user));
 
         
 
@@ -123,6 +125,19 @@ use App\Notifications\PoemWasUpdated;
 
 }
   
-    
+    /** @test */
+    function a_poem_may_be_locked()
+    {
+        $this->poem = create('App\Poem');
+        $this->assertFalse($this->poem->locked);
+        $this->poem->lock();
+        $this->assertTrue($this->poem->locked);
+    }
+    /** @test */
+    function a_poems_body_is_sanitized_automatically()
+    {
+        $poem = make('App\Poem', ['body' => '<script>alert("bad")</script><p>This is okay.</p>']);
+        $this->assertEquals("<p>This is okay.</p>", $poem->body);
+    }
    
 }

@@ -14,7 +14,7 @@ class Reply extends Model
     use favorable, RecordActivity;
     protected $guarded=[];
     protected $with = ['owner','favorites'];
-    protected $appends = ['FavoritesCount','isFavorited'];
+    protected $appends = ['FavoritesCount','isFavorited', 'isBest'];
    
 
     public function owner()
@@ -81,4 +81,27 @@ protected static function boot(){
             $body
         );
     } 
+    /**
+     * Determine if the current reply is marked as the best.
+     *
+     * @return bool
+     */
+    public function isBest()
+    {
+        return $this->poem->best_reply_id == $this->id;
+    }
+    public function getIsBestAttribute()
+    {
+        return $this->isBest();
+    }
+     /**
+     * Access the body attribute.
+     *
+     * @param  string $body
+     * @return string
+     */
+    public function getBodyAttribute($body)
+    {
+        return \Purify::clean($body);
+    }
 }

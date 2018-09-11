@@ -1,14 +1,17 @@
 <template>
 <div>
     <div v-for=" (reply, index) in items" :key="reply.id">
-        <reply :data="reply" @deleted="remove(index)"></reply>
+        <reply :reply="reply" @deleted="remove(index)"></reply>
 
 
     </div >
 
     <paginator :dataSet="dataSet" @updated="fetch"></paginator> 
   
-   <new-reply @created="add"></new-reply> 
+   <p v-if="$parent.locked">
+            This poem has been locked. No more replies are allowed.
+        </p>
+        <new-reply @created="add" v-else></new-reply>
 
   
 </div>

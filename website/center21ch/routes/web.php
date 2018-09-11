@@ -23,11 +23,12 @@ Route::get('/home', 'HomeController@index');
 Route::get('verify/{token}','VerifyController@verify')->name('verify');
 
 Route::get('/poems/create', 'PoemsController@create');
+Route::patch('poems/{channel}/{poem}', 'PoemsController@update');
 
 Route::get('/poems/{channel}', 'PoemsController@index');
-Route::get('/poems', 'PoemsController@index');
+Route::get('/poems', 'PoemsController@index')->name('home');
 
-Route::post('/poems', 'PoemsController@store')->name('home');
+Route::post('/poems', 'PoemsController@store')->name('poems');
 
 
 Route::get('/profile/{user}','ProfilesController@show')->name('profile');
@@ -46,8 +47,12 @@ Route::delete('/poems/{channel}/{poem}/subscriptions', 'PoemsSubscriptionsContro
 
 Route::delete('/poems/{channel}/{poem}', 'PoemsController@destroy');
 
-Route::delete('/replies/{reply}', 'RepliesController@destroy');
+Route::delete('/replies/{reply}', 'RepliesController@destroy')->name('replies.destroy');
+
 Route::patch('/replies/{reply}', 'RepliesController@update');
+
+// best reply
+Route::post('/replies/{reply}/best', 'BestRepliesController@store')->name('best-replies.store');
 
 
 
@@ -57,3 +62,5 @@ Route::post('/poems/{channel}/{poem}/replies', 'RepliesController@store')->name(
 
 Route::get('/poems/{channel}/{poem}/replies', 'RepliesController@index');
 Route::post('api/users/{user}/avatar', 'Api\UserAvatarController@store')->middleware('auth')->name('avatar'); 
+Route::post('locked-poems/{poem}', 'LockedPoemsController@store')->name('locked-poems.store')->middleware('admin');
+Route::delete('locked-poems/{poem}', 'LockedPoemsController@destroy')->name('locked-poems.destroy')->middleware('admin'); 
