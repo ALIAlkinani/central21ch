@@ -39,84 +39,12 @@
                       <small id="helpId" class="text-muted">Write the name of the poem here.</small>
                     </div>
                     <div class="form-group">
-                      <label >Author</label>
-                      <input type="text" name="author" id="author" class="form-control" value="{{ old('author') }}" aria-describedby="helpId" required>
-                      <small id="helpId" class="text-muted">Write the author of the poem here.</small>
-                    </div>
-                    <div class="form-group">
-                      <label >Location</label>
-                      <small id="helpId" class="text-muted">Right click on the map below to select a location.</small>
-                      <div id="map" style="width:100%;height:400px;">
-                        <script>
-                var markers = [];
-                
-                function myMap() {
-                    var mapCanvas = document.getElementById("map");
-                    var centre=new google.maps.LatLng(0, 0);
-                    var mapOptions = {center: centre, zoom: 2};
-                    var map = new google.maps.Map(mapCanvas, mapOptions);
-                    google.maps.event.addListener(map, 'rightclick', function(event) {
-                      deleteMarkers();
-                      placeMarker(map, event.latLng);
-                      //set value of input fields
-                      document.getElementById("lat").value = event.latLng.lat();
-                      document.getElementById("lng").value = event.latLng.lng();
-                    });
-                }
-                
-                function setMapOnAll(map) {
-                    for (var i = 0; i < markers.length; i++) {
-                         markers[i].setMap(map);
-                    }
-                }
-                
-                function clearMarkers() {
-                    setMapOnAll(null);
-                }
-                
-                function deleteMarkers() {
-                    clearMarkers();
-                    markers = [];
-                }
-
-                function placeMarker(map, location) {
-                    var marker = new google.maps.Marker({
-                      position: location,
-                      map: map
-                    });
-                    var infowindow = new google.maps.InfoWindow({
-                        content: 'Latitude: ' + location.lat() + '<br>Longitude: ' + location.lng()
-                    });
-                    infowindow.open(map,marker);
-                    markers.push(marker);
-                }   
-                        </script>
-
-                        <script async defer
-                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBW9FAJC34z2wKmGJJvW-QxF_ObdLfuzH4&callback=myMap">
-                        </script>
-
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label >Latitude</label>
-                      <input type="text" name="lat" id="lat" class="form-control" value="{{ old('lat') }}" aria-describedby="helpId" required>
-                    </div>
-                    <div class="form-group">
-                      <label >Longitude</label>
-                      <input type="text" name="lng" id="lng" class="form-control" value="{{ old('lng') }}" aria-describedby="helpId" required>
-                    </div>
-                    <div class="form-group">
                       <label >Body</label>
                       <wysiwyg name="body"></wysiwyg>
                     </div>
 
                     <div class="form-group">
                             <div class="g-recaptcha" data-sitekey="6LfSYm4UAAAAAFGTRnQ06B_JVK3YfUbBN8LxtBIJ"></div>
-                    </div>
-                    <div class="form-group">
-                      <label >Poem language</label>
-                      <input type="text" name="language" id="language" class="form-control" value="{{ old('language') }}" aria-describedby="helpId" required>
                     </div>
 
                     <div class="form-group">

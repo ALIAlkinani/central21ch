@@ -80,11 +80,10 @@ class PoemsController extends Controller
             'user_id' => auth()->id(),
             'channel_id'=>request('channel_id'),
             'body'  =>request('body'),
-            'author'  =>request('author'),
-            'language'  =>request('language'),
-            'lat'  =>request('lat'),
-            'lng'  =>request('lng'),
-            'title' =>request('title')
+            'title' =>request('title'),
+            
+
+
         ]);
         if (request()->wantsJson()) {
             return response($poem, 201);

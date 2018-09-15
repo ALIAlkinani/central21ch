@@ -22,7 +22,8 @@
                         
      <div v-if="editing">
     <div class="form-group">
-        <wysiwyg v-model="body"></wysiwyg>
+        <wysiwyg v-model="body">
+        </wysiwyg>
          <button class="btn btn-xs mr-1" @click="update"> Save</button>
         <button class="btn btn-primary btn-xs " @click="editing = false"> Cancel</button>
     </div>

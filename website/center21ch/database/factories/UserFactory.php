@@ -54,8 +54,24 @@ $factory->define(App\Reply::class, function (Faker $faker) {
         'poem_id' => function(){
             return factory('App\Poem')->create()->id;
         },
+
+        
        
         'body'=>$faker->paragraph,
+
+    ];
+});
+$factory->define(App\Translate::class, function (Faker $faker) {
+    return [
+        'user_id' => function(){
+            return factory('App\User')->create()->id;
+        },
+        'poem_id' => function(){
+            return factory('App\Poem')->create()->id;
+        },
+        'language'=> $faker->word,
+        'body'=>$faker->paragraph,
+
     ];
 });
 $factory->define(App\Channel::class, function (Faker $faker) {

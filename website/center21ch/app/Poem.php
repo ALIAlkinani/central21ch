@@ -30,6 +30,11 @@ class Poem extends Model
     {
         return $this->hasMany(Reply::class)   ;
     }
+    public function translates()
+    {
+        return $this->hasMany(translate::class)   ;
+    }
+
 
     public function creator()
     {
@@ -57,6 +62,16 @@ class Poem extends Model
 
 
     }
+    public function addTranslate($translate)
+    {
+       $translate=  $this->translates()->create($translate);
+
+             
+       return $translate;
+
+
+    }
+
 
     public function channel()
     {

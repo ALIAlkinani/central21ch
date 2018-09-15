@@ -31,6 +31,20 @@ use app\Poem;
        ]);
         $this->assertCount(1,$poem->replies);
     }
+    /** @test */
+    function it_has_an_translate()
+    {
+        $poem = create('App\Poem');
+
+         $poem->addTranslate([
+             'language' => 'arabic',
+           'body' => 'add new Translate',
+           'user_id'=> 1
+       ]);
+
+      
+        $this->assertCount(1,$poem->translates);
+    }
      /** @test */
      function a_poem_belongs_to_channel()
     {

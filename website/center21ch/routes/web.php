@@ -28,6 +28,7 @@ Route::patch('poems/{channel}/{poem}', 'PoemsController@update');
 Route::get('/poems/{channel}', 'PoemsController@index');
 Route::get('/poems', 'PoemsController@index')->name('home');
 
+
 Route::post('/poems', 'PoemsController@store')->name('poems');
 
 
@@ -59,8 +60,11 @@ Route::post('/replies/{reply}/best', 'BestRepliesController@store')->name('best-
 /* Route::resource('poems', 'PoemsController');
  */
 Route::post('/poems/{channel}/{poem}/replies', 'RepliesController@store')->name('addReplies');
-
 Route::get('/poems/{channel}/{poem}/replies', 'RepliesController@index');
 Route::post('api/users/{user}/avatar', 'Api\UserAvatarController@store')->middleware('auth')->name('avatar'); 
 Route::post('locked-poems/{poem}', 'LockedPoemsController@store')->name('locked-poems.store')->middleware('admin');
-Route::delete('locked-poems/{poem}', 'LockedPoemsController@destroy')->name('locked-poems.destroy')->middleware('admin'); 
+Route::delete('locked-poems/{poem}', 'LockedPoemsController@destroy')->name('locked-poems.destroy')->middleware('admin');
+
+//translate
+
+Route::post('/poems/{channel}/{poem}/translates', 'TranslatesController@store')->name('addTranslates'); 

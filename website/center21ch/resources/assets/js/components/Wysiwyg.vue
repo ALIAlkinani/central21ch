@@ -4,8 +4,14 @@
         <trix-editor ref="trix" input="trix" :placeholder="placeholder"></trix-editor>
     </div>
 </template>
+
+
+<style lang="scss">
+    @import '~trix/dist/trix.css';
+</style>
 <script>
-    import Trix from 'trix';
+       import Trix from 'trix';
+
     export default {
         props: ['name', 'value', 'placeholder', 'shouldClear'],
         mounted () {
@@ -15,6 +21,14 @@
             this.$watch('shouldClear', () => {
                 this.$refs.trix.value = '';
             });
+
+        
+        
         }
     }
 </script>
+<style scoped>
+trix-editor {
+    min-height: 100px;
+}
+</style>
