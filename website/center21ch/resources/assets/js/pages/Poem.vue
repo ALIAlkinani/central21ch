@@ -1,11 +1,13 @@
 <script>
 import Replies from '../components/Replies.vue';
+import translates from '../components/translates.vue';
+import NewTranslate from '../components/newTranslate.vue';
 import SubscribeButton from '../components/SubscribeButton.vue';
 
 export default { 
     props:['poem'],
 
-     components: {Replies,SubscribeButton},
+     components: {Replies,SubscribeButton,translates,NewTranslate},
     data(){
         return{
                 repliesCount: this.poem.replies_count,

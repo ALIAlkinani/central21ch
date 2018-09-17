@@ -61,14 +61,79 @@ class TranslateTest extends TestCase
 
  }
 
+ /** @test */
+ public function unauthrised_user_maynot_delete_a_Translate()
+ {
+    $this->withExceptionHandling();
 
-      function a_translate_has_a_body()
-     {
-        //todo
+     $translate = create('App\Translate');
+     
+
+     $this->delete("/translates/{$translate->id}")->assertRedirect('/login'); 
+     
+     $this->signIn();
+     $this->delete("/translates/{$translate->id}")->assertStatus(403); 
+ }
+
+ /** @test */
+ public function authrised_user_can_delete_a_translate()
+ {
     
-    
+     $this->signIn();
+     $translate = create('App\Translate',['user_id'=>auth()->id()]);               
+
+     $this->delete("/translates/{$translate->id}");
+     $this->assertDatabaseMissing('translates',['id'=>$translate->id]);
+     
+      
+
  
-     }
+ }
+
+
+           /** @test */
+           function a_transalte_has_a_body()
+           {
+              $this->expectException('Illuminate\Validation\ValidationException');
+               //given we have an_authenticated_user
+               $this->signIn();
+               //Add existing Poem
+               $poem= create('App\Poem');
+               //make a Translate
+               $Translate = make('App\Translate',['body'=>null]);
+               //create the url and pass the Translate to it 
+              
+               $this->post($poem->path().'/translates',$Translate->toArray());
+       
+               //make sure we see the Translate in poem page
+               $this->get($poem->path())  
+               ->assertSessionHasErrors('body');   
+          
+          
+       
+           }
+           
+           /** @test */
+           function a_transalte_has_a_language()
+           {
+              $this->expectException('Illuminate\Validation\ValidationException');
+               //given we have an_authenticated_user
+               $this->signIn();
+               //Add existing Poem
+               $poem= create('App\Poem');
+               //make a Translate
+               $Translate = make('App\Translate',['language'=>null]);
+               //create the url and pass the Translate to it 
+              
+               $this->post($poem->path().'/translates',$Translate->toArray());
+       
+               //make sure we see the Translate in poem page
+               $this->get($poem->path())  
+               ->assertSessionHasErrors('language');   
+          
+          
+       
+           }
    /** @test */
    function it_knows_if_it_was_just_published()
    {

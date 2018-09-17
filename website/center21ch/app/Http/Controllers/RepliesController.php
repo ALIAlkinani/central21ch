@@ -34,10 +34,11 @@ class RepliesController extends Controller
        
         
     }
-public function index($channelId, Poem $Poem)
-{
-    return $Poem->replies()->paginate(5);
-}
+    public function index($channelId, Poem $Poem)
+    {
+        return $Poem->replies()->paginate(5);
+    }
+
    public function destroy(Reply $reply){
       
     $this->authorize('update',$reply);

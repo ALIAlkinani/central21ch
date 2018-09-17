@@ -32,7 +32,7 @@ class Poem extends Model
     }
     public function translates()
     {
-        return $this->hasMany(translate::class)   ;
+        return $this->hasMany(Translate::class)   ;
     }
 
 
