@@ -70,6 +70,8 @@ class PoemsController extends Controller
         $this->validate($request,[
             'title' => 'required|spamfree',
             'body' => 'required|spamfree',
+            'lat' => 'required',
+            'lng' => 'required',
             //make the sure the the channal id is not null and exists and the database;
             'channel_id' =>'required|exists:channels,id',
             'g-recaptcha-response' => [ $recaptcha]
@@ -81,6 +83,8 @@ class PoemsController extends Controller
             'channel_id'=>request('channel_id'),
             'body'  =>request('body'),
             'title' =>request('title'),
+            'lat' => request('lat'),
+            'lng' => request('lng'),
             
 
 

@@ -44,8 +44,14 @@
                     </div>
 
                     <div class="form-group">
+                           
+                            <show-map></show-map>
+                </div>
+
+                    <div class="form-group">
                             <div class="g-recaptcha" data-sitekey="6LfSYm4UAAAAAFGTRnQ06B_JVK3YfUbBN8LxtBIJ"></div>
                     </div>
+                    
 
                     <div class="form-group">
                             <button type="submit" class="btn btn-primary">Create</button>

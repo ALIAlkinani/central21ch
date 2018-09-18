@@ -15,6 +15,11 @@ import { faBell} from '@fortawesome/free-solid-svg-icons'
 import { faLock} from '@fortawesome/free-solid-svg-icons'
 import { faUnlock} from '@fortawesome/free-solid-svg-icons'
 
+import * as VueGoogleMaps from "vue2-google-maps";
+
+Vue.use(VueGoogleMaps, {
+  load: { key: 'AIzaSyBW9FAJC34z2wKmGJJvW-QxF_ObdLfuzH4' }
+});
 
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -37,6 +42,7 @@ Vue.config.productionTip = false
 
 Vue.component('avatar-form', require('./components/AvatarForm.vue'));
 
+Vue.component('ShowMap', require('./components/showMap.vue'));
 Vue.component('flash', require('./components/Flash.vue'));
 Vue.component('paginator', require('./components/Paginator.vue'));
 Vue.component('user_notification', require('./components/UserNotification.vue'));
@@ -49,3 +55,4 @@ const app = new Vue({
     el: '#app',
     
 });
+

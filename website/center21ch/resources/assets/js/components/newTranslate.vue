@@ -80,7 +80,7 @@
                                 </select>
                    
                     </div>
-                <textarea  class="form-control" name="body" v-model="body" ></textarea>
+                <textarea  class="form-control" name="body" rows="7" v-model="body" ></textarea>
 
      </div>
 
@@ -117,7 +117,7 @@ export default {
             .catch(error=> {
                     flash(error.response.data,'danger');
             })
-            .then(({data}) =>{
+            .then(({data}) =>{       
                 this.body='';
                 this.completed = true;
                 flash('you translate has been posted');
