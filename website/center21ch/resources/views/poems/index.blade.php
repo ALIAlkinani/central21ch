@@ -5,6 +5,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8">
+                
+                    <div class="form-group">
+                           
+                            <show-map ></show-map>
+                </div>
+
                 @include ('poems._list')
                 <br>
 

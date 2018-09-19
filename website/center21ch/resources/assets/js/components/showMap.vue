@@ -1,66 +1,66 @@
 <template>
 <div>
-  <h3>please select your location via clicking on the map</h3>
+ 
+
 
   <gmap-map
     v-bind:center="center"
-    v-bind:zoom="3"
+    v-bind:zoom="2"
     v-bind:map-type-id="mapTypeId"
-   v-on:click="location" >
+   >
+    
+
     <gmap-marker
-      v-for="(item, index) in markers"
+      v-for="(item, index) in poem"
       v-bind:key="index"
-      v-bind:position="center=item.position"
+      v-bind:position="{ lat: +item.lat, lng: +item.lng}"
      
-      v-on:click="center=item.position"
+      v-on:click="center={ lat: +item.lat, lng: +item.lng}"
       />
+      
   </gmap-map>
-  <br>
-<div class="form-group">
- <input type="text" name="lat" id="lat" :value="lat" required disabled>
-  <br>
-<input type="text" name="lng" id="lng" :value="lng" required disabled>
-</div>
+
+     
 </div>
 </template>
 
 <script>
+  
+
 export default {
+   
   data() {
     return {
+      poem: [],
+     
       center: { lat: -33.865143, lng: 151.209900 },
       mapTypeId: "terrain",
-       lat:-33.865143,
-       lng:151.209900,
+       lat:'',
+       lng:'',
   
-      markers: [
-        { position: { lat: -33.865143, lng: 151.209900} }
-       
-      ],
       
     };
     
   },
-   methods:{
-            location(event){
-              
-            this.lat =  event.latLng.lat();
-            this.lng =  event.latLng.lng()
-                        
-                         
-                   this.markers =[
-        { position: { lat:this.lat, lng: this.lng } },
-        
-      ];
-      
-                      
+  created(){
 
-                     
-        
-    
-                          
+        this.fetch();
+
+    },
        
-            }
+   methods:{
+
+      fetch(page){
+        axios.get('/maps')        
+          .then(data =>{
+            this.poem = data.data;
+           
+            
+          });
+          
+            
+        },
+           
              },
 };
 </script>

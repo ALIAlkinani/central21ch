@@ -43,6 +43,7 @@ Vue.config.productionTip = false
 Vue.component('avatar-form', require('./components/AvatarForm.vue'));
 
 Vue.component('ShowMap', require('./components/showMap.vue'));
+Vue.component('ReadMap', require('./components/readMap.vue'));
 Vue.component('flash', require('./components/Flash.vue'));
 Vue.component('paginator', require('./components/Paginator.vue'));
 Vue.component('user_notification', require('./components/UserNotification.vue'));

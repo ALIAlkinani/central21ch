@@ -27,7 +27,7 @@ Route::patch('poems/{channel}/{poem}', 'PoemsController@update');
 
 Route::get('/poems/{channel}', 'PoemsController@index');
 Route::get('/poems', 'PoemsController@index')->name('home');
-
+Route::get('/maps', 'PoemsController@map')->name('map');
 
 Route::post('/poems', 'PoemsController@store')->name('poems');
 

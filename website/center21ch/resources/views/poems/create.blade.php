@@ -45,7 +45,7 @@
 
                     <div class="form-group">
                            
-                            <show-map></show-map>
+                            <read-map></read-map>
                 </div>
 
                     <div class="form-group">

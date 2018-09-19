@@ -184,6 +184,19 @@ class PoemsController extends Controller
         ]));
         return $poem;
     }
+    public function map()
+    {
 
+        $poems = Poem::latest()->get();
+
+      
+            return $poems;
+            
+    
+              // $poems = $this->getPoems($channel);
+
+          // fatch all the poems from the database and show it in the poems page
+
+    }
     
 }
