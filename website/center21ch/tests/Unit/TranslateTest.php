@@ -81,11 +81,11 @@ class TranslateTest extends TestCase
     
      $this->signIn();
      $translate = create('App\Translate',['user_id'=>auth()->id()]);               
-
+     $this->assertEquals(1,$translate->poem->fresh()->translates_count);
      $this->delete("/translates/{$translate->id}");
      $this->assertDatabaseMissing('translates',['id'=>$translate->id]);
      
-      
+     $this->assertEquals(0,$translate->poem->fresh()->translates_count);
 
  
  }

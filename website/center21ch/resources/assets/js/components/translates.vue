@@ -1,4 +1,8 @@
 <template>
+<aside class="Translates">
+                        <h2>Translates</h2>
+                        <p>There is many tranlates and poem please.
+                        Make sure you check out the <a href="#"> others translates</a> for more information</p>
 <div>
     <div v-for=" (transalte, index) in items" :key="transalte.id">
         <transalte :transalte="transalte" @deleted="remove(index)"></transalte>
@@ -11,7 +15,7 @@
 
   
 </div>
-    
+        </aside>
 </template>
 <script>
 import Transalte from './translate.vue';

@@ -14,4 +14,25 @@ class Translate extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+    public function poem()
+{
+   return $this->belongsTo(Poem::class);
+}
+
+
+protected static function boot(){
+    parent::boot();
+  
+    
+    static::created(function($transalte){
+
+        $transalte->poem->increment('translates_count');
+
+    });
+    static::deleted(function($transalte){
+
+        $transalte->poem->decrement('translates_count');
+
+    });
+}
 }

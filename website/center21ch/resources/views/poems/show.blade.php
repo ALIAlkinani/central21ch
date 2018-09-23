@@ -46,7 +46,10 @@
                             </p>
                         </div>
                     </div>
+                    
                     <translates :data="{{$poem->translates}}"></translates>
+
+            
                 </div>
             </div>
         </div>

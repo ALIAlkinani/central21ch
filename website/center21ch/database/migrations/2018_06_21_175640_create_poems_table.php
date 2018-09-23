@@ -18,6 +18,7 @@ class CreatePoemsTable extends Migration
             $table->unsignedInteger('user_id');
             $table->unsignedInteger('channel_id');
             $table->unsignedInteger('replies_count')->default(0);
+            $table->unsignedInteger('translates_count')->default(0);
             $table->unsignedInteger('visits')->default(0);
             $table->string('title');
             $table->double('lat', 18, 14)->nullable();

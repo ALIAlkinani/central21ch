@@ -46,7 +46,10 @@
             <span class="flex" >
                 <a href="{{ route('profile', $poem->creator) }}">{{ $poem->creator->name }}</a> posted: <span v-text="title"></span>
             </span>
-            <button class=" btn btn-primary btn-xs mr-1" type="button"  data-toggle="modal" data-target="#createTranslate"> Add Translate</button>
+       
+            <button v-if="signedIn" class=" btn btn-primary btn-xs mr-1" type="button"  data-toggle="modal" data-target="#createTranslate"> Add Translate</button>
+         
+            
         </div>
                 <!-- Modal -->
         <div class="modal fade" id="createTranslate" tabindex="-1" role="dialog" aria-labelledby="createTranslateLabel" aria-hidden="true">
@@ -61,15 +64,12 @@
 
             
             
-            <div class="modal-body">
+         
                  
                 <new-translate></new-translate>
 
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-               
-            </div>
+            
+            
         </form>
             
            

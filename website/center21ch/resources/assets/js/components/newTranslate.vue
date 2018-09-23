@@ -1,6 +1,6 @@
 <template>
      <div>
-
+   <div class="modal-body">
      <div >
           <div class="form-group">
               <div class="form-group">
@@ -87,9 +87,13 @@
         <button type="submit" @click="addTranslate" class="btn btn-primary">Publish</button>
      </div>
 
+        </div>
 
-
-       
+      <div class="modal-footer">
+         
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+               
+            </div> 
                          
  </div>             
 
@@ -107,6 +111,7 @@ export default {
             body:'',
             language:'',
             completed: false,
+        
         };
 
     },
@@ -120,6 +125,7 @@ export default {
             .then(({data}) =>{       
                 this.body='';
                 this.completed = true;
+                $('#createTranslate').modal('hide');
                 flash('you translate has been posted');
                 this.$emit('created',data);
 

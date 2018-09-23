@@ -1,28 +1,34 @@
 <template>
 
-<div>  
-  <br>
-        <div :id="'transalte-'+id" >  
-            
-        <p>
-        <a  data-toggle="collapse" :href="'#'+transalte.language" role="button" aria-expanded="false" aria-controls="collapseExample" v-text="transalte.language">
 
-                  
-        </a>
-       
-       
-        <div class="collapse" :id="transalte.language">
-        <div class="card card-body">
-                            
-        <div v-if="editing">
+
+   
+<!--    Schedule Days
+============= -->
+
+
+<div class="accordion" id="schedule">
+	<!-- Monday ------------------------------>
+	<section class="accordion-group">
+
+		<div class="accordion-heading">
+			<a class="accordion-toggle" data-toggle="collapse" data-parent="#schedule" :href="'#'+transalte.language+'_'+transalte.id"  aria-expanded="false"  >
+			<font-awesome-icon icon="language" />  {{ transalte.language }}</a>
+		</div><!-- accordion heading -->
+
+		<div :id="transalte.language+'_'+transalte.id" class="card card-body collapse">
+			<section class="accordion-inner">
+				<div v-if="editing">
         <div class="form-group">
 
-            <textarea name="" id="" cols="30" rows="10" v-model="body"></textarea>
+            <textarea class="form-control" name="" id=""  v-model="body"></textarea>
         
-            
-            <button class="btn btn-xs mr-1" @click="update"> Save</button>
-            <button class="btn btn-primary btn-xs " @click="editing = false"> Cancel</button>
-        </div>
+         </div>
+           <div class="form-group">
+                <button class="btn btn-xs mr-1" @click="update"> Save</button>
+                <button class="btn btn-primary btn-xs " @click="editing = false"> Cancel</button>
+           </div>
+        
                                  
     </div>
                  <div v-else v-html="body">
@@ -37,25 +43,27 @@
                    </div>
                 
             </div>
+	    </section><!-- accordion-inner -->
+	  </div><!-- accordion-body -->
 
-        </div>
-        </div>
-           
-            
-            
-               
-            </div>
-         
-           
-              
+	</section><!-- accordion-group -->
 
-    
 
-              
-                    
 
-           
-          </div>
+</div><!-- schedule accordion -->
+
+
+
+
+        
+       
+       
+       
+  
+                            
+        
+
+       
                
      
      

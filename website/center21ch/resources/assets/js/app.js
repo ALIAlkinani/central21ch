@@ -14,6 +14,7 @@ import { faHeart } from '@fortawesome/free-solid-svg-icons'
 import { faBell} from '@fortawesome/free-solid-svg-icons'
 import { faLock} from '@fortawesome/free-solid-svg-icons'
 import { faUnlock} from '@fortawesome/free-solid-svg-icons'
+import { faLanguage} from '@fortawesome/free-solid-svg-icons'
 
 import * as VueGoogleMaps from "vue2-google-maps";
 
@@ -28,6 +29,7 @@ library.add(faHeart)
 library.add(faBell)
 library.add(faLock)
 library.add(faUnlock)
+library.add(faLanguage)
  
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
