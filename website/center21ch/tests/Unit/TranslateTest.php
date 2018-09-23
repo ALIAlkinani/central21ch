@@ -134,7 +134,7 @@ class TranslateTest extends TestCase
           
        
            }
-   /** @test */
+ 
    function it_knows_if_it_was_just_published()
    {
        //todo..
@@ -144,7 +144,7 @@ class TranslateTest extends TestCase
       
        
     
-    /** @test */
+    
     function it_knows_if_it_is_the_best_Translate()
     {
         //todo

@@ -38,6 +38,8 @@ $factory->define(App\Poem::class, function (Faker $faker) {
         'channel_id' => function(){
             return factory('App\Channel')->create()->id;
         },
+        'lat'=>-33.865143,
+        'lng'=>151.2099,
         'title' => $title,
         'body'=>$faker->paragraph,
         'visits' => 0,
