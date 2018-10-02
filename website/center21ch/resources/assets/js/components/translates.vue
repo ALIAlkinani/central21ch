@@ -1,8 +1,7 @@
 <template>
 <aside class="Translates">
-                        <h2>Translates</h2>
-                        <p>There is many tranlates and poem please.
-                        Make sure you check out the <a href="#"> others translates</a> for more information</p>
+                        <h2>Translations</h2>
+                        <p>There are many translations - please make sure you check out the <a href="#"> other translations</a> for more information.</p>
 <div>
     <div v-for=" (transalte, index) in items" :key="transalte.id">
         <transalte :transalte="transalte" @deleted="remove(index)"></transalte>
