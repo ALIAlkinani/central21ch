@@ -31,6 +31,7 @@
 
                         
                         <li><a class="nav-link" href="/poems/create">Create Poem</a></li>
+                        <li><a class="nav-link" href="/poets/create">Create Poet</a></li>
                        @include('layouts.dropDownMenu')
 
 

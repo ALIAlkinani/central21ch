@@ -10712,3 +10712,8 @@ a:focus {
   color: #FDAD22;
 }
 
+.form-group {
+  margin-bottom: 10px;
+  padding: 10px;
+}
+

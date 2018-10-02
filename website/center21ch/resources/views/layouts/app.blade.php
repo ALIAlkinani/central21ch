@@ -39,6 +39,9 @@
             [v-cloak] { display: none; }
             .ml-a{margin-left: auto;}
             .level-item { margin-right: 1em; }
+            footer{
+                height: 200px;
+            }
         </style>
     @yield('head')
 </head>
@@ -55,7 +58,9 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}">    </script>
    
-  
+  <footer>
+  </footer>
     
 </body>
+
 </html>

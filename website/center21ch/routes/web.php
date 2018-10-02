@@ -70,4 +70,8 @@ Route::get('/poems/{channel}/{poem}/translates', 'TranslatesController@index');
 Route::post('/poems/{channel}/{poem}/translates', 'TranslatesController@store')->name('addTranslates');
 
 Route::delete('/translates/{translate}', 'TranslatesController@destroy')->name('translates.destroy'); 
-Route::patch('/translates/{translate}', 'TranslatesController@update')->name('translates.destroy'); 
+Route::patch('/translates/{translate}', 'TranslatesController@update')->name('translates.destroy');
+
+//poets
+Route::post('/poets', 'PoetsController@store')->name('poets');
+Route::get('/poets/create', 'PoetsController@create')->name('poets');

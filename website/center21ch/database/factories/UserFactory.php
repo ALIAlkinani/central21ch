@@ -22,6 +22,19 @@ $factory->define(App\User::class, function (Faker $faker) {
     ];
   
 });
+$factory->define(App\Poet::class, function (Faker $faker) {
+    return [
+        'first_name' => $faker->firstName,
+        'last_name' => $faker->lastName,
+        'date_of_birth'=>$faker->date,
+        'date_of_death'=>$faker->date,
+        'nationality'=>'Iraqi',
+        'mother_language'=>'Arabic'
+
+        
+    ];
+  
+});
 $factory->state(App\User::class, 'administrator', function () {
     return [
         'name' => 'ali'
