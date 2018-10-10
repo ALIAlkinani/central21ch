@@ -23,15 +23,16 @@
 
                     @csrf
                     <div class="form-group" class="level">
-                      <label for="first_name" >First name: </label>
+                      <label for="first_name" >First name </label>
                       <input id="first_name" class="form-control flex" name="first_name"type="text">
-                      <label for="last_name" >    last name: </label>
+                      <label for="last_name" >    Last name </label>
                       <input id="last_name"class="form-control" class="ml-1" name="last_name"type="text">
                     </div>
                     <div class="form-group">
                       
+                      <label for="nationality"> Nationality</label>
                       <select class="form-control" name="nationality" id="nationality">
-                        <option value="">-- nationality --</option>
+                        <option value="">-- Nationality --</option>
                         <option value="afghan">Afghan</option>
                         <option value="albanian">Albanian</option>
                         <option value="algerian">Algerian</option>
@@ -227,18 +228,18 @@
                       </select>
                     </div>
                     <div class="form-group">
-                      <label >date of birth</label>
+                      <label >Date of birth</label>
                      <input type="date" class="form-control" name="date_of_birth" id="date_of_birth">
                     </div>
                     <div class="form-group">
-                        <label >date of death</label>
+                        <label >Date of death</label>
                        <input type="date" class="form-control" name="date_of_death" id="date_of_death">
                       </div>
 
                     <div class="form-group">
-                           <label for="mother_language"> mother language</label>
+                           <label for="mother_language"> Mother language</label>
                            <select  class="form-control" name="mother_language" id="mother_language">
-                            <option value="">-- language --</option>
+                            <option value="">-- Language --</option>
                            
                             <option value="Afrikanns">Afrikanns</option>
                             <option value="Albanian">Albanian</option>
