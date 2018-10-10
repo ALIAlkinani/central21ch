@@ -22,6 +22,7 @@ class CreatePoetsTable extends Migration
             $table->date('date_of_death')->nullable();
             $table->string('mother_language');           
             $table->string('avatar_path')->nullable();
+            $table->text('about');
             $table->timestamps();
         });
     }

@@ -18,6 +18,7 @@
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="/poems">Poems</a>
+                                    
                                     <a href="/poems?popularity=1" class="dropdown-item">Popular poems</a>
                                     <a href="/poems?unanswered=1" class="dropdown-item">Unanswered</a>
                                     @if (auth()->check())
@@ -31,6 +32,7 @@
 
                         
                         <li><a class="nav-link" href="/poems/create">Create Poem</a></li>
+                        <li><a class="nav-link" href="/poets">Show Poets</a></li>
                         <li><a class="nav-link" href="/poets/create">Create Poet</a></li>
                        @include('layouts.dropDownMenu')
 

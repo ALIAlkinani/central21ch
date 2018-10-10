@@ -74,4 +74,6 @@ Route::patch('/translates/{translate}', 'TranslatesController@update')->name('tr
 
 //poets
 Route::post('/poets', 'PoetsController@store')->name('poets');
+Route::get('/poets', 'PoetsController@index')->name('poets.show');
 Route::get('/poets/create', 'PoetsController@create')->name('poets');
+Route::get('/poets/{poet}', 'PoetsController@show');

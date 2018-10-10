@@ -10622,42 +10622,6 @@ button > p {
           align-items: center;
 }
 
-.gm-style .gm-style-iw {
-  background-color: #9cad3c !important;
-  top: 0 !important;
-  left: 0 !important;
-  width: 100% !important;
-  height: 100% !important;
-  min-height: 120px !important;
-  padding-top: 10px;
-  display: block !important;
-}
-
-/*style the p tag*/
-
-.gm-style .gm-style-iw #google-popup p {
-  padding: 10px;
-}
-
-/*style the arrow*/
-
-.gm-style div div div div div div div div {
-  background-color: #9cad3c !important;
-  padding: 0;
-  margin: 0;
-  padding: 0;
-  top: 0;
-  color: #fff;
-  font-size: 16px;
-}
-
-/*style the link*/
-
-.gm-style div div div div div div div div a {
-  color: #f1f1f1;
-  font-weight: bold;
-}
-
 h1,
 h2,
 h3,
@@ -10715,5 +10679,30 @@ a:focus {
 .form-group {
   margin-bottom: 10px;
   padding: 10px;
+}
+
+span {
+  font-size: 15px;
+}
+
+.box-part {
+  background: #FFF;
+  border-radius: 0;
+  padding: 60px 10px;
+  margin: 30px 0px;
+}
+
+.box-part a {
+  text-decoration: none;
+  color: #0062cc;
+  border-bottom: 2px solid #0062cc;
+}
+
+.text {
+  margin: 20px 0px;
+}
+
+.fa {
+  color: #4183D7;
 }
 

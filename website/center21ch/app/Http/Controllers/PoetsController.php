@@ -11,7 +11,11 @@ class PoetsController extends Controller
     {
         $this->middleware('auth')->except(['index']);
     }
-
+        public function index()
+        {
+            $poets =  Poet::latest()->get();
+            return view('poets.index', compact('poets'));
+        }
     public function store(Request $request)
     {
         $poet = Poet::create([
@@ -20,6 +24,7 @@ class PoetsController extends Controller
             'nationality'  =>request('nationality'),
             'date_of_birth' =>request('date_of_birth'),
             'date_of_death' =>request('date_of_death'),
+            'about' =>request('about'),
             'mother_language' => request('mother_language'),
             
            
@@ -31,7 +36,7 @@ class PoetsController extends Controller
             return response($poet, 201);
         }
 
-        return back()->with('flash','The poet has been created!!');
+        return redirect($poet->path())->with('flash','Your poet has been published');
 
         
 
@@ -47,6 +52,17 @@ class PoetsController extends Controller
         return view('poets.create');
     }
 
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Poets  $poems ,channelId
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Poet $poet)
+
+    {
+        return view('poets.show', compact('poet'));
+    }
 
 
 }
