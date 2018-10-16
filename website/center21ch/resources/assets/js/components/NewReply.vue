@@ -3,7 +3,7 @@
 
      <div v-if="signedIn">
           <div class="form-group">
-                <wysiwyg name="body" v-model="body" placeholder="Have something to say?" :shouldClear="completed"></wysiwyg>
+                <textarea class="form-control" rows="5" name="body" id="body" v-model="body" placeholder="Have something to say?" :shouldClear="completed"></textarea>
 
      </div>
 

@@ -5,57 +5,19 @@
 @endsection
 
 @section('content')
+<poet-view :poet="{{ $poet }}" inline-template v-cloak>
 <div class="container">
 <div class="card">              
+        <div class="card">
+                    
+                <avatar-poet :poet="{{ $poet}}"></avatar-poet>
+        </div>
 
-
-                <div class="card-body">
-
-              
-                    <div class="form-group" >
-                    <h5>
-                      <span class="badge badge-primary ">First name: {{ $poet->first_name }}</span>
-                    </h5>
-                   <br>
-                     <h5>
-                        <span   class="badge badge-primary"> Last name:  {{ $poet->last_name }} </span>
-                     </h5>
-                   <br>
-                        <h5>
-                                <span class="badge badge-primary"> nationality : {{ $poet->nationality }}</span>
-
-                        </h5>                     
-
-                        <br>
-                 
-                      <h5>
-                            <span class="badge badge-primary">date of birth: {{ $poet->date_of_death  }} </span>
-                      </h5>
-                
-                      <br>
-
-                      <h5>
-                            <span class="badge badge-primary" > date of death: {{ $poet->date_of_death  }}</span>
-
-                      </h5>
-                      <br>
-
-                                        <h5>
-                                                <span class="badge badge-primary"> language: {{ $poet->mother_language }}</span>
- 
-                                        </h5>                      
-                   
-                     </div>
-
-                   
-
-
-                </div>
-            </div>                   
+        @include('poets._content')    
                                        
         </div>
-        <flash message="{{ session('flash') }}"></flash>
+        
     </div>
 
- 
+</poet-view>
 @endsection

@@ -2,13 +2,11 @@
 
 
 
-   
-<!--    Schedule Days
-============= -->
+
 
 
 <div class="accordion" id="schedule">
-	<!-- Monday ------------------------------>
+
 	<section class="accordion-group">
 
 		<div class="accordion-heading">
@@ -21,7 +19,7 @@
 				<div v-if="editing">
         <div class="form-group">
 
-            <textarea class="form-control" name="" id=""  v-model="body"></textarea>
+            <textarea class="form-control" name="" id="" rows="5" v-model="translate_body"></textarea>
         
          </div>
            <div class="form-group">
@@ -31,7 +29,7 @@
         
                                  
     </div>
-                 <div v-else v-html="body">
+                 <div v-else v-html="translate_body">
                 
                 </div>
                 
@@ -85,7 +83,7 @@
         data() {
             return {
                 editing: false,
-                body: this.transalte.body,
+                translate_body: this.transalte.translate_body,
                 id: this.transalte.id,
                 created_at: this.transalte.created_at,
                 isBest : this.transalte.isBest,
@@ -106,7 +104,7 @@
             update(){
                 axios.patch('/translates/'+this.id,{
 
-                body: this.body
+               translate_body: this.translate_body
                     })
                     .catch(error => {
 

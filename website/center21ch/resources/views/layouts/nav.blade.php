@@ -1,5 +1,11 @@
-<nav class="navbar navbar-expand-md navbar-laravel">
-        <div class="container">
+
+
+        <div class="col-md-12">
+         <header class= "cleanfix">
+            <section id="branding">
+           
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+       
             <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}
             </a>
@@ -71,6 +77,10 @@
                     @endguest
                 </ul>
             </div>
-        </div>
+        
     </nav>
-   
+    
+</section>
+</header>
+</div>
+

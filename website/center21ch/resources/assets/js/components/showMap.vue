@@ -104,14 +104,14 @@ export default {
         return (`<div class="map-card">
   
     <div class="map-level">
-            <img src="${ marker.creator.avatar_path }"
-                 alt="${ marker.creator.name }"
+            <img src="${ marker.arthur.avatar_path }"
+                 alt="${ marker.arthur.last_name }"
                  width="50"
                  height="50"
                  class="mr-1 rounded-circle">
 
             <span class="flex" >
-                <a href="/profile/">${ marker.creator.name }</a> posted: <span></span>
+                <a href="/poets/${ marker.arthur.id }">${ marker.arthur.first_name } ${ marker.arthur.last_name }</a> posted: <span></span>
             </span>
   </div>
   <div class="card-content">
@@ -135,8 +135,12 @@ export default {
 
 <style lang="scss" scoped>
 .vue-map-container {
-  height: 450px;
-  max-width: 992px;
-  width: 100%;
+  height: 400px;
+  max-width: 100%;
+  width: auto;
+  margin-bottom: 30px;
+  margin-right: 0px;
+  margin-left: 0px;
+  padding: 0px;
 }
 </style>

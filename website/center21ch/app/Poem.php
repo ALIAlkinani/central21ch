@@ -4,7 +4,8 @@ namespace App;
 use App\User;
 use App\Filters;
 use App\Events\PoemReceivedNewReply;
-
+use App\Poet;
+use App\translate;
 use Illuminate\Database\Eloquent\Model;
 
 class Poem extends Model
@@ -14,7 +15,7 @@ class Poem extends Model
     use RecordActivity;
 
     protected $guarded=[];
-    protected $with=['creator','channel'];
+    protected $with=['creator','channel','arthur'];
     protected $appends = ['isSubscribedTo'];
 
     protected $casts = [
@@ -39,6 +40,11 @@ class Poem extends Model
     public function creator()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function arthur()
+    {
+        return $this->belongsTo(Poet::class, 'poet_id');
     }
 
 

@@ -16,10 +16,12 @@ class CreatePoemsTable extends Migration
         Schema::create('poems', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
+            $table->unsignedInteger('poet_id');
             $table->unsignedInteger('channel_id');
             $table->unsignedInteger('replies_count')->default(0);
             $table->unsignedInteger('translates_count')->default(0);
             $table->unsignedInteger('visits')->default(0);
+            $table->string('language')->nullable();
             $table->string('title');
             $table->double('lat', 18, 14)->nullable();
             $table->double('lng', 18,14)->nullable();

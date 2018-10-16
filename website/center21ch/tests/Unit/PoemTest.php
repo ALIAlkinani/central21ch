@@ -38,7 +38,7 @@ use app\Poem;
 
          $poem->addTranslate([
              'language' => 'arabic',
-           'body' => 'add new Translate',
+           'translate_body' => 'add new Translate',
            'user_id'=> 1
        ]);
 

@@ -24,10 +24,11 @@ Route::get('verify/{token}','VerifyController@verify')->name('verify');
 
 Route::get('/poems/create', 'PoemsController@create');
 Route::patch('poems/{channel}/{poem}', 'PoemsController@update');
-
+Route::get('/poems/languages/{language}', 'PoemsController@getpoemsL');
 Route::get('/poems/{channel}', 'PoemsController@index');
 Route::get('/poems', 'PoemsController@index')->name('home');
 Route::get('/maps', 'PoemsController@map')->name('map');
+Route::get('/poems/translates/{translates}', 'PoemsController@getpoemsT');
 
 Route::post('/poems', 'PoemsController@store')->name('poems');
 
@@ -59,9 +60,11 @@ Route::post('/replies/{reply}/best', 'BestRepliesController@store')->name('best-
 
 /* Route::resource('poems', 'PoemsController');
  */
+Route::post('api/poets/{poet}/avatar', 'Api\AuthurAvatarController@store');
 Route::post('/poems/{channel}/{poem}/replies', 'RepliesController@store')->name('addReplies');
 Route::get('/poems/{channel}/{poem}/replies', 'RepliesController@index');
 Route::post('api/users/{user}/avatar', 'Api\UserAvatarController@store')->middleware('auth')->name('avatar'); 
+
 Route::post('locked-poems/{poem}', 'LockedPoemsController@store')->name('locked-poems.store')->middleware('admin');
 Route::delete('locked-poems/{poem}', 'LockedPoemsController@destroy')->name('locked-poems.destroy')->middleware('admin');
 
@@ -77,3 +80,4 @@ Route::post('/poets', 'PoetsController@store')->name('poets');
 Route::get('/poets', 'PoetsController@index')->name('poets.show');
 Route::get('/poets/create', 'PoetsController@create')->name('poets');
 Route::get('/poets/{poet}', 'PoetsController@show');
+Route::patch('/poets/{poet}', 'PoetsController@update')->name('poets');

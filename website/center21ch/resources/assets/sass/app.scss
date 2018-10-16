@@ -36,7 +36,10 @@ span.commit{
 .flex{
   flex: 1;
 }
-
+.card {
+  margin-left: 10;
+  margin-right: 20px;
+}
 .navbar-laravel {
   
   box-shadow: 0  2px 4px rgba(0, 0, 0, 0.04);
@@ -48,6 +51,346 @@ span.commit{
     
     color: rgb(189, 240, 6);
   }
+}
+
+
+$red: 				#BA83D4;
+$magenta: 		#FDF5E3;
+$beige: 			#FDF5E3;
+$yellow:			#FDAD22;
+$purple:			#475C98;
+$darkblue: 		#586E75;
+$pink:				#D33682;
+$green-light:   rgb(205, 245, 156);
+$green-dark:  rgb(127, 199, 45);
+$headlineFontFamily:			"Bree Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$copyFontFamily:					Merriweather,Georgia, "Times New Roman", Times, serif;
+
+h1, h2, h3, h4 {
+  font-family:   $headlineFontFamily;
+  color: $pink;
+
+
+  
+
+}
+
+.collapse a{
+    color:$yellow;
+}
+p{
+    font-family: $copyFontFamily;
+    color: $darkblue;
+    font-size: 0.9em;
+    line-height: 1.4em;
+    padding: 0 2%;
+    @media (max-width:768){
+        font-size: 0.6em;
+        
+    }
+
+}
+.container{
+   
+ background: white;
+
+    @media(max-width: 768px) {
+        h1{font-size: 1.3em;}
+        h2{font-size: 1em;
+
+        }
+        p{font-size: 0.7em;}
+
+        border-top-right-radius: 20px ;
+        border-top-left-radius: 20px; 
+    }
+ div.component{
+ 
+       img {
+           width: 90px;
+        max-width: 120px;
+        
+
+        
+    }
+    @media (max-width:870px ) {
+      img{  
+          width: 70px;
+        max-width: 70px;
+      }
+    }
+ 
+        
+    }
+    @media (max-width:768px) {
+      
+        h1{
+            font-size: 1.2em;
+            margin-top: 4px;
+            margin-bottom: 2px;
+        }
+        h2{
+            font-size: 1em;
+            margin-top: 4px;
+            margin-bottom: 2px;
+
+        }
+        p{
+            font-size: 0.7em;
+        }
+        a.accordion-toggle{
+            font-size: 0.7em;
+            margin-bottom: 0;
+        }
+        a.btn{
+            font-size: 0.7em;
+        }
+        footer{
+            margin-top: 0px;
+           padding: 0px;
+       ul.breadcrumb{
+        font-size: 0.7em;
+    
+       }
+    }
+
+        
+    }
+   
+
+}
+
+
+
+.navbar {
+    margin-bottom: 0;
+   
+}
+.carousel{
+    margin-bottom: 0;
+    
+}
+
+.content{
+    margin-bottom: 0;
+}
+.main>article{
+    margin: 0 5%;
+}
+.sidebar>aside {
+    padding-right: 5%;
+    @media(max-width:768px) {
+        padding-left: 5%;
+    }
+}
+aside{
+    h2{
+         font-size: 1.8em;
+         color: $red;
+         border-bottom: 1px dotted $pink;
+
+    }
+}
+#branding{
+    img {
+		margin: 10px 0 5px 25px;
+		max-width: 500px;
+			@media(max-width: 768px) {
+				margin: 10px 0 5px 10px;
+				width: 90%;
+			}
+	}
+}
+navbar{
+    border-left: none;
+    border-radius:0;
+    border-right: 0;
+}
+
+.accordion-heading {
+    
+	
+	a {
+        color: white;
+        background: rgb(17, 15, 16);
+    }
+    a:hover,a:focus{
+		color: $yellow;
+		
+	}
+}
+.aboutthevenues {
+	article {
+		margin: 0;
+		padding: 0;
+	}
+
+	h2 {
+		padding: 0;
+		padding-bottom: 0;
+		border-bottom: 1px dotted $purple;
+	}
+
+	h3 {
+		color: $pink;
+		padding: 0;
+		margin: 0;
+		font-size: 1.5em;
+    }
+    img{
+        margin: 10px 5px 5px 5px;
+        width: 160px;
+        max-width: 300px;
+      
+    }
+    @media (max-width: 768px) {
+       h2 {
+           font-size: 1.1em;
+           margin-top: 5px;
+       }
+       img{
+        width: 90%;
+        max-width: 120px;
+        margin: 3px 1px 2px 1px;
+        padding: 0%;
+       }
+       p{
+           font-size:0.6em;
+       }
+       
+    }
+   
+   
+}
+.nav-tabs{
+    li{
+        background: black;
+    }
+    li:hover{
+        background: black;
+    }
+    li {
+        color: black;
+    }
+
+    li a {
+        color:white;
+    }
+    li.active a:hover{
+        background: $yellow;
+        color:black;
+    }
+    li a:hover{
+        background: $yellow;
+        color:black;
+    }
+    li.active a {
+       
+        
+        color: rgb(241, 70, 170);
+    }
+    li.active a{
+        font-weight: bold;
+        color:$pink;
+       
+    }
+    
+    
+    
+}
+.tab-content {
+	h3, h4 {
+		margin: 0;
+		padding: 0;
+	}
+
+	h3 {
+		color: $pink;
+		line-height: 1em
+	}
+
+	p {
+		padding: 0;
+		padding-top: 10px;
+	}
+}
+
+.photogrid img {
+	width: 96px;
+	margin: 0 5px 5px 0;
+	cursor: pointer;
+
+	@media (max-width: 990px) {
+		width: 64px;
+	}
+}
+.artistinfo {
+	article, p, h1 {
+		padding: 0 2%
+	}
+
+	.photogrid img {
+		width: 72px;
+		margin: 0 5px 5px 0;
+		cursor: pointer;
+	}
+
+	h3 {
+        color: pink;
+        
+	}
+}
+footer {
+    margin-top: 20px;
+    padding: 10px;
+	ul.breadcrumb {
+		background : black;
+		margin: 0 auto;
+		-webkit-border-radius: 0;
+		-moz-border-radius: 0;
+		border-radius: 0;
+
+		li {
+			text-shadow:none;
+			a {
+                color: white;
+                font-family: $copyFontFamily;
+			}
+		}
+	}
+}
+
+div.component{
+   
+    img{
+        width:110px;
+    }
+}
+.tran{
+margin: 0px;
+padding: 0px;
+}
+p .translate{
+    margin-left: 0px;
+    margin-right: 0px;
+    
+}
+.about-border {
+    display: block;
+    width: auto;
+    height: 3px;
+    background: #f1cd8f;
+  
+}
+.skills{
+    ol{
+        color:  #dabf27;
+    }
+   
+    li{
+        margin-top: 5px;
+        border-bottom: 1px solid #dabf27;
+    }
 }
 
 
@@ -179,7 +522,7 @@ body{
    margin: 0;
 
  }
- .footer{
+ footer{
   margin-bottom: 5px;
    padding-bottom: 10px;
  }
@@ -248,7 +591,7 @@ p{
     
 	
 	a {
-        color: white;
+        color: gold;
        
     }
     a:hover,a:focus{
@@ -275,15 +618,36 @@ a:focus{
 span{
   font-size:15px;
 }
+#branding{
+  img {
+  margin: 10px 0 5px 25px;
+  max-width: 500px;
+    @media(max-width: 768px) {
+      margin: 10px 0 5px 10px;
+      width: 90%;
+    }
+}
+}
+.navbar{
+  border-left: none;
+  border-radius:0;
+  border-right: 0;
+  border-top-right-radius: 20px ;
+  border-top-left-radius: 20px;
 
+}
+.logo{
+  align-items: flex-start;
+  margin-left: 0;
+}
 
 
 .box-part{
 
   background:#FFF;
   border-radius:0;
-  padding:60px 10px;
-  margin:30px 0px;
+  padding:20px 10px;
+  margin:5px 0px;
   a{
     text-decoration:none; 
     color: #0062cc;
@@ -297,4 +661,85 @@ span{
 
 .fa{
    color:#4183D7;
+}
+
+.container{
+   
+  background: white;
+ 
+     @media(max-width: 768px) {
+         h1{font-size: 1.3em;}
+         h2{font-size: 1em;
+ 
+         }
+         p{font-size: 0.7em;}
+ 
+         border-top-right-radius: 20px ;
+         border-top-left-radius: 20px; 
+     }
+  .abouttheartists div.component{
+  
+        img {
+            width: 90px;
+         max-width: 120px;
+         
+ 
+         
+     }
+     @media (max-width:870px ) {
+       img{  
+           width: 70px;
+         max-width: 70px;
+       }
+     }
+  
+         
+     }
+     @media (max-width:768px) {
+       
+         h1{
+             font-size: 1.2em;
+             margin-top: 4px;
+             margin-bottom: 2px;
+         }
+         h2{
+             font-size: 1em;
+             margin-top: 4px;
+             margin-bottom: 2px;
+ 
+         }
+         p{
+             font-size: 0.7em;
+         }
+         a.accordion-toggle{
+             font-size: 0.7em;
+             margin-bottom: 0;
+         }
+         a.btn{
+             font-size: 0.7em;
+         }
+         footer{
+             margin-top: 0px;
+            padding: 0px;
+        ul.breadcrumb{
+         font-size: 0.7em;
+     
+        }
+     }
+ 
+         
+     }
+    
+ 
+ }
+
+ /* LIST #2 */
+#list2 { width:320px; }
+#list2 ol { font-style:italic; font-family:Georgia, Times, serif; font-size:24px; color:#bfe1f1;  }
+#list2 ol li a {margin: 0px; }
+#list2 ol li p { padding:8px; font-style:normal; font-family:Arial; font-size:13px; color:#eee; border-left: 1px solid #999; }
+#list2 ol li p em { display:block; }
+
+.title{
+    align-content: center;
 }

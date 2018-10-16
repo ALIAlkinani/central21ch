@@ -18,8 +18,8 @@
                     <div class="card border-primary mb-3">
                         <div class="card-body">
                             <p>
-                                This poem was published {{ $poem->created_at->diffForHumans() }} by
-                                <a href="#">{{ $poem->creator->name }}</a>, and currently
+                                This poem was written by
+                                <a href="/poets/{{  $poem->arthur->id }}">{{ $poem->arthur->first_name }} &nbsp {{ $poem->arthur->last_name }}</a>, and currently
                                 has <span
                                         v-text="repliesCount"></span> {{ str_plural('comment', $poem->replies_count) }}
                                 .

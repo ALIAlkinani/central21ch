@@ -15,8 +15,8 @@ class CreatePoetsTable extends Migration
     {
         Schema::create('poets', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('first_name')->unique();
-            $table->string('last_name')->unique();
+            $table->string('first_name');
+            $table->string('last_name');
             $table->string('nationality');
             $table->date('date_of_birth');
             $table->date('date_of_death')->nullable();

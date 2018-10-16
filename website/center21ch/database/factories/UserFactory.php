@@ -29,8 +29,8 @@ $factory->define(App\Poet::class, function (Faker $faker) {
         'date_of_birth'=>$faker->date,
         'date_of_death'=>$faker->date,
         'nationality'=>'Iraqi',
-        'mother_language'=>'Arabic'
-
+        'mother_language'=>'Arabic',
+        'about' => $faker->paragraph
         
     ];
   
@@ -51,6 +51,9 @@ $factory->define(App\Poem::class, function (Faker $faker) {
         'channel_id' => function(){
             return factory('App\Channel')->create()->id;
         },
+        'poet_id' => function(){
+            return factory('App\Poet')->create()->id;
+        },
         'lat'=>-33.865143,
         'lng'=>151.2099,
         'title' => $title,
@@ -58,6 +61,7 @@ $factory->define(App\Poem::class, function (Faker $faker) {
         'visits' => 0,
         'slug' => str_slug($title),
         'locked' => false,
+        'language'=>'English'
     ];
 });
 
@@ -85,7 +89,7 @@ $factory->define(App\Translate::class, function (Faker $faker) {
             return factory('App\Poem')->create()->id;
         },
         'language'=> $faker->word,
-        'body'=>$faker->paragraph,
+        'translate_body'=>$faker->paragraph,
 
     ];
 });

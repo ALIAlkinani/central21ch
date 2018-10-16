@@ -43,14 +43,14 @@ class TranslatesController extends Controller
 
         $this->validate($request,[
             'language' => 'required',
-            'body' => 'required',
+            'translate_body' => 'required',
         
         ]);
              
 
       return $poem->addTranslate([
            'language' => request('language'),
-            'body' => request('body'),
+            'translate_body' => request('translate_body'),
             'user_id'=> auth()->id()
         ])->load('owner');
        
@@ -91,12 +91,12 @@ class TranslatesController extends Controller
     {
         $this->validate($request,[
             
-            'body' => 'required',
+            'translate_body' => 'required',
         
         ]);
         $translate->update(request([
             'language' => request('language'),
-        'body' => request('body'),]
+        'translate_body' => request('translate_body'),]
     ));
     }
 

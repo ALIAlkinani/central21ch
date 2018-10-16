@@ -34,7 +34,7 @@ class TranslateTest extends TestCase
         $this->post($poem->path().'/translates',$translate->toArray());
 
         //make sure we see the translate in poem page
-        $this->assertDatabaseHas('translates',['body'=>$translate->body]);
+        $this->assertDatabaseHas('translates',['translate_body'=>$translate->translate_body]);
         $this->assertCount(1,$poem->translates);
         
 

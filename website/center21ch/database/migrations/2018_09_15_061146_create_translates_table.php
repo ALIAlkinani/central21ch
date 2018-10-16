@@ -18,7 +18,7 @@ class CreateTranslatesTable extends Migration
             $table->integer('user_id');
             $table->integer('poem_id');
             $table->string('language');
-            $table->text('body');
+            $table->text('translate_body');
             $table->timestamps();
         });
     }

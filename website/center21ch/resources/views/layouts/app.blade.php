@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">
@@ -14,6 +15,7 @@
    
 
     <!-- Fonts -->
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
 
@@ -40,7 +42,7 @@
             .ml-a{margin-left: auto;}
             .level-item { margin-right: 1em; }
             footer{
-                height: 200px;
+                height: 70px;
             }
         </style>
     @yield('head')
@@ -58,8 +60,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}">    </script>
    
-  <footer>
-  </footer>
+
     
 </body>
 

@@ -10,14 +10,15 @@ use Illuminate\Http\Request;
 use App\Inspections\Spam;
 use App\Trending;
 use App\Rules\Recaptcha;
-
+use App\Poet;
+use App\Translate;
 
 class PoemsController extends Controller
 {
 
     public function __construct()
     {
-        $this->middleware('auth')->except(['index','show','map']);
+        $this->middleware('auth')->except(['index','show','map','getpoemsT','getpoemsL']);
     }
 
     /**
@@ -29,20 +30,26 @@ class PoemsController extends Controller
      */
     public function index(Channel $channel, PoemsFilters $filters,Trending $trending)
     {
-
+       
+      
+        
         $poems = $this->getPoems($channel, $filters);
 
         if (request()->wantsJson()) {
             return $poems;
             
         }
-              // $poems = $this->getPoems($channel);
-
-          // fatch all the poems from the database and show it in the poems page
+           
+        
+        
+       
+       
 
           return view('poems.index', [
             'poems' => $poems,
-            'trending' => $trending->get()
+            'trending' => $trending->get(),
+           
+
         ]);
     }
 
@@ -51,9 +58,10 @@ class PoemsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Poet $poets)
     {
-        return view('poems.create');
+        $poets = Poet::latest()->get();
+        return view('poems.create',compact('poets'));
     }
 
     /**
@@ -66,12 +74,14 @@ class PoemsController extends Controller
     {
            
         
-       
+      
         $this->validate($request,[
             'title' => 'required|spamfree',
             'body' => 'required|spamfree',
             'lat' => 'required',
             'lng' => 'required',
+            'poet_id'=>'required',
+            'language'=>'required',
             //make the sure the the channal id is not null and exists and the database;
             'channel_id' =>'required|exists:channels,id',
             'g-recaptcha-response' => [ $recaptcha]
@@ -85,8 +95,8 @@ class PoemsController extends Controller
             'title' =>request('title'),
             'lat' => request('lat'),
             'lng' => request('lng'),
-            
-
+            'language'=>request('language'),
+            'poet_id' => request('poet_id'),
 
         ]);
         if (request()->wantsJson()) {
@@ -109,6 +119,7 @@ class PoemsController extends Controller
 
         // Rcord that the user visit the page
         // record the timestamp
+     
        if(auth()->check()){
         auth()->user()->read($poem);
         
@@ -164,10 +175,11 @@ class PoemsController extends Controller
             $poems->where('channel_id', $channel->id);
         }
 
-        return $poems->paginate(5);;
+        return $poems->paginate(6);
 
         
     }
+    
     
     /**
      * Update the given poem.
@@ -197,6 +209,20 @@ class PoemsController extends Controller
 
           // fatch all the poems from the database and show it in the poems page
 
+    }
+    public function getpoemsT($translates)
+    {
+      
+        $poems = Poem::leftJoin('translates', 'poems.id', '=', 'translates.poem_id')->where('translates.language',$translates)->get();
+
+        return view('poems.translates', compact('poems'));
+    }
+    public function getpoemsL($language)
+    {
+      
+        $poems = Poem::where('poems.language',$language)->paginate(6);
+
+        return view('poems.languages', compact('poems'));
     }
     
 }

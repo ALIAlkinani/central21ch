@@ -71,3 +71,27 @@ window.flash = function (message, level = 'success') {
 // });
 
 
+$(function(){
+
+
+$("[data-toggle='tooltip']").tooltip({animation: true});
+
+//modelphoto
+$('.modalphotos img').on('click',function(){
+    $('#modal').modal({show :true,}) //active the modal
+
+   var mysrc = this.src.substr(0, this.src.length-7) + '.jpg' ;
+   $('#modalimage').attr('src',mysrc); 
+
+   $("#modalimage").on("click",function(){
+    $('#modal').modal('hide') 
+
+
+   })
+
+
+});
+
+
+
+}); //jquery is loaded

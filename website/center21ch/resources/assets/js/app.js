@@ -43,7 +43,7 @@ Vue.config.productionTip = false
  */
 
 Vue.component('avatar-form', require('./components/AvatarForm.vue'));
-
+Vue.component('avatar-poet', require('./components/AvatarPoet.vue'));
 Vue.component('ShowMap', require('./components/showMap.vue'));
 Vue.component('ReadMap', require('./components/readMap.vue'));
 Vue.component('flash', require('./components/Flash.vue'));
@@ -53,6 +53,7 @@ Vue.component('wysiwyg', require('./components/Wysiwyg.vue'));
 
 
 Vue.component('poem-view', require('./pages/Poem.vue'));
+Vue.component('poet-view', require('./pages/Poet.vue'));
 Vue.component('favorite', require('./components/favorite.vue'));
 const app = new Vue({
     el: '#app',

@@ -21,6 +21,7 @@ class Trending
     {
         Redis::zincrby($this->cacheKey(), 1, json_encode([
             'title' => $poem->title,
+            'body'  => $poem->body,
             'path' => $poem->path()
         ]));
     }

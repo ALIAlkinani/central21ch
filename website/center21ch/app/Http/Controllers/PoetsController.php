@@ -9,15 +9,28 @@ class PoetsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['index']);
+        $this->middleware('auth')->except(['index','show']);
     }
         public function index()
         {
-            $poets =  Poet::latest()->get();
+            $poets =  Poet::latest()->paginate(6);
+           
             return view('poets.index', compact('poets'));
         }
     public function store(Request $request)
     {
+        $this->validate($request,[
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'nationality' => 'required',
+            'DOB' => 'required',
+            
+            'about'=>'required',
+          
+            'M_language' =>'required',
+            
+
+        ]);
         $poet = Poet::create([
             'first_name' =>request('first_name'),
             'last_name'=>request('last_name'),
@@ -26,7 +39,6 @@ class PoetsController extends Controller
             'date_of_death' =>request('date_of_death'),
             'about' =>request('about'),
             'mother_language' => request('mother_language'),
-            
            
             
 
@@ -35,10 +47,10 @@ class PoetsController extends Controller
         if (request()->wantsJson()) {
             return response($poet, 201);
         }
-
+       
         return redirect($poet->path())->with('flash','Your poet has been published');
 
-        
+   
 
     }
 
@@ -63,6 +75,41 @@ class PoetsController extends Controller
     {
         return view('poets.show', compact('poet'));
     }
+    /**
+     * Update the given poem.
+     *
+ 
+     * @param poet $poet
+     */
+    public function update(Request $request, Poet $poet)
+    {
+        $this->validate($request,[
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'nationality' => 'required',
+            'DOB' => 'required',
+            'about'=>'required',
+          
+            'M_language' =>'required',
+            
+
+        ]);
+       
+       
+        $poet->update([
+            'first_name' =>request('first_name'),
+            'last_name'=>request('last_name'),
+            'nationality'  =>request('nationality'),
+            'date_of_birth' =>request('DOB'),
+            'date_of_death' =>request('DOD'),
+            'about' =>request('about'),
+            'mother_language' => request('M_language'),
+            
+           
+        ]);
+        return $poet;
+    }
+    
 
 
 }

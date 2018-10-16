@@ -79,8 +79,11 @@
                                     <option value="Xhosa">Xhosa</option>
                                 </select>
                    
-                    </div>
-                <textarea  class="form-control" name="body" rows="7" v-model="body" ></textarea>
+            <br>
+              <textarea  class="form-control" name="body" rows="7" v-model="translate_body" ></textarea>
+            
+            </div>
+              
 
      </div>
 
@@ -108,7 +111,7 @@ export default {
    
     data(){
         return{
-            body:'',
+            translate_body:'',
             language:'',
             completed: false,
         
@@ -118,7 +121,7 @@ export default {
    
     methods:{
         addTranslate(){
-            axios.post(location.pathname + '/translates',{language: this.language, body : this.body  })
+            axios.post(location.pathname + '/translates',{language: this.language, translate_body : this.translate_body })
             .catch(error=> {
                     flash(error.response.data,'danger');
             })

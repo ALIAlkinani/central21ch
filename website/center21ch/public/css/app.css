@@ -10449,6 +10449,11 @@ span.commit {
           flex: 1;
 }
 
+.card {
+  margin-left: 10;
+  margin-right: 20px;
+}
+
 .navbar-laravel {
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
@@ -10461,6 +10466,334 @@ span.commit {
 
 .navbar-laravel a:hover {
   color: #bdf006;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Bree Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #D33682;
+}
+
+.collapse a {
+  color: #FDAD22;
+}
+
+p {
+  font-family: Merriweather, Georgia, "Times New Roman", Times, serif;
+  color: #586E75;
+  font-size: 0.9em;
+  line-height: 1.4em;
+  padding: 0 2%;
+}
+
+@media (max-width: 768) {
+  p {
+    font-size: 0.6em;
+  }
+}
+
+.container {
+  background: white;
+}
+
+@media (max-width: 768px) {
+  .container {
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+  }
+
+  .container h1 {
+    font-size: 1.3em;
+  }
+
+  .container h2 {
+    font-size: 1em;
+  }
+
+  .container p {
+    font-size: 0.7em;
+  }
+}
+
+.container div.component img {
+  width: 90px;
+  max-width: 120px;
+}
+
+@media (max-width: 870px) {
+  .container div.component img {
+    width: 70px;
+    max-width: 70px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container h1 {
+    font-size: 1.2em;
+    margin-top: 4px;
+    margin-bottom: 2px;
+  }
+
+  .container h2 {
+    font-size: 1em;
+    margin-top: 4px;
+    margin-bottom: 2px;
+  }
+
+  .container p {
+    font-size: 0.7em;
+  }
+
+  .container a.accordion-toggle {
+    font-size: 0.7em;
+    margin-bottom: 0;
+  }
+
+  .container a.btn {
+    font-size: 0.7em;
+  }
+
+  .container footer {
+    margin-top: 0px;
+    padding: 0px;
+  }
+
+  .container footer ul.breadcrumb {
+    font-size: 0.7em;
+  }
+}
+
+.navbar {
+  margin-bottom: 0;
+}
+
+.carousel {
+  margin-bottom: 0;
+}
+
+.content {
+  margin-bottom: 0;
+}
+
+.main > article {
+  margin: 0 5%;
+}
+
+.sidebar > aside {
+  padding-right: 5%;
+}
+
+@media (max-width: 768px) {
+  .sidebar > aside {
+    padding-left: 5%;
+  }
+}
+
+aside h2 {
+  font-size: 1.8em;
+  color: #BA83D4;
+  border-bottom: 1px dotted #D33682;
+}
+
+#branding img {
+  margin: 10px 0 5px 25px;
+  max-width: 500px;
+}
+
+@media (max-width: 768px) {
+  #branding img {
+    margin: 10px 0 5px 10px;
+    width: 90%;
+  }
+}
+
+navbar {
+  border-left: none;
+  border-radius: 0;
+  border-right: 0;
+}
+
+.accordion-heading a {
+  color: white;
+  background: #110f10;
+}
+
+.accordion-heading a:hover,
+.accordion-heading a:focus {
+  color: #FDAD22;
+}
+
+.aboutthevenues article {
+  margin: 0;
+  padding: 0;
+}
+
+.aboutthevenues h2 {
+  padding: 0;
+  padding-bottom: 0;
+  border-bottom: 1px dotted #475C98;
+}
+
+.aboutthevenues h3 {
+  color: #D33682;
+  padding: 0;
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.aboutthevenues img {
+  margin: 10px 5px 5px 5px;
+  width: 160px;
+  max-width: 300px;
+}
+
+@media (max-width: 768px) {
+  .aboutthevenues h2 {
+    font-size: 1.1em;
+    margin-top: 5px;
+  }
+
+  .aboutthevenues img {
+    width: 90%;
+    max-width: 120px;
+    margin: 3px 1px 2px 1px;
+    padding: 0%;
+  }
+
+  .aboutthevenues p {
+    font-size: 0.6em;
+  }
+}
+
+.nav-tabs li {
+  background: black;
+}
+
+.nav-tabs li:hover {
+  background: black;
+}
+
+.nav-tabs li {
+  color: black;
+}
+
+.nav-tabs li a {
+  color: white;
+}
+
+.nav-tabs li.active a:hover {
+  background: #FDAD22;
+  color: black;
+}
+
+.nav-tabs li a:hover {
+  background: #FDAD22;
+  color: black;
+}
+
+.nav-tabs li.active a {
+  color: #f146aa;
+}
+
+.nav-tabs li.active a {
+  font-weight: bold;
+  color: #D33682;
+}
+
+.tab-content h3,
+.tab-content h4 {
+  margin: 0;
+  padding: 0;
+}
+
+.tab-content h3 {
+  color: #D33682;
+  line-height: 1em;
+}
+
+.tab-content p {
+  padding: 0;
+  padding-top: 10px;
+}
+
+.photogrid img {
+  width: 96px;
+  margin: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+@media (max-width: 990px) {
+  .photogrid img {
+    width: 64px;
+  }
+}
+
+.artistinfo article,
+.artistinfo p,
+.artistinfo h1 {
+  padding: 0 2%;
+}
+
+.artistinfo .photogrid img {
+  width: 72px;
+  margin: 0 5px 5px 0;
+  cursor: pointer;
+}
+
+.artistinfo h3 {
+  color: pink;
+}
+
+footer {
+  margin-top: 20px;
+  padding: 10px;
+}
+
+footer ul.breadcrumb {
+  background: black;
+  margin: 0 auto;
+  border-radius: 0;
+}
+
+footer ul.breadcrumb li {
+  text-shadow: none;
+}
+
+footer ul.breadcrumb li a {
+  color: white;
+  font-family: Merriweather, Georgia, "Times New Roman", Times, serif;
+}
+
+div.component img {
+  width: 110px;
+}
+
+.tran {
+  margin: 0px;
+  padding: 0px;
+}
+
+p .translate {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.about-border {
+  display: block;
+  width: auto;
+  height: 3px;
+  background: #f1cd8f;
+}
+
+.skills ol {
+  color: #dabf27;
+}
+
+.skills li {
+  margin-top: 5px;
+  border-bottom: 1px solid #dabf27;
 }
 
 html,
@@ -10608,7 +10941,7 @@ button > p {
   margin: 0;
 }
 
-.footer {
+footer {
   margin-bottom: 5px;
   padding-bottom: 10px;
 }
@@ -10663,7 +10996,7 @@ p {
 }
 
 .accordion-heading a {
-  color: white;
+  color: gold;
 }
 
 .accordion-heading a:hover,
@@ -10685,11 +11018,38 @@ span {
   font-size: 15px;
 }
 
+#branding img {
+  margin: 10px 0 5px 25px;
+  max-width: 500px;
+}
+
+@media (max-width: 768px) {
+  #branding img {
+    margin: 10px 0 5px 10px;
+    width: 90%;
+  }
+}
+
+.navbar {
+  border-left: none;
+  border-radius: 0;
+  border-right: 0;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+}
+
+.logo {
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  margin-left: 0;
+}
+
 .box-part {
   background: #FFF;
   border-radius: 0;
-  padding: 60px 10px;
-  margin: 30px 0px;
+  padding: 20px 10px;
+  margin: 5px 0px;
 }
 
 .box-part a {
@@ -10704,5 +11064,111 @@ span {
 
 .fa {
   color: #4183D7;
+}
+
+.container {
+  background: white;
+}
+
+@media (max-width: 768px) {
+  .container {
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+  }
+
+  .container h1 {
+    font-size: 1.3em;
+  }
+
+  .container h2 {
+    font-size: 1em;
+  }
+
+  .container p {
+    font-size: 0.7em;
+  }
+}
+
+.container .abouttheartists div.component img {
+  width: 90px;
+  max-width: 120px;
+}
+
+@media (max-width: 870px) {
+  .container .abouttheartists div.component img {
+    width: 70px;
+    max-width: 70px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container h1 {
+    font-size: 1.2em;
+    margin-top: 4px;
+    margin-bottom: 2px;
+  }
+
+  .container h2 {
+    font-size: 1em;
+    margin-top: 4px;
+    margin-bottom: 2px;
+  }
+
+  .container p {
+    font-size: 0.7em;
+  }
+
+  .container a.accordion-toggle {
+    font-size: 0.7em;
+    margin-bottom: 0;
+  }
+
+  .container a.btn {
+    font-size: 0.7em;
+  }
+
+  .container footer {
+    margin-top: 0px;
+    padding: 0px;
+  }
+
+  .container footer ul.breadcrumb {
+    font-size: 0.7em;
+  }
+}
+
+/* LIST #2 */
+
+#list2 {
+  width: 320px;
+}
+
+#list2 ol {
+  font-style: italic;
+  font-family: Georgia, Times, serif;
+  font-size: 24px;
+  color: #bfe1f1;
+}
+
+#list2 ol li a {
+  margin: 0px;
+}
+
+#list2 ol li p {
+  padding: 8px;
+  font-style: normal;
+  font-family: Arial;
+  font-size: 13px;
+  color: #eee;
+  border-left: 1px solid #999;
+}
+
+#list2 ol li p em {
+  display: block;
+}
+
+.title {
+  -ms-flex-line-pack: center;
+      align-content: center;
 }
 

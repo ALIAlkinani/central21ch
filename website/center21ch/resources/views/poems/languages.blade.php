@@ -1,4 +1,14 @@
+@extends('layouts.app')
+
+@section('head')
+    <link rel="stylesheet" href="/css/vendor/jquery.atwho.css">
+@endsection
+
+@section('content')
+<div class="container">
+<div class="col-md-10" >
 @forelse ($poems as $poem)
+<br>
 <div class="d-flex justify-content-center">
        <h4>
             <a href="{{ $poem->path() }}">
@@ -39,12 +49,29 @@
         <div class="content">
             <div class="body">{!! $poem->body !!}</div>
         </div>
-    <div class="card">
-      {{ $poem->visits }}  visits 
+  
+        
     </div>
-        <br>
+<div>
+ 
+
     </div>
+
+
+
 @empty
     <p>There are no relevant results at this time.</p>
 
+    
+
+
+</div>
+</div>
+
 @endforelse 
+</div>
+<br>
+<div>
+        {{ $poems->links() }}	
+</div>
+@endsection

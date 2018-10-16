@@ -35,22 +35,7 @@ class createPoetTest extends TestCase
     
     
         }
-    /** @test */
-    public function an_authenticated_user_can_create_a_poet()
-    {
-
-        //given we have an_authenticated_user
-        $this->signIn();
-        //make a Poet
-        
-      
-        //create the url and pass the poet to it 
-        $this->post('/poets',$this->poet->toArray())
-        ->assertStatus(302);
-       
-
-
-    }
+    
     /** @test */
     public function an_unauthenticated_user_cannot_see_the_create_poet_page()
     {
@@ -65,22 +50,22 @@ class createPoetTest extends TestCase
 
     
     /** @test */
-    function a_poet_required_a_title()
+    function a_poet_required_a_last_name()
     
     {
-        $this->publish_a_poet(['title' =>null]) 
-        ->assertSessionHasErrors('title');   
+        $this->publish_a_poet(['last_name' =>null]) 
+        ->assertSessionHasErrors('last_name');   
     
     }
 
         
     /** @test */
-    function a_poet_required_a_body()
+    function a_poet_required_a_first_name()
     
     {
         
-        $this->publish_a_poet(['body' =>null])        
-        ->assertSessionHasErrors('body');   
+        $this->publish_a_poet(['first_name' =>null])        
+        ->assertSessionHasErrors('first_name');   
     
     }
     /**@test */
@@ -96,37 +81,7 @@ class createPoetTest extends TestCase
         return $this->post('/poets',$poet->toArray());
         
     }
-    /** @test */
-    public function authrised_user_may_delete_a_poet()
-    {
-        $this->signIn();
-        $poet = create('App\Poet',['user_id'=>auth()->id()]);
-        $reply = create('App\Reply',['poet_id' =>$poet->id]);
-
-
-        $this->Json('DELETE',$poet->path());
-
-        $this->assertDatabaseMissing('poets',['id'=>$poet->id]);
-        $this->assertDatabaseMissing('replies',['id'=>$reply->id]);
-        $this->assertDatabaseMissing('activities',[
-            
-            'subject_id' =>$poet->id,
-            'subject_type' =>get_class($poet)
-            
-            ]);
-            $this->assertDatabaseMissing('activities',[
-            
-                'subject_id' =>$reply->id,
-                'subject_type' =>get_class($reply)
-                
-                ]);
-    
-    
-
-
-
-        
-    }
+   
 
       /** @test */
       public function unauthrised_user_maynot_delete_a_poet()
@@ -135,11 +90,9 @@ class createPoetTest extends TestCase
 
         $poet = create('App\Poet');
           
-  
-          $this->delete($poet->path())->assertRedirect('/login'); 
-          
-          $this->signIn();
-          $this->delete($poet->path())->assertStatus(403); 
+        $this->delete($poet->path())->assertStatus(405);  
+           $this->signIn();
+          $this->delete($poet->path())->assertStatus(405);  
       }
            
         
