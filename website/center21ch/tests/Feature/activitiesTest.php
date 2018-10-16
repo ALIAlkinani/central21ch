@@ -26,8 +26,15 @@ class activitiesTest extends TestCase
 
     ]);
 
+   
+
     $activity = Activity::first();
-    $this->assertEquals($activity->subject->id, $poem->id)  ;    
+
+    
+ 
+ 
+    
+    $this->assertEquals($activity->subject_id, $poem->id) ;    
    }
 /** @test */
    public function it_record_activity_when_reply_created()
@@ -36,7 +43,7 @@ class activitiesTest extends TestCase
        
        $reply= create('App\Reply');
 
-       $this->assertEquals(4,Activity::count());
+       $this->assertEquals(4,Activity::count()->get());
        
 
    }

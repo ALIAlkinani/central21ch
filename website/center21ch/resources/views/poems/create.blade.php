@@ -22,7 +22,7 @@
 
                     @csrf
                     <div class="form-group">
-                      <label for="channel_id">Choose a channel:</label>
+                      <label for="channel_id">Choose a type:</label>
                       <select class="form-control" name="channel_id" id="channel_id">
                           <option value=""></option>
                           @foreach ($channels as $channel )
