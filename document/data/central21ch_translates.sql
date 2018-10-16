@@ -1,0 +1,37 @@
+-- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
+--
+-- Host: localhost    Database: central21ch
+-- ------------------------------------------------------
+-- Server version	8.0.11
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Dumping data for table `translates`
+--
+
+LOCK TABLES `translates` WRITE;
+/*!40000 ALTER TABLE `translates` DISABLE KEYS */;
+INSERT INTO `translates` VALUES (1,31,1,'Arabic','من مخترع من دواعي سروري، أو لا أعرف كيف سأشرح. ولكن الملذات الجسدية الشديدة التي لا بد أن يحدث. والذين في بعض الأحيان ولكن ذنب من كل هذا العمل الشاق. تسبيحه مع الاناشيد الدينية، وفي نفسه، في الواقع، suscipit.','2018-10-15 15:24:34','2018-10-15 15:24:34'),(2,31,31,'Arabic','هل هناك شيء كعامل كلي؟\nالتقى firstI مسافر من أرض عتيقة ، من قال - \"اثنان من الساقين الشاسعة و trunkless من الوقوف في الصحراء. . . . بالقرب منهم ، على الرمال ، غرق نصفهم كذبة محطّمة ، شفتهم ، وشفتهم المتجعدّة ، وسخرية من الأمر البارد ، أخبروا أن نحاته جيدا تلك المشاعر تقرأ أيهما بعد ، يختم على هذه الأشياء التي لا حياة لها ،\nاليد التي سخر منها ، والقلب الذي أطعمه. وعلى قاعدة التمثال ، تظهر هذه الكلمات: اسمي Ozymandias ، ملك الملوك. انظروا الى اعمالي ، أيها القدير ، واليأس! لا شيء بجانبه. جولة الاضمحلال من هذا الحطام الضخم ، لا حدود له والعاريا تمتد الرمال الوحيدة والرصيف بعيدًا. \"','2018-10-15 17:09:06','2018-10-15 17:09:06'),(3,31,31,'Chinese_Mandarin','dknandkjaskjasnkjdas','2018-10-15 17:11:02','2018-10-15 17:11:02');
+/*!40000 ALTER TABLE `translates` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2018-10-16 21:21:06
