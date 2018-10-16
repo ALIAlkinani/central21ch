@@ -1,7 +1,7 @@
 <aside class="photofromlastyear">
 
 		<h2>Translate</h2>
-		<p>There are varies poem with different transalte you can browse them by thier transalte languages </p>
+		<p>There are various poems with different translations. You can browse them by thier translation languages. </p>
 		<div class="row">
 
 				@foreach ($translates as $translate)

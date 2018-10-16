@@ -116,7 +116,7 @@
                     
 
                     <div class="form-group">
-                        <label for="poet_id">Choose a Arthur:</label>
+                        <label for="poet_id">Choose an author:</label>
                         <select class="form-control selectpicker" name="poet_id" id="poet_id" >
                                 <option>Select...</option>
                             @foreach ($poets as $poet)

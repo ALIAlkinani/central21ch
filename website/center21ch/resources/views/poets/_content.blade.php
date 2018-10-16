@@ -15,7 +15,7 @@
                         </h5>
                     <br>
                             <h5>
-                                    <label > nationality : </label>
+                                    <label > Nationality : </label>
                                    
                                     <select v-model="form.nationality" name="nationality" id="nationality" required>
                                                 
@@ -218,7 +218,7 @@
                             <br>
                     
                         <h5>
-                                <label >date of birth: </label>
+                                <label >Date of birth: </label>
                              
                                 <input type="date"   v-model="form.DOB" name="date_of_birth" id="date_of_birth" required>    
         
@@ -227,14 +227,14 @@
                         <br>
         
                         <h5>
-                                <label> date of death:</label> 
+                                <label> Date of death:</label> 
                                 <input type="date" v-model="form.DOD" name="date_of_death" id="date_of_death" required>
  
                         </h5>
                             <br>
             
                                                 <h5>
-            <label > language:</label>
+            <label > Language:</label>
   
           
             <select  name="mother_language"  v-model="form.M_language" id="mother_language">
@@ -355,33 +355,33 @@
                 </h5>
             <br>
                     <h5>
-                            <label > nationality :<span v-text="nationality"></span></label>
+                            <label > Nationality :<span v-text="nationality"></span></label>
 
                     </h5>                     
 
                     <br>
             
                 <h5>
-                        <label >date of birth: <span v-text="DOB"></span></label>
+                        <label >Date of birth: <span v-text="DOB"></span></label>
                 </h5>
             
                 <br>
 
                 <h5>
-                        <label  > date of death: <span v-text="DOD"></span></label>
+                        <label  > Date of death: <span v-text="DOD"></span></label>
 
                 </h5>
                 <br>
 
                                     <h5>
-                                            <label > language: <span v-text="M_language"></span></label>
+                                            <label > Language: <span v-text="M_language"></span></label>
 
                                     </h5>      
                                     
                                     <br>
 
                                     <h5>
-                                            <label > About the Arthur:<span v-text="about"></span></label>
+                                            <label > About the author:<span v-text="about"></span></label>
 
                                     </h5>                      
             
