@@ -323,7 +323,7 @@
                         </div>
 
                           <div class="form-group">
-                           <label for="about"> About the arthur</label>
+                           <label for="about"> About the author</label>
                            <textarea  class="form-control" name="about" id="about" rows="5" required></textarea>
                           
                    
