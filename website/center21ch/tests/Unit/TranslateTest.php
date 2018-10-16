@@ -92,7 +92,7 @@ class TranslateTest extends TestCase
 
 
            /** @test */
-           function a_transalte_has_a_body()
+           function a_transalte_has_a_translate_body()
            {
               $this->expectException('Illuminate\Validation\ValidationException');
                //given we have an_authenticated_user
@@ -100,14 +100,14 @@ class TranslateTest extends TestCase
                //Add existing Poem
                $poem= create('App\Poem');
                //make a Translate
-               $Translate = make('App\Translate',['body'=>null]);
+               $Translate = make('App\Translate',['translate_body'=>null]);
                //create the url and pass the Translate to it 
               
                $this->post($poem->path().'/translates',$Translate->toArray());
        
                //make sure we see the Translate in poem page
                $this->get($poem->path())  
-               ->assertSessionHasErrors('body');   
+               ->assertSessionHasErrors('translate_body');   
           
           
        

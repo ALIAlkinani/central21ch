@@ -36,7 +36,7 @@ class activitiesTest extends TestCase
        
        $reply= create('App\Reply');
 
-       $this->assertEquals(2,Activity::count());
+       $this->assertEquals(4,Activity::count());
        
 
    }
